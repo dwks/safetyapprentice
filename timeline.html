@@ -86,11 +86,6 @@
     padding: 8px 14px; border-radius: 8px; transition: all 0.2s ease;
   }
   .nav-link:hover { background: rgba(184, 92, 56, 0.06); }
-  .nav-link--cta {
-    font-weight: 600; color: #FFFCF7; padding: 8px 18px;
-    background: linear-gradient(135deg, #2C2520, #3D3530); border-radius: 8px;
-  }
-  .nav-link--cta:hover { opacity: 0.9; }
 
   /* Hero */
   .hero {
@@ -254,6 +249,70 @@
     .tl-item::before { left: -28px; }
     .tl-card { padding: 18px 18px; }
   }
+
+  /* ---- nav: grouped links + dropdowns ---- */
+  .nav-links { display: flex; gap: 4px; align-items: center; }
+  .nav-group { position: relative; }
+  .nav-link--group {
+    font-family: inherit; font-size: 13.5px; font-weight: 500; color: #6B6058;
+    background: none; border: none; cursor: pointer;
+    padding: 8px 14px; border-radius: 8px; transition: all 0.2s ease;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .nav-link--group:hover { background: rgba(184, 92, 56, 0.06); color: #2C2520; }
+  .nav-caret { font-size: 9px; opacity: 0.55; transition: transform 0.2s ease; }
+  .nav-group.open > .nav-link--group { background: rgba(184, 92, 56, 0.08); color: #2C2520; }
+  .nav-group.open .nav-caret { transform: rotate(180deg); }
+  .nav-group--active > .nav-link--group { color: #B85C38; }
+  .nav-link[aria-current="page"], .nav-menu a[aria-current="page"] {
+    color: #B85C38; font-weight: 600;
+  }
+  .nav-menu {
+    position: absolute; top: calc(100% + 8px); left: 0; min-width: 208px;
+    display: flex; flex-direction: column; gap: 2px; padding: 6px;
+    background: rgba(255, 252, 247, 0.97);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border: 1px solid #E8E0D4; border-radius: 12px;
+    box-shadow: 0 14px 36px rgba(120, 80, 40, 0.14), 0 3px 10px rgba(120, 80, 40, 0.06);
+    opacity: 0; visibility: hidden; transform: translateY(-6px);
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+  }
+  .nav-group.open .nav-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+  .nav-menu a {
+    font-size: 13.5px; font-weight: 500; color: #6B6058; text-decoration: none;
+    padding: 9px 12px; border-radius: 8px; white-space: nowrap; transition: all 0.2s ease;
+  }
+  .nav-menu a:hover { background: rgba(184, 92, 56, 0.07); color: #2C2520; }
+  .nav-toggle {
+    display: none; font-size: 18px; line-height: 1; color: #2C2520;
+    background: none; border: none; cursor: pointer;
+    padding: 8px 10px; border-radius: 8px; transition: background 0.2s ease;
+  }
+  .nav-toggle:hover { background: rgba(184, 92, 56, 0.06); }
+
+  @media (max-width: 880px) {
+    .nav-bar, .nav-bar.scrolled { padding: 12px 18px; }
+    .nav-toggle { display: block; }
+    .nav-links {
+      position: absolute; top: 100%; left: 12px; right: 12px;
+      display: none; flex-direction: column; align-items: stretch; gap: 2px;
+      padding: 10px; border: 1px solid #E8E0D4; border-radius: 14px;
+      background: rgba(248, 243, 236, 0.98);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 14px 36px rgba(120, 80, 40, 0.14);
+      max-height: calc(100vh - 90px); overflow-y: auto;
+    }
+    .nav-links.open { display: flex; }
+    .nav-group { position: static; }
+    .nav-link--group { width: 100%; justify-content: space-between; }
+    .nav-menu {
+      position: static; opacity: 1; visibility: visible; transform: none;
+      display: none; background: none; border: none; box-shadow: none;
+      padding: 2px 0 6px 12px; min-width: 0;
+    }
+    .nav-group.open .nav-menu { display: flex; }
+    .nav-menu a { white-space: normal; }
+  }
 </style>
 </head>
 <body>
@@ -269,10 +328,34 @@
     <div class="nav-logo__icon">🛡️</div>
     <span class="nav-logo__text">The Safety Apprentice</span>
   </a>
-  <div class="nav-links">
+  <div class="nav-links" id="navLinks">
     <a href="index.html" class="nav-link">Home</a>
-    <a href="https://github.com/dwks/safetyapprentice" target="_blank" rel="noopener" class="nav-link nav-link--cta">GitHub</a>
+    <div class="nav-group nav-group--active">
+      <button class="nav-link nav-link--group" type="button" aria-expanded="false" aria-haspopup="true">Learn<span class="nav-caret" aria-hidden="true">&#9662;</span></button>
+      <div class="nav-menu">
+        <a href="why-ai-safety.html">Why AI Safety Matters</a>
+        <a href="timeline.html" aria-current="page">Key Events</a>
+        <a href="data-map.html">Field Map</a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-link nav-link--group" type="button" aria-expanded="false" aria-haspopup="true">Getting In<span class="nav-caret" aria-hidden="true">&#9662;</span></button>
+      <div class="nav-menu">
+        <a href="hard-to-get-hired.html">Getting Hired</a>
+        <a href="fellowships.html">Fellowships</a>
+        <a href="funding.html">Funding &amp; Grants</a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-link nav-link--group" type="button" aria-expanded="false" aria-haspopup="true">Community<span class="nav-caret" aria-hidden="true">&#9662;</span></button>
+      <div class="nav-menu">
+        <a href="geography.html">Geography</a>
+        <a href="conferences.html">Conferences &amp; Events</a>
+      </div>
+    </div>
+    <a href="about.html" class="nav-link">About</a>
   </div>
+  <button class="nav-toggle" id="navToggleTop" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">&#9776;</button>
 </nav>
 
 <header class="hero">
@@ -690,6 +773,56 @@
     });
     noResults.style.display = any ? 'none' : 'block';
   }));
+</script>
+
+<script>
+  // top nav: dropdown groups + mobile menu
+  (function () {
+    var bar = document.getElementById('navbar');
+    var links = document.getElementById('navLinks');
+    var toggle = document.getElementById('navToggleTop');
+    var groups = Array.prototype.slice.call(document.querySelectorAll('.nav-group'));
+
+    function closeGroups(except) {
+      groups.forEach(function (g) {
+        if (g === except) return;
+        g.classList.remove('open');
+        g.querySelector('.nav-link--group').setAttribute('aria-expanded', 'false');
+      });
+    }
+    function closeMenu() {
+      closeGroups(null);
+      if (links) links.classList.remove('open');
+      if (toggle) toggle.setAttribute('aria-expanded', 'false');
+    }
+
+    groups.forEach(function (g) {
+      var btn = g.querySelector('.nav-link--group');
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var open = !g.classList.contains('open');
+        closeGroups(g);
+        g.classList.toggle('open', open);
+        btn.setAttribute('aria-expanded', String(open));
+      });
+    });
+
+    if (toggle) {
+      toggle.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var open = links.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(open));
+        if (!open) closeGroups(null);
+      });
+    }
+
+    document.addEventListener('click', function (e) {
+      if (!bar.contains(e.target)) closeMenu();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeMenu();
+    });
+  })();
 </script>
 
 </body>
