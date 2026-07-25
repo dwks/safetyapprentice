@@ -82,11 +82,16 @@ license as the rest of the project.
 ## License
 
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — share and adapt,
-including commercially, with credit. Full text in [LICENSE](LICENSE); scope,
-attribution wording, and third-party assets in [NOTICE.md](NOTICE.md).
+including commercially, with credit. Full text in [LICENSE](LICENSE).
 
 > The Safety Apprentice by David Williams-King —
 > https://safetyapprentice.com — CC BY 4.0
 
+This covers the original material here: the writing, and the templates,
+stylesheet, and build script that produce it. It does not extend to short
+quotations from papers, reports, and statements, which remain with their
+authors; nor to the project name, so please rename anything you fork.
+
 The world map is ["World Map" by shokunin](https://openclipart.org/detail/19011/world-map-by-shokunin)
-via Openclipart, public domain.
+via Openclipart, public domain. DM Sans and Lora are loaded from Google Fonts
+under the SIL Open Font License.

@@ -190,6 +190,78 @@ zcat -f /var/log/nginx/access.log.*.gz \
 `zcat -f` handles the plain and gzipped files together, and `-` reads stdin.
 This only reaches as far back as the oldest archive.
 
+## Is any of this real?
+
+An unadvertised site still gets hundreds of "visitors" and thousands of hits a
+day. That is normal, and almost all of it is machines. GoAccess counts a unique
+visitor per IP + user-agent per day, and crawlers rotate through both.
+
+The population has changed a lot recently: alongside the old SEO crawlers
+(AhrefsBot, SemrushBot, MJ12bot, DataForSeoBot) there is now a large volume of
+AI training and retrieval crawlers — GPTBot, ClaudeBot, Bytespider,
+Amazonbot, meta-externalagent, PerplexityBot. Many are missing from older
+GoAccess browser lists, so `--ignore-crawlers` waves them through.
+
+### Find out what is actually hitting you
+
+```sh
+# who, by volume — usually answers the question immediately
+awk -F'"' '{print $6}' /var/log/nginx/access.log | sort | uniq -c | sort -rn | head -25
+
+# a handful of IPs doing hundreds of requests each is a crawler, not readers
+awk '{print $1}' /var/log/nginx/access.log | sort | uniq -c | sort -rn | head -20
+
+# humans cluster in waking hours; crawlers are flat across 24
+awk -F: '{print $2}' /var/log/nginx/access.log | sort | uniq -c
+```
+
+### The best proxy for a real visit
+
+Every page loads `style.css` and `site.js`. Crawlers overwhelmingly fetch the
+HTML and nothing else — they do not pull subresources. So:
+
+```sh
+grep -c 'GET /site\.js' /var/log/nginx/access.log
+```
+
+That count is a far better estimate of real page loads than either "visitors"
+or "valid requests", and it is hard to fake accidentally. Expect it to be a
+small fraction of the headline figure.
+
+Compare it against HTML requests to see the ratio:
+
+```sh
+grep -cE 'GET /[a-z-]*\.html|GET / ' /var/log/nginx/access.log
+```
+
+If HTML requests vastly exceed `site.js` requests, the gap is bots.
+
+### Cutting the noise at source
+
+Blocking the worst offenders in nginx saves bandwidth as well as tidying the
+stats:
+
+```nginx
+map $http_user_agent $bad_bot {
+    default 0;
+    ~*(AhrefsBot|SemrushBot|MJ12bot|DotBot|DataForSeoBot|PetalBot|Bytespider|ImagesiftBot) 1;
+}
+
+server {
+    if ($bad_bot) { return 403; }
+    ...
+}
+```
+
+Whether to include the AI training crawlers (GPTBot, ClaudeBot, and friends) is
+a judgement call rather than a technical one — for a site whose purpose is to
+get this material in front of people, having it in training data may be a
+feature.
+
+A `robots.txt` handles the polite ones and costs nothing; it is ignored by
+exactly the crawlers you most want to stop, so treat it as a supplement to the
+block list rather than a replacement.
+
 ## Maintenance
 
 - **Glance at the date range monthly.** The failure mode is not rotation — it is
