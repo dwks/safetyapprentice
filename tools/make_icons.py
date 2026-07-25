@@ -12,6 +12,7 @@ from PIL import Image, ImageDraw
 
 TILE_FROM, TILE_TO = (0xB8, 0x5C, 0x38), (0xC2, 0x79, 0x3D)   # terracotta gradient
 SHIELD = (0xFF, 0xFF, 0xFF, 255)                              # white
+SHIELD_DARK = (0xEB, 0xDD, 0xCC, 255)                         # right half
 
 
 def draw(size: int) -> Image.Image:
@@ -40,6 +41,14 @@ def draw(size: int) -> Image.Image:
                         (1-t)**2 * y0 + 2*(1-t)*t * cy + t**2 * y1))
     pts.append((7.8, 9.2))
     d.polygon([(x * u, y * u) for x, y in pts], fill=SHIELD)
+
+    # right half in a slightly darker flat tone: apex -> right edge -> point
+    half = [(16, 6.2), (24.2, 9.2), (24.2, 16.1)]
+    for i in range(41):
+        t2 = i / 40
+        half.append(((1-t2)**2 * 24.2 + 2*(1-t2)*t2 * 24.2 + t2**2 * 16,
+                     (1-t2)**2 * 16.1 + 2*(1-t2)*t2 * 23.5 + t2**2 * 26.3))
+    d.polygon([(x * u, y * u) for x, y in half], fill=SHIELD_DARK)
 
     return img.resize((size, size), Image.LANCZOS)
 
