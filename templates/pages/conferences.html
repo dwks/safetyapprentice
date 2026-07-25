@@ -2,83 +2,19 @@
 
 {% block page_css %}
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  /* Category sections */
-  .category { margin-bottom: 48px; }
-
   .category__header {
       display: flex; align-items: center; gap: 12px;
       margin-bottom: 20px;
     }
-
   .category__icon { font-size: 28px; line-height: 1; }
-
   .category__name {
       font-family: 'Lora', serif; font-size: 22px; font-weight: 600; color: #2C2520;
     }
-
   .category__count {
       font-size: 12px; font-weight: 600; color: #8B7E72;
       background: rgba(139, 126, 114, 0.08); border: 1px solid rgba(139, 126, 114, 0.12);
       padding: 3px 10px; border-radius: 100px; margin-left: 4px;
     }
-
-  .events-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
-    }
-
-  /* Event card */
-  .event {
-      background: #FFFCF7; border-radius: 16px; border: 1px solid #E8E0D4;
-      padding: 24px 24px 20px; position: relative;
-      transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
-      box-shadow: 0 2px 8px rgba(120, 80, 40, 0.04);
-    }
-
-  .event:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 40px rgba(120, 80, 40, 0.1), 0 4px 12px rgba(120, 80, 40, 0.05);
-    }
-
-  .event__type {
-      font-size: 11.5px; font-weight: 600; letter-spacing: 0.06em;
-      text-transform: uppercase; color: #A0784C; margin-bottom: 8px;
-    }
-
-  .event__name {
-      font-family: 'Lora', serif; font-size: 19px; font-weight: 600;
-      color: #2C2520; margin-bottom: 8px; line-height: 1.3;
-    }
-
-  .event__desc {
-      font-size: 14px; color: #6B6058; line-height: 1.6; margin-bottom: 14px;
-    }
-
-  .event__meta {
-      display: flex; flex-wrap: wrap; gap: 8px;
-    }
-
-  .event__tag {
-      font-size: 11.5px; font-weight: 500; color: #8B7E72;
-      background: rgba(240, 233, 223, 0.85); border: 1px solid #E0D6C8;
-      padding: 4px 10px; border-radius: 100px;
-    }
-
-  .event__tag--highlight {
-      color: #A0784C; background: rgba(160, 120, 76, 0.06);
-      border-color: rgba(160, 120, 76, 0.15);
-    }
-
-  a.event { display: block; text-decoration: none; color: inherit; }
-
-  .event__link {
-      display: inline-flex; align-items: center; gap: 5px; margin-top: 14px;
-      font-size: 12.5px; font-weight: 600; color: #A0784C;
-      opacity: 0.6; transition: all 0.3s ease;
-    }
-
-  a.event:hover .event__link { opacity: 1; transform: translateX(3px); }
-
   /* Live tracker banner */
   .tracker {
       display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
@@ -88,28 +24,21 @@
       transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
       text-decoration: none; color: inherit;
     }
-
   .tracker:hover {
       transform: translateY(-3px);
       box-shadow: 0 16px 40px rgba(120, 80, 40, 0.1), 0 4px 12px rgba(120, 80, 40, 0.05);
     }
-
   .tracker__icon { font-size: 34px; line-height: 1; flex-shrink: 0; }
-
   .tracker__text { flex: 1 1 320px; }
-
   .tracker__label {
       font-size: 11.5px; font-weight: 600; letter-spacing: 0.06em;
       text-transform: uppercase; color: #A0784C; margin: 0 0 6px;
     }
-
   .tracker__title {
       font-family: 'Lora', serif; font-size: 20px; font-weight: 600;
       color: #2C2520; margin: 0 0 6px; line-height: 1.3;
     }
-
   .tracker__desc { font-size: 14.5px; color: #6B6058; margin: 0; line-height: 1.6; }
-
   .tracker__btn {
       flex: 0 0 auto; font-size: 14.5px; font-weight: 600;
       color: #FFFCF7; background: linear-gradient(135deg, #A0784C 0%, #C49A6C 100%);
@@ -117,9 +46,7 @@
       box-shadow: 0 2px 8px rgba(160, 120, 76, 0.22);
       transition: all 0.25s ease;
     }
-
   .tracker:hover .tracker__btn { box-shadow: 0 6px 18px rgba(160, 120, 76, 0.3); }
-
   /* Callout banner */
   .callout {
       background: linear-gradient(135deg, #2C2520 0%, #3D3028 50%, #2C2520 100%);
@@ -127,29 +54,24 @@
       box-shadow: 0 12px 40px rgba(44, 37, 32, 0.2);
       position: relative; overflow: hidden; margin-bottom: 48px;
     }
-
   .callout__glow {
       position: absolute; top: -60px; right: -40px; width: 240px; height: 240px;
       border-radius: 50%; background: radial-gradient(circle, rgba(160,120,76,0.08) 0%, transparent 70%);
       pointer-events: none;
     }
-
   .callout__title {
       font-family: 'Lora', serif; font-size: 22px; color: #F5EDE3;
       margin: 0 0 8px; font-weight: 600; line-height: 1.3;
     }
-
   .callout__desc {
       font-size: 15px; color: #C4B8AA; margin: 0; line-height: 1.6; max-width: 600px;
     }
-
   @media (max-width: 720px) {
-      .events-grid { grid-template-columns: 1fr; }
-      .content { padding: 0 20px; }
-      .callout { padding: 32px 24px 28px; }
-      .tracker { padding: 22px 20px; }
-      .tracker__btn { width: 100%; text-align: center; }
-    }
+    .content { padding: 0 20px; }
+    .callout { padding: 32px 24px 28px; }
+    .tracker { padding: 22px 20px; }
+    .tracker__btn { width: 100%; text-align: center; }
+  }
 {% endblock %}
 
 {% block hero %}
@@ -186,151 +108,116 @@
   </div>
 
   <!-- Major conferences -->
-  <div class="category fade-in">
-    <div class="category__header">
-      <span class="category__icon">🎤</span>
-      <h2 class="category__name">Major Conferences</h2>
+  <div class="group fade-in">
+    <div class="group__head">
+      <span class="group__icon">🎤</span>
+      <h2 class="group__name">Major Conferences</h2>
     </div>
-    <div class="events-grid">
-
-      <a class="event" href="https://www.effectivealtruism.org/ea-global" target="_blank" rel="noopener noreferrer">
-        <div class="event__type">Community conference</div>
-        <div class="event__name">EA Global (EAG)</div>
-        <div class="event__desc">The flagship Effective Altruism conference, held multiple times a year in cities like San Francisco, London, and Washington DC. A significant portion of attendees and talks focus on AI safety. The best single event for meeting people across the entire AI safety ecosystem — researchers, grantmakers, policy people, and org leaders.</div>
-        <div class="event__meta">
-          <span class="event__tag event__tag--highlight">Highly recommended</span>
-          <span class="event__tag">Application required</span>
-          <span class="event__tag">Multi-city</span>
-          <span class="event__tag">Recurring</span>
-        </div>
-        <span class="event__link">Visit EA Global →</span>
-      </a>
-
-      <a class="event" href="https://www.far.ai/events" target="_blank" rel="noopener noreferrer">
-        <div class="event__type">Research workshop</div>
-        <div class="event__name">FAR.AI Events</div>
-        <div class="event__desc">FAR.AI (the Fund for Alignment Research) hosts workshops and research events focused on technical alignment. A good venue for presenting early-stage research, getting feedback from established researchers, and finding collaborators for alignment projects.</div>
-        <div class="event__meta">
-          <span class="event__tag">Technical</span>
-          <span class="event__tag">Alignment research</span>
-          <span class="event__tag">Workshops</span>
-        </div>
-        <span class="event__link">Visit FAR.AI events →</span>
-      </a>
-
-      <a class="event" href="https://aisecurity.forum/" target="_blank" rel="noopener noreferrer">
-        <div class="event__type">Industry conference</div>
-        <div class="event__name">AI Security Forum</div>
-        <div class="event__desc">Focused on the intersection of AI safety and security — covering topics like red-teaming, adversarial robustness, model security, and safe deployment practices. Brings together researchers from both the safety and security communities.</div>
-        <div class="event__meta">
-          <span class="event__tag">Security</span>
-          <span class="event__tag">Red-teaming</span>
-          <span class="event__tag">Deployment safety</span>
-        </div>
-        <span class="event__link">Visit AI Security Forum →</span>
-      </a>
-
-      <div class="event">
-        <div class="event__type">Community conference</div>
-        <div class="event__name">EAGx</div>
-        <div class="event__desc">Regional versions of EA Global, held in cities around the world — from Austin to Singapore to Berlin. Smaller and more intimate than the main EAG events, making them an easier first conference. Many feature dedicated AI safety tracks.</div>
-        <div class="event__meta">
-          <span class="event__tag event__tag--highlight">Good first event</span>
-          <span class="event__tag">Regional</span>
-          <span class="event__tag">Application required</span>
+          <div class="rows">
+        <a class="row" href="https://www.effectivealtruism.org/ea-global" target="_blank" rel="noopener noreferrer">
+          <div class="row__head">
+            <span class="row__name">EA Global (EAG)</span>
+            <span class="row__where">Community conference</span>
+          </div>
+          <p class="row__desc">The flagship Effective Altruism conference, held multiple times a year in cities like San Francisco, London, and Washington DC. A significant portion of attendees and talks focus on AI safety. The best single event for meeting people across the entire AI safety ecosystem — researchers, grantmakers, policy people, and org leaders.</p>
+          <p class="row__tags"><span class="hl">Highly recommended</span><span>Application required</span><span>Multi-city</span><span>Recurring</span></p>
+          <span class="row__go">Visit EA Global →</span>
+        </a>
+        <a class="row" href="https://www.far.ai/events" target="_blank" rel="noopener noreferrer">
+          <div class="row__head">
+            <span class="row__name">FAR.AI Events</span>
+            <span class="row__where">Research workshop</span>
+          </div>
+          <p class="row__desc">FAR.AI (the Fund for Alignment Research) hosts workshops and research events focused on technical alignment. A good venue for presenting early-stage research, getting feedback from established researchers, and finding collaborators for alignment projects.</p>
+          <p class="row__tags"><span>Technical</span><span>Alignment research</span><span>Workshops</span></p>
+          <span class="row__go">Visit FAR.AI events →</span>
+        </a>
+        <a class="row" href="https://aisecurity.forum/" target="_blank" rel="noopener noreferrer">
+          <div class="row__head">
+            <span class="row__name">AI Security Forum</span>
+            <span class="row__where">Industry conference</span>
+          </div>
+          <p class="row__desc">Focused on the intersection of AI safety and security — covering topics like red-teaming, adversarial robustness, model security, and safe deployment practices. Brings together researchers from both the safety and security communities.</p>
+          <p class="row__tags"><span>Security</span><span>Red-teaming</span><span>Deployment safety</span></p>
+          <span class="row__go">Visit AI Security Forum →</span>
+        </a>
+        <div class="row">
+          <div class="row__head">
+            <span class="row__name">EAGx</span>
+            <span class="row__where">Community conference</span>
+          </div>
+          <p class="row__desc">Regional versions of EA Global, held in cities around the world — from Austin to Singapore to Berlin. Smaller and more intimate than the main EAG events, making them an easier first conference. Many feature dedicated AI safety tracks.</p>
+          <p class="row__tags"><span class="hl">Good first event</span><span>Regional</span><span>Application required</span></p>
         </div>
       </div>
-
-    </div>
   </div>
 
   <!-- Academic venues -->
-  <div class="category fade-in">
-    <div class="category__header">
-      <span class="category__icon">📄</span>
-      <h2 class="category__name">Academic Venues</h2>
+  <div class="group fade-in">
+    <div class="group__head">
+      <span class="group__icon">📄</span>
+      <h2 class="group__name">Academic Venues</h2>
     </div>
-    <div class="events-grid">
-
-      <div class="event">
-        <div class="event__type">Academic workshop</div>
-        <div class="event__name">NeurIPS Safety Workshops</div>
-        <div class="event__desc">NeurIPS hosts several safety-relevant workshops each year, covering topics from alignment to sociotechnical safety to red-teaming. The main conference is the largest ML venue in the world — attending even just the workshops is a strong networking opportunity.</div>
-        <div class="event__meta">
-          <span class="event__tag">Academic</span>
-          <span class="event__tag">ML research</span>
-          <span class="event__tag">Annual (December)</span>
+          <div class="rows">
+        <div class="row">
+          <div class="row__head">
+            <span class="row__name">NeurIPS Safety Workshops</span>
+            <span class="row__where">Academic workshop</span>
+          </div>
+          <p class="row__desc">NeurIPS hosts several safety-relevant workshops each year, covering topics from alignment to sociotechnical safety to red-teaming. The main conference is the largest ML venue in the world — attending even just the workshops is a strong networking opportunity.</p>
+          <p class="row__tags"><span>Academic</span><span>ML research</span><span>Annual (December)</span></p>
+        </div>
+        <div class="row">
+          <div class="row__head">
+            <span class="row__name">ICML Safety Workshops</span>
+            <span class="row__where">Academic workshop</span>
+          </div>
+          <p class="row__desc">ICML similarly features workshops on safe and reliable ML, alignment, and AI governance. A top venue for presenting technical safety research to the broader ML community.</p>
+          <p class="row__tags"><span>Academic</span><span>ML research</span><span>Annual (July)</span></p>
+        </div>
+        <div class="row">
+          <div class="row__head">
+            <span class="row__name">AAAI Symposium on AI Safety</span>
+            <span class="row__where">Academic conference</span>
+          </div>
+          <p class="row__desc">AAAI runs dedicated symposia on AI safety topics, including the Safe and Robust AI track. More accessible than NeurIPS/ICML for researchers coming from outside mainstream ML.</p>
+          <p class="row__tags"><span>Academic</span><span>Interdisciplinary</span><span>Annual (February)</span></p>
+        </div>
+        <div class="row">
+          <div class="row__head">
+            <span class="row__name">FAccT (ACM Conference on Fairness, Accountability, and Transparency)</span>
+            <span class="row__where">Academic conference</span>
+          </div>
+          <p class="row__desc">Covers the sociotechnical dimensions of AI safety — fairness, accountability, transparency, and governance. A good venue for researchers working on the policy and social impacts side of safety.</p>
+          <p class="row__tags"><span>Sociotechnical</span><span>Governance</span><span>Annual (June)</span></p>
         </div>
       </div>
-
-      <div class="event">
-        <div class="event__type">Academic workshop</div>
-        <div class="event__name">ICML Safety Workshops</div>
-        <div class="event__desc">ICML similarly features workshops on safe and reliable ML, alignment, and AI governance. A top venue for presenting technical safety research to the broader ML community.</div>
-        <div class="event__meta">
-          <span class="event__tag">Academic</span>
-          <span class="event__tag">ML research</span>
-          <span class="event__tag">Annual (July)</span>
-        </div>
-      </div>
-
-      <div class="event">
-        <div class="event__type">Academic conference</div>
-        <div class="event__name">AAAI Symposium on AI Safety</div>
-        <div class="event__desc">AAAI runs dedicated symposia on AI safety topics, including the Safe and Robust AI track. More accessible than NeurIPS/ICML for researchers coming from outside mainstream ML.</div>
-        <div class="event__meta">
-          <span class="event__tag">Academic</span>
-          <span class="event__tag">Interdisciplinary</span>
-          <span class="event__tag">Annual (February)</span>
-        </div>
-      </div>
-
-      <div class="event">
-        <div class="event__type">Academic conference</div>
-        <div class="event__name">FAccT (ACM Conference on Fairness, Accountability, and Transparency)</div>
-        <div class="event__desc">Covers the sociotechnical dimensions of AI safety — fairness, accountability, transparency, and governance. A good venue for researchers working on the policy and social impacts side of safety.</div>
-        <div class="event__meta">
-          <span class="event__tag">Sociotechnical</span>
-          <span class="event__tag">Governance</span>
-          <span class="event__tag">Annual (June)</span>
-        </div>
-      </div>
-
-    </div>
   </div>
 
   <!-- Unconferences & retreats -->
-  <div class="category fade-in">
-    <div class="category__header">
-      <span class="category__icon">🏕️</span>
-      <h2 class="category__name">Unconferences & Retreats</h2>
+  <div class="group fade-in">
+    <div class="group__head">
+      <span class="group__icon">🏕️</span>
+      <h2 class="group__name">Unconferences & Retreats</h2>
     </div>
-    <div class="events-grid">
-
-      <div class="event">
-        <div class="event__type">Unconference</div>
-        <div class="event__name">AI Safety Unconference</div>
-        <div class="event__desc">Participant-driven unconferences where the agenda is set on the day. These are some of the highest-value events in the community — small groups, deep conversations, and no gatekeeping on who gets to speak. Often held as side events at larger conferences.</div>
-        <div class="event__meta">
-          <span class="event__tag event__tag--highlight">High value</span>
-          <span class="event__tag">Participant-driven</span>
-          <span class="event__tag">Intimate</span>
+          <div class="rows">
+        <div class="row">
+          <div class="row__head">
+            <span class="row__name">AI Safety Unconference</span>
+            <span class="row__where">Unconference</span>
+          </div>
+          <p class="row__desc">Participant-driven unconferences where the agenda is set on the day. These are some of the highest-value events in the community — small groups, deep conversations, and no gatekeeping on who gets to speak. Often held as side events at larger conferences.</p>
+          <p class="row__tags"><span class="hl">High value</span><span>Participant-driven</span><span>Intimate</span></p>
+        </div>
+        <div class="row">
+          <div class="row__head">
+            <span class="row__name">AI Safety Camp</span>
+            <span class="row__where">Retreat</span>
+          </div>
+          <p class="row__desc">An intensive research retreat that brings together aspiring alignment researchers for collaborative projects. More structured than an unconference — you'll work on a real research problem with mentorship from experienced researchers. One of the best entry points into the field.</p>
+          <p class="row__tags"><span class="hl">Entry point</span><span>Research</span><span>Application required</span><span>Multiple per year</span></p>
         </div>
       </div>
-
-      <div class="event">
-        <div class="event__type">Retreat</div>
-        <div class="event__name">AI Safety Camp</div>
-        <div class="event__desc">An intensive research retreat that brings together aspiring alignment researchers for collaborative projects. More structured than an unconference — you'll work on a real research problem with mentorship from experienced researchers. One of the best entry points into the field.</div>
-        <div class="event__meta">
-          <span class="event__tag event__tag--highlight">Entry point</span>
-          <span class="event__tag">Research</span>
-          <span class="event__tag">Application required</span>
-          <span class="event__tag">Multiple per year</span>
-        </div>
-      </div>
-
-    </div>
   </div>
 
   <!-- Tip callout -->

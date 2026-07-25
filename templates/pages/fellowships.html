@@ -2,67 +2,14 @@
 
 {% block page_css %}
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  /* Category sections */
-  .category { margin-bottom: 48px; }
-
   .category__header {
       display: flex; align-items: center; gap: 12px;
       margin-bottom: 20px;
     }
-
   .category__icon { font-size: 28px; line-height: 1; }
-
   .category__name {
       font-family: 'Lora', serif; font-size: 22px; font-weight: 600; color: #2C2520;
     }
-
-  .programs-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
-    }
-
-  /* Program card */
-  .program {
-      background: #FFFCF7; border-radius: 16px; border: 1px solid #E8E0D4;
-      padding: 24px 24px 20px; position: relative;
-      transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
-      box-shadow: 0 2px 8px rgba(120, 80, 40, 0.04);
-    }
-
-  .program:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 40px rgba(120, 80, 40, 0.1), 0 4px 12px rgba(120, 80, 40, 0.05);
-    }
-
-  .program__type {
-      font-size: 11.5px; font-weight: 600; letter-spacing: 0.06em;
-      text-transform: uppercase; color: #C2793D; margin-bottom: 8px;
-    }
-
-  .program__name {
-      font-family: 'Lora', serif; font-size: 19px; font-weight: 600;
-      color: #2C2520; margin-bottom: 8px; line-height: 1.3;
-    }
-
-  .program__desc {
-      font-size: 14px; color: #6B6058; line-height: 1.6; margin-bottom: 14px;
-    }
-
-  .program__meta {
-      display: flex; flex-wrap: wrap; gap: 8px;
-    }
-
-  .program__tag {
-      font-size: 11.5px; font-weight: 500; color: #8B7E72;
-      background: rgba(240, 233, 223, 0.85); border: 1px solid #E0D6C8;
-      padding: 4px 10px; border-radius: 100px;
-    }
-
-  .program__tag--highlight {
-      color: #C2793D; background: rgba(194, 121, 61, 0.06);
-      border-color: rgba(194, 121, 61, 0.15);
-    }
-
   /* Callout banner */
   .callout {
       background: linear-gradient(135deg, #2C2520 0%, #3D3028 50%, #2C2520 100%);
@@ -70,27 +17,22 @@
       box-shadow: 0 12px 40px rgba(44, 37, 32, 0.2);
       position: relative; overflow: hidden; margin-bottom: 48px;
     }
-
   .callout__glow {
       position: absolute; top: -60px; right: -40px; width: 240px; height: 240px;
       border-radius: 50%; background: radial-gradient(circle, rgba(194,121,61,0.08) 0%, transparent 70%);
       pointer-events: none;
     }
-
   .callout__title {
       font-family: 'Lora', serif; font-size: 22px; color: #F5EDE3;
       margin: 0 0 8px; font-weight: 600; line-height: 1.3;
     }
-
   .callout__desc {
       font-size: 15px; color: #C4B8AA; margin: 0; line-height: 1.6; max-width: 600px;
     }
-
   @media (max-width: 720px) {
-      .programs-grid { grid-template-columns: 1fr; }
-      .content { padding: 0 20px; }
-      .callout { padding: 32px 24px 28px; }
-    }
+    .content { padding: 0 20px; }
+    .callout { padding: 32px 24px 28px; }
+  }
 {% endblock %}
 
 {% block hero %}
@@ -115,138 +57,103 @@
   </div>
 
   <!-- Research fellowships -->
-  <div class="category fade-in">
-    <div class="category__header">
-      <span class="category__icon">🔬</span>
-      <h2 class="category__name">Research Fellowships</h2>
+  <div class="group fade-in">
+    <div class="group__head">
+      <span class="group__icon">🔬</span>
+      <h2 class="group__name">Research Fellowships</h2>
     </div>
-    <div class="programs-grid">
-
-      <div class="program">
-        <div class="program__type">Berkeley, CA</div>
-        <div class="program__name">MATS (ML Alignment Theory Scholars)</div>
-        <div class="program__desc">The flagship alignment research fellowship. Scholars are matched with a mentor from a leading safety lab or research org and spend several months working on a focused alignment project. Based at Constellation in Berkeley. Highly competitive but one of the strongest signals you can have on your CV.</div>
-        <div class="program__meta">
-          <span class="program__tag program__tag--highlight">Flagship program</span>
-          <span class="program__tag">Mentored research</span>
-          <span class="program__tag">Funded</span>
-          <span class="program__tag">~3 months</span>
+          <div class="rows">
+        <div class="row">
+          <div class="row__head">
+            <span class="row__name">MATS (ML Alignment Theory Scholars)</span>
+            <span class="row__where">Berkeley, CA</span>
+          </div>
+          <p class="row__desc">The flagship alignment research fellowship. Scholars are matched with a mentor from a leading safety lab or research org and spend several months working on a focused alignment project. Based at Constellation in Berkeley. Highly competitive but one of the strongest signals you can have on your CV.</p>
+          <p class="row__tags"><span class="hl">Flagship program</span><span>Mentored research</span><span>Funded</span><span>~3 months</span></p>
+        </div>
+        <div class="row">
+          <div class="row__head">
+            <span class="row__name">Astra Fellowship</span>
+            <span class="row__where">Berkeley, CA</span>
+          </div>
+          <p class="row__desc">A fellowship program run out of Constellation for people working on reducing existential risk from AI. Astra provides funding, community, and mentorship to help fellows develop their research agendas and build connections in the safety field.</p>
+          <p class="row__tags"><span>Fellowship</span><span>Funded</span><span>X-risk</span></p>
+        </div>
+        <div class="row">
+          <div class="row__head">
+            <span class="row__name">ERA (Existential Risk Alliance) Fellowship</span>
+            <span class="row__where">Cambridge, UK</span>
+          </div>
+          <p class="row__desc">A Cambridge-based fellowship connecting researchers with the existential risk community. Fellows work on research projects related to x-risk, with access to the Cambridge safety ecosystem including Meridian and Mantle coworking spaces.</p>
+          <p class="row__tags"><span>Research</span><span>X-risk</span><span>Cambridge community</span></p>
+        </div>
+        <div class="row">
+          <div class="row__head">
+            <span class="row__name">LASR (London Alignment Summer Research)</span>
+            <span class="row__where">London, UK</span>
+          </div>
+          <p class="row__desc">A summer research program in London bringing together researchers to work on alignment problems. Provides structure, mentorship, and a cohort of peers — a good way to spend a summer building your alignment research portfolio.</p>
+          <p class="row__tags"><span>Summer program</span><span>Alignment research</span><span>London</span></p>
+        </div>
+        <div class="row">
+          <div class="row__head">
+            <span class="row__name">PIBBSS (Prague Institute for Bridging Bayesian and Safety Sciences)</span>
+            <span class="row__where">Prague, Czech Republic</span>
+          </div>
+          <p class="row__desc">A research fellowship that bridges mathematical and computational approaches with AI safety. Fellows work on projects at the intersection of Bayesian reasoning, cognitive science, and alignment theory. Based in Prague with a unique interdisciplinary community.</p>
+          <p class="row__tags"><span>Interdisciplinary</span><span>Bayesian methods</span><span>Funded</span><span>Prague</span></p>
+        </div>
+        <div class="row">
+          <div class="row__head">
+            <span class="row__name">MARS (ML Alignment Research Society)</span>
+            <span class="row__where">Cambridge, UK</span>
+          </div>
+          <p class="row__desc">A Cambridge-based research program focused on ML alignment. Provides a structured environment for researchers to work on alignment problems, with regular seminars and collaboration with the broader Cambridge safety community.</p>
+          <p class="row__tags"><span>ML alignment</span><span>Research</span><span>Cambridge</span></p>
         </div>
       </div>
-
-      <div class="program">
-        <div class="program__type">Berkeley, CA</div>
-        <div class="program__name">Astra Fellowship</div>
-        <div class="program__desc">A fellowship program run out of Constellation for people working on reducing existential risk from AI. Astra provides funding, community, and mentorship to help fellows develop their research agendas and build connections in the safety field.</div>
-        <div class="program__meta">
-          <span class="program__tag">Fellowship</span>
-          <span class="program__tag">Funded</span>
-          <span class="program__tag">X-risk</span>
-        </div>
-      </div>
-
-      <div class="program">
-        <div class="program__type">Cambridge, UK</div>
-        <div class="program__name">ERA (Existential Risk Alliance) Fellowship</div>
-        <div class="program__desc">A Cambridge-based fellowship connecting researchers with the existential risk community. Fellows work on research projects related to x-risk, with access to the Cambridge safety ecosystem including Meridian and Mantle coworking spaces.</div>
-        <div class="program__meta">
-          <span class="program__tag">Research</span>
-          <span class="program__tag">X-risk</span>
-          <span class="program__tag">Cambridge community</span>
-        </div>
-      </div>
-
-      <div class="program">
-        <div class="program__type">London, UK</div>
-        <div class="program__name">LASR (London Alignment Summer Research)</div>
-        <div class="program__desc">A summer research program in London bringing together researchers to work on alignment problems. Provides structure, mentorship, and a cohort of peers — a good way to spend a summer building your alignment research portfolio.</div>
-        <div class="program__meta">
-          <span class="program__tag">Summer program</span>
-          <span class="program__tag">Alignment research</span>
-          <span class="program__tag">London</span>
-        </div>
-      </div>
-
-      <div class="program">
-        <div class="program__type">Prague, Czech Republic</div>
-        <div class="program__name">PIBBSS (Prague Institute for Bridging Bayesian and Safety Sciences)</div>
-        <div class="program__desc">A research fellowship that bridges mathematical and computational approaches with AI safety. Fellows work on projects at the intersection of Bayesian reasoning, cognitive science, and alignment theory. Based in Prague with a unique interdisciplinary community.</div>
-        <div class="program__meta">
-          <span class="program__tag">Interdisciplinary</span>
-          <span class="program__tag">Bayesian methods</span>
-          <span class="program__tag">Funded</span>
-          <span class="program__tag">Prague</span>
-        </div>
-      </div>
-
-      <div class="program">
-        <div class="program__type">Cambridge, UK</div>
-        <div class="program__name">MARS (ML Alignment Research Society)</div>
-        <div class="program__desc">A Cambridge-based research program focused on ML alignment. Provides a structured environment for researchers to work on alignment problems, with regular seminars and collaboration with the broader Cambridge safety community.</div>
-        <div class="program__meta">
-          <span class="program__tag">ML alignment</span>
-          <span class="program__tag">Research</span>
-          <span class="program__tag">Cambridge</span>
-        </div>
-      </div>
-
-    </div>
   </div>
 
   <!-- Camps & intensive programs -->
-  <div class="category fade-in">
-    <div class="category__header">
-      <span class="category__icon">🏕️</span>
-      <h2 class="category__name">Camps & Intensive Programs</h2>
+  <div class="group fade-in">
+    <div class="group__head">
+      <span class="group__icon">🏕️</span>
+      <h2 class="group__name">Camps & Intensive Programs</h2>
     </div>
-    <div class="programs-grid">
-
-      <div class="program">
-        <div class="program__type">Online</div>
-        <div class="program__name">BlueDot Impact (AI Safety Fundamentals)</div>
-        <div class="program__desc">A free, structured course covering the landscape of AI safety — from technical alignment to governance. Includes weekly readings, discussion groups, and a final project. The most common starting point for people new to the field — completing it signals genuine engagement to fellowship reviewers.</div>
-        <div class="program__meta">
-          <span class="program__tag program__tag--highlight">Start here</span>
-          <span class="program__tag">Free</span>
-          <span class="program__tag">Online</span>
-          <span class="program__tag">~8 weeks</span>
+          <div class="rows">
+        <div class="row">
+          <div class="row__head">
+            <span class="row__name">BlueDot Impact (AI Safety Fundamentals)</span>
+            <span class="row__where">Online</span>
+          </div>
+          <p class="row__desc">A free, structured course covering the landscape of AI safety — from technical alignment to governance. Includes weekly readings, discussion groups, and a final project. The most common starting point for people new to the field — completing it signals genuine engagement to fellowship reviewers.</p>
+          <p class="row__tags"><span class="hl">Start here</span><span>Free</span><span>Online</span><span>~8 weeks</span></p>
+        </div>
+        <div class="row">
+          <div class="row__head">
+            <span class="row__name">ARENA (Alignment Research Engineer Accelerator)</span>
+            <span class="row__where">London / Various</span>
+          </div>
+          <p class="row__desc">A hands-on technical curriculum that takes you from ML fundamentals to alignment research engineering. Covers transformers, RLHF, interpretability, and more through structured exercises. Ideal if you have some coding experience but want to build the specific technical skills needed for alignment work.</p>
+          <p class="row__tags"><span class="hl">Technical skills</span><span>Curriculum-based</span><span>Engineering focus</span></p>
+        </div>
+        <div class="row">
+          <div class="row__head">
+            <span class="row__name">AI Safety Camp</span>
+            <span class="row__where">Online</span>
+          </div>
+          <p class="row__desc">An intensive research program that brings together aspiring alignment researchers from around the world to work on collaborative projects. Runs multiple times per year, with both in-person and remote components. One of the most accessible entry points — designed specifically for people making their first contributions to safety research.</p>
+          <p class="row__tags"><span class="hl">Great first step</span><span>Collaborative research</span><span>Multiple cohorts/year</span></p>
+        </div>
+        <div class="row">
+          <div class="row__head">
+            <span class="row__name">Apart Research Sprints</span>
+            <span class="row__where">Online / Local Hubs</span>
+          </div>
+          <p class="row__desc">Short, focused research sprints (often 1-2 weeks) on specific alignment topics. Lower commitment than a full fellowship — a good way to test whether alignment research is for you and to produce a concrete output you can point to in future applications.</p>
+          <p class="row__tags"><span>Short sprints</span><span>Low commitment</span><span>Concrete output</span></p>
         </div>
       </div>
-
-      <div class="program">
-        <div class="program__type">London / Various</div>
-        <div class="program__name">ARENA (Alignment Research Engineer Accelerator)</div>
-        <div class="program__desc">A hands-on technical curriculum that takes you from ML fundamentals to alignment research engineering. Covers transformers, RLHF, interpretability, and more through structured exercises. Ideal if you have some coding experience but want to build the specific technical skills needed for alignment work.</div>
-        <div class="program__meta">
-          <span class="program__tag program__tag--highlight">Technical skills</span>
-          <span class="program__tag">Curriculum-based</span>
-          <span class="program__tag">Engineering focus</span>
-        </div>
-      </div>
-
-      <div class="program">
-        <div class="program__type">Online</div>
-        <div class="program__name">AI Safety Camp</div>
-        <div class="program__desc">An intensive research program that brings together aspiring alignment researchers from around the world to work on collaborative projects. Runs multiple times per year, with both in-person and remote components. One of the most accessible entry points — designed specifically for people making their first contributions to safety research.</div>
-        <div class="program__meta">
-          <span class="program__tag program__tag--highlight">Great first step</span>
-          <span class="program__tag">Collaborative research</span>
-          <span class="program__tag">Multiple cohorts/year</span>
-        </div>
-      </div>
-
-      <div class="program">
-        <div class="program__type">Online / Local Hubs</div>
-        <div class="program__name">Apart Research Sprints</div>
-        <div class="program__desc">Short, focused research sprints (often 1-2 weeks) on specific alignment topics. Lower commitment than a full fellowship — a good way to test whether alignment research is for you and to produce a concrete output you can point to in future applications.</div>
-        <div class="program__meta">
-          <span class="program__tag">Short sprints</span>
-          <span class="program__tag">Low commitment</span>
-          <span class="program__tag">Concrete output</span>
-        </div>
-      </div>
-
-    </div>
   </div>
 
   <!-- Tip callout -->

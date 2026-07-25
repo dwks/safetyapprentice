@@ -219,6 +219,75 @@ body::before {
 }
 .fade-in.visible { opacity: 1; transform: translateY(0); }
 
+/* ------------------------------------------------- directory listings -- */
+/* A scannable list of comparable items: one hairline-separated row each,
+   no boxes or shadows. Used by fellowships, conferences and geography.
+   Picks up the page accent automatically via --accent. */
+
+.group { margin-bottom: 52px; }
+.group:last-of-type { margin-bottom: 0; }
+.group__head {
+  display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+  padding-bottom: 12px; border-bottom: 2px solid var(--ink);
+}
+.group__icon { font-size: 20px; line-height: 1; }
+.group__name {
+  font-family: 'Lora', serif; font-size: 22px; font-weight: 600;
+  color: var(--ink); margin: 0;
+}
+.group__count {
+  font-size: 12px; font-weight: 600; color: var(--ink-faint);
+  margin-left: auto; white-space: nowrap;
+}
+
+.rows { display: block; }
+.row {
+  display: block; text-decoration: none; color: inherit;
+  padding: 22px 0 20px; border-bottom: 1px solid var(--line);
+  transition: padding 0.25s ease;
+}
+a.row:hover { padding-left: 10px; }
+a.row:hover .row__name { color: var(--accent); }
+a.row:hover .row__go { opacity: 1; transform: translateX(3px); }
+a.row:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+.row__head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; margin-bottom: 6px;
+}
+.row__name {
+  font-family: 'Lora', serif; font-size: 19px; font-weight: 600;
+  color: var(--ink); line-height: 1.3; transition: color 0.25s ease;
+}
+.row__where {
+  font-size: 11.5px; font-weight: 600; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--accent);
+  white-space: nowrap; flex-shrink: 0;
+}
+.row__desc {
+  font-size: 14.5px; color: var(--ink-soft); line-height: 1.65;
+  margin: 0; max-width: 74ch;
+}
+.row__tags {
+  display: flex; flex-wrap: wrap; margin-top: 10px;
+  font-size: 12.5px; color: var(--ink-faint);
+}
+.row__tags span:not(:last-child)::after {
+  content: '·'; margin: 0 8px; opacity: 0.55;
+}
+.row__tags .hl { color: var(--accent); font-weight: 600; }
+.row__go {
+  display: inline-block; margin-top: 12px;
+  font-size: 12.5px; font-weight: 600; color: var(--accent);
+  opacity: 0.55; transition: all 0.25s ease;
+}
+
+@media (max-width: 620px) {
+  .row__head { flex-direction: column; gap: 4px; }
+  .row__where { align-self: flex-start; }
+  a.row:hover { padding-left: 0; }
+}
+
 /* --------------------------------------------------------------- footer -- */
 .footer {
   border-top: 1px solid var(--line-strong); padding: 40px 32px;
