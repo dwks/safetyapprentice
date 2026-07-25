@@ -125,6 +125,71 @@ ls -l /var/lib/goaccess /var/www/stats
 Then load `https://safetyapprentice.com/stats/` and check the date range covers
 what you expect.
 
+## Tightening the numbers
+
+The headline "Valid Requests" figure counts *every* HTTP request — each CSS,
+JS, and image fetch, plus the constant background of scanner probes any public
+VPS attracts. It runs several times higher than the number of people who read a
+page. **The figure you actually want is "Unique Visitors".**
+
+To make the panels more honest, keep the options in
+`/etc/goaccess/goaccess.conf` rather than growing the prerotate script:
+
+```
+log-format COMBINED
+ignore-crawlers true
+anonymize-ip true
+
+# assets move to their own panel instead of inflating page hits
+static-file .css
+static-file .js
+static-file .svg
+static-file .png
+static-file .ico
+static-file .woff2
+
+# scanner probes (/wp-login.php, /.env, /vendor/...) all 404
+ignore-status 404
+
+# your own visits
+exclude-ip 203.0.113.7
+```
+
+The prerotate script then reduces to:
+
+```sh
+#!/bin/sh
+exec goaccess /var/log/nginx/access.log \
+  --persist --restore --db-path=/var/lib/goaccess \
+  -o /var/www/stats/index.html
+```
+
+Also check `goaccess --help | grep -i crawler` — recent versions have
+`--unknowns-as-crawlers`, which classifies unrecognised user-agents as bots and
+catches a good deal that `--ignore-crawlers` misses.
+
+Two caveats:
+
+- **Ignoring 404s hides real broken links too.** Run an occasional report
+  without it to check for genuine ones.
+- **Filters are not retroactive.** They apply to data folded in from now on; the
+  database keeps whatever it already absorbed.
+
+### Rebuilding the database with new filters
+
+Because the archives are kept for a year, the whole history can be reprocessed:
+
+```sh
+sudo rm -rf /var/lib/goaccess/*
+zcat -f /var/log/nginx/access.log.*.gz \
+        /var/log/nginx/access.log.1 \
+        /var/log/nginx/access.log \
+  | goaccess - --persist --db-path=/var/lib/goaccess -o /var/www/stats/index.html
+```
+
+`zcat -f` handles the plain and gzipped files together, and `-` reads stdin.
+This only reaches as far back as the oldest archive.
+
 ## Maintenance
 
 - **Glance at the date range monthly.** The failure mode is not rotation — it is
