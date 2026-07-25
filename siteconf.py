@@ -59,7 +59,9 @@ PAGES = [
     {"slug": "funding",            "title": "Funding & Grants",        "accent": OLIVE,      "content_width": 720, "group": "Getting In"},
     {"slug": "geography",          "title": "Geography of AI Safety",  "accent": ROSE,       "content_width": 960, "group": "Community"},
     {"slug": "conferences",        "title": "Conferences & Events",    "accent": BRONZE,     "content_width": 960, "group": "Community"},
-    {"slug": "about",              "title": "About",                   "accent": TERRACOTTA, "content_width": 720},
+    # about already carries the full "A paid career call" panel, so it opts out
+    # of the site-wide consulting callout
+    {"slug": "about",              "title": "About",                   "accent": TERRACOTTA, "content_width": 720, "consult": False},
 ]
 
 # Files copied verbatim into the output directory.
