@@ -173,13 +173,15 @@
       (Wikimedia BlankMap-World by Canuckguy), rasterised and cropped. Robinson
       is not linear in lat/lon, so pin positions are percentages measured
       against this specific image rather than computed — verified by rendering.
-      To add a hub, place it visually and record x/y here. -#}
+      Positions were fitted from observed placements on the live page: x% =
+      0.3342*lon*X(lat) + 43.81, y% = -64.96*Y(lat) + 60.88, where X and Y are
+      the Robinson tables. To add a hub, run that formula and check it. -#}
   {%- set hubs = [
-        {'id': 'bay-area',  'label': 'Bay Area',  'x':  5.6, 'y': 29.7, 'n': 2, 'side': 'right'},
-        {'id': 'toronto',   'label': 'Toronto',   'x': 18.5, 'y': 27.0, 'n': 1, 'side': 'right'},
-        {'id': 'cambridge', 'label': 'Cambridge', 'x': 43.9, 'y': 19.4, 'n': 1, 'side': 'left', 'ly': -13},
-        {'id': 'london',    'label': 'London',    'x': 44.1, 'y': 20.0, 'n': 2, 'side': 'left', 'ly':  13},
-        {'id': 'singapore', 'label': 'Singapore', 'x': 79.35, 'y': 52.3, 'n': 1, 'side': 'left'}
+        {'id': 'bay-area',  'label': 'Bay Area',  'x':  5.60, 'y': 29.70, 'n': 2, 'side': 'right'},
+        {'id': 'toronto',   'label': 'Toronto',   'x': 20.14, 'y': 26.48, 'n': 1, 'side': 'right'},
+        {'id': 'cambridge', 'label': 'Cambridge', 'x': 43.56, 'y': 18.99, 'n': 1, 'side': 'left', 'ly': -13},
+        {'id': 'london',    'label': 'London',    'x': 43.49, 'y': 19.53, 'n': 2, 'side': 'left', 'ly':  13},
+        {'id': 'singapore', 'label': 'Singapore', 'x': 78.85, 'y': 58.35, 'n': 1, 'side': 'left'}
       ] -%}
 
   <div class="worldmap fade-in">
