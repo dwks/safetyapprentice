@@ -136,19 +136,13 @@
   .card__bar { height: 5px; transition: height 0.3s ease; }
   .card:hover .card__bar { height: 6px; }
   .card__body { padding: 26px 26px 22px; }
-  .card--full .card__body {
-    padding: 30px 34px 26px; display: flex; gap: 40px;
-    align-items: center; flex-wrap: wrap;
-  }
   .card__top { display: flex; justify-content: flex-end; align-items: flex-start; margin-bottom: 14px; }
   .card__icon { font-size: 28px; line-height: 1; }
   .card__title {
     font-family: 'Lora', serif; font-size: 21px; font-weight: 600;
     color: #2C2520; margin: 0 0 10px; line-height: 1.25;
   }
-  .card--full .card__title { font-size: 25px; }
   .card__desc { font-size: 14.5px; color: #6B6058; margin: 0; line-height: 1.6; }
-  .card--full .card__desc { max-width: 480px; }
   .card__arrow {
     margin-top: 16px; display: flex; align-items: center; gap: 6px;
     font-size: 13px; font-weight: 600; opacity: 0.5;
@@ -156,12 +150,6 @@
   }
   .card:hover .card__arrow { opacity: 1; transform: translateX(4px); }
   .card__arrow span { font-size: 16px; }
-  .card__hero-visual {
-    flex: 0 0 auto; display: flex; align-items: center; justify-content: center;
-    width: 160px; height: 120px; border-radius: 14px; font-size: 56px; line-height: 1;
-    transition: transform 0.5s ease;
-  }
-  .card:hover .card__hero-visual { transform: scale(1.06) rotate(-2deg); }
 
   .career {
     background: linear-gradient(135deg, #2C2520 0%, #3D3028 50%, #2C2520 100%);
@@ -260,8 +248,6 @@
     .pair-row { grid-template-columns: 1fr; }
     .content { padding: 0 20px; }
     .career { padding: 32px 24px 28px; }
-    .card--full .card__body { padding: 24px 24px 20px; }
-    .card--full .card__hero-visual { display: none; }
     .consult { padding: 22px 20px; }
     .consult__link { width: 100%; text-align: center; }
   }
@@ -281,7 +267,7 @@
     <span class="nav-logo__text">The Safety Apprentice</span>
   </a>
   <div class="nav-links">
-    <a href="#about" class="nav-link">About</a>
+    <a href="about.html" class="nav-link">About</a>
     <a href="https://github.com/dwks/safetyapprentice" target="_blank" rel="noopener" class="nav-link nav-link--cta">GitHub</a>
   </div>
 </nav>
@@ -302,34 +288,34 @@
 
 <section class="content">
 
-  <!-- Why AI Safety — full width -->
-  <div class="fade-in" style="margin-bottom: 24px;">
-    <a href="why-ai-safety.html" class="card card--full">
-      <div class="card__bar" style="background: linear-gradient(135deg, #B85C38 0%, #E08457 100%);"></div>
-      <div class="card__body">
-        <div style="flex: 1 1 360px;">
+  <!-- Why AI Safety + Getting hired -->
+  <div class="pair-row">
+    <div class="fade-in" style="transition-delay: 0.05s;">
+      <a href="why-ai-safety.html" class="card">
+        <div class="card__bar" style="background: linear-gradient(135deg, #B85C38 0%, #E08457 100%);"></div>
+        <div class="card__body">
+          <div class="card__top">
+            <span class="card__icon">🌍</span>
+          </div>
           <h3 class="card__title">Why AI Safety Matters</h3>
           <p class="card__desc">Why thoughtful people are dedicating their careers to making AI go well — and why you might want to join them.</p>
           <div class="card__arrow" style="color: #B85C38;">Explore <span>→</span></div>
         </div>
-        <div class="card__hero-visual" style="background: rgba(184,92,56,0.04); border: 1px solid rgba(184,92,56,0.09);">🌍</div>
-      </div>
-    </a>
-  </div>
-
-  <!-- Getting hired — full width -->
-  <div class="fade-in" style="margin-bottom: 24px;">
-    <a href="hard-to-get-hired.html" class="card card--full">
-      <div class="card__bar" style="background: linear-gradient(135deg, #A45B5B 0%, #C47878 100%);"></div>
-      <div class="card__body">
-        <div style="flex: 1 1 360px;">
+      </a>
+    </div>
+    <div class="fade-in" style="transition-delay: 0.12s;">
+      <a href="hard-to-get-hired.html" class="card">
+        <div class="card__bar" style="background: linear-gradient(135deg, #A45B5B 0%, #C47878 100%);"></div>
+        <div class="card__body">
+          <div class="card__top">
+            <span class="card__icon">📉</span>
+          </div>
           <h3 class="card__title">Getting hired in AI safety</h3>
           <p class="card__desc">The job market is structurally tough for junior researchers — here's why, and what actually gets you a foot in the door.</p>
           <div class="card__arrow" style="color: #A45B5B;">Explore <span>→</span></div>
         </div>
-        <div class="card__hero-visual" style="background: rgba(164,91,91,0.04); border: 1px solid rgba(164,91,91,0.09);">📉</div>
-      </div>
-    </a>
+      </a>
+    </div>
   </div>
 
   <!-- Geography + Conferences -->
@@ -470,7 +456,7 @@
   <p>
     Built by the community, for the community.
     <a href="https://github.com/dwks/safetyapprentice" target="_blank" rel="noopener">Contribute on GitHub</a> ·
-    <a href="#about">About this project</a> ·
+    <a href="about.html">About this project</a> ·
     <a href="https://dwkmentoring.com" target="_blank" rel="noopener">Paid career consulting</a>
   </p>
   <p class="small">The Safety Apprentice is a community resource started by David Williams-King.</p>

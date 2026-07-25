@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Why It's Hard to Get Hired — The Safety Apprentice</title>
+<title>About — The Safety Apprentice</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" />
@@ -139,7 +139,7 @@
   }
   .prose a:hover { opacity: 0.75; }
 
-  /* Pull quote / callout */
+  /* Dark callout */
   .callout {
     background: linear-gradient(135deg, #2C2520 0%, #3D3028 50%, #2C2520 100%);
     border-radius: 20px; padding: 36px 40px;
@@ -155,26 +155,28 @@
     font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
     text-transform: uppercase; color: #C49A6C; margin: 0 0 12px;
   }
-  .callout__text {
-    font-family: 'Lora', serif; font-size: 19px; color: #F5EDE3;
-    line-height: 1.6; margin: 0 0 20px; font-weight: 500;
+  .callout__title {
+    font-family: 'Lora', serif; font-size: 22px; color: #F5EDE3;
+    margin: 0 0 14px; font-weight: 600; line-height: 1.3;
   }
-  .callout__source { font-size: 13.5px; color: #A89E94; margin: 0; }
-  .callout__source a {
-    color: #C49A6C; text-decoration: underline; text-underline-offset: 3px;
+  .callout p {
+    font-size: 15px; color: #C4B8AA; line-height: 1.7; margin: 0 0 14px;
+  }
+  .callout p:last-of-type { margin-bottom: 0; }
+  .callout strong { color: #F5EDE3; font-weight: 600; }
+  .callout__btn {
+    display: inline-block; margin-top: 24px;
+    font-size: 15px; font-weight: 600; text-decoration: none;
+    color: #2C2520; background: linear-gradient(135deg, #F5EDE3 0%, #EAE0D3 100%);
+    border-radius: 12px; padding: 13px 26px;
+    transition: all 0.25s ease; box-shadow: 0 2px 8px rgba(245, 237, 227, 0.15);
+  }
+  .callout__btn:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 16px rgba(245, 237, 227, 0.3);
   }
 
-  /* What they want list */
-  .wants { display: flex; flex-direction: column; gap: 12px; margin: 24px 0 0; list-style: none; }
-  .wants li {
-    display: flex; gap: 14px; align-items: flex-start;
-    font-size: 15px; color: #C4B8AA; line-height: 1.6;
-  }
-  .wants li::before {
-    content: '→'; color: #C49A6C; flex-shrink: 0; font-size: 15px;
-  }
-
-  /* Section heading */
+  /* Section */
   .section { margin-bottom: 48px; }
   .section h2 {
     font-family: 'Lora', serif; font-size: 26px; font-weight: 600;
@@ -184,64 +186,33 @@
     font-size: 16px; color: #6B6058; line-height: 1.7; margin-bottom: 24px;
   }
 
-  /* Resource cards */
-  .resource-cards { display: flex; flex-direction: column; gap: 16px; }
-  .resource-card {
-    display: flex; align-items: center; gap: 20px;
-    background: #FFFCF7; border-radius: 16px; border: 1px solid #E8E0D4;
-    padding: 24px; text-decoration: none; color: inherit;
-    transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+  /* Author card */
+  .author {
+    display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+    background: #FFFCF7; border-radius: 18px; border: 1px solid #E8E0D4;
+    padding: 28px; margin-bottom: 48px;
     box-shadow: 0 2px 8px rgba(120, 80, 40, 0.04);
   }
-  .resource-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 40px rgba(120, 80, 40, 0.1), 0 4px 12px rgba(120, 80, 40, 0.05);
-  }
-  .resource-card__icon {
-    width: 56px; height: 56px; border-radius: 14px;
+  .author__avatar {
+    width: 68px; height: 68px; border-radius: 50%; flex-shrink: 0;
+    background: linear-gradient(135deg, #B85C38 0%, #C2793D 100%);
     display: flex; align-items: center; justify-content: center;
-    font-size: 28px; flex-shrink: 0;
-    background: rgba(184, 92, 56, 0.05); border: 1px solid rgba(184, 92, 56, 0.1);
+    font-family: 'Lora', serif; font-size: 24px; font-weight: 600; color: #FFFCF7;
+    box-shadow: 0 4px 12px rgba(184, 92, 56, 0.22);
   }
-  .resource-card__text { flex: 1; min-width: 0; }
-  .resource-card__source {
-    font-size: 11.5px; font-weight: 600; letter-spacing: 0.06em;
-    text-transform: uppercase; color: #B85C38; margin-bottom: 4px;
+  .author__text { flex: 1 1 300px; }
+  .author__name {
+    font-family: 'Lora', serif; font-size: 20px; font-weight: 600;
+    color: #2C2520; margin: 0 0 4px;
   }
-  .resource-card__title {
-    font-family: 'Lora', serif; font-size: 18px; font-weight: 600;
-    color: #2C2520; margin-bottom: 6px; line-height: 1.3;
+  .author__role { font-size: 14.5px; color: #6B6058; margin: 0 0 12px; line-height: 1.6; }
+  .author__links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .author__link {
+    font-size: 13px; font-weight: 500; text-decoration: none; color: #6B6058;
+    background: rgba(240, 233, 223, 0.85); border: 1px solid #E0D6C8;
+    padding: 6px 14px; border-radius: 100px; transition: all 0.2s ease;
   }
-  .resource-card__desc { font-size: 14px; color: #6B6058; line-height: 1.6; }
-  .resource-card__arrow {
-    font-size: 20px; color: #B85C38; opacity: 0.4; flex-shrink: 0;
-    transition: all 0.3s ease;
-  }
-  .resource-card:hover .resource-card__arrow { opacity: 1; transform: translateX(4px); }
-
-  /* References */
-  .refs {
-    border-top: 1px solid #E0D6C8; padding-top: 24px; margin-top: 8px;
-  }
-  .refs__label {
-    font-size: 11.5px; font-weight: 600; letter-spacing: 0.06em;
-    text-transform: uppercase; color: #8B7E72; margin-bottom: 14px;
-  }
-  .refs ol { list-style: none; counter-reset: ref; }
-  .refs li {
-    counter-increment: ref; position: relative; padding-left: 30px;
-    font-size: 13.5px; color: #6B6058; line-height: 1.7; margin-bottom: 10px;
-    word-break: break-word;
-  }
-  .refs li::before {
-    content: '[' counter(ref) ']'; position: absolute; left: 0;
-    color: #B85C38; font-weight: 600; font-size: 12.5px;
-  }
-  .refs a {
-    color: #6B6058; text-decoration: underline; text-underline-offset: 3px;
-    transition: color 0.2s ease;
-  }
-  .refs a:hover { color: #B85C38; }
+  .author__link:hover { color: #B85C38; border-color: #B85C38; }
 
   /* Fade in */
   .fade-in {
@@ -266,8 +237,8 @@
   @media (max-width: 720px) {
     .content { padding: 0 20px; }
     .callout { padding: 28px 22px; }
-    .resource-card { flex-direction: column; align-items: flex-start; gap: 14px; }
-    .resource-card__arrow { display: none; }
+    .author { padding: 24px 20px; }
+    .callout__btn { display: block; text-align: center; }
   }
 </style>
 </head>
@@ -292,11 +263,11 @@
 
 <header class="hero">
   <h1>
-    Why it's hard to<br />
-    <span>get hired right now</span>
+    About this<br />
+    <span>project</span>
   </h1>
   <p class="tagline">
-    If it feels like it's hard to get a job in AI safety right now, that's because it is. Here's what's going on — and what actually works.
+    Why The Safety Apprentice exists, who's behind it, and how to get in touch.
   </p>
 </header>
 
@@ -304,101 +275,57 @@
 
 <section class="content">
 
-  <!-- The situation -->
+  <!-- Why this exists -->
   <div class="prose fade-in">
-    <h2>The situation</h2>
+    <h2>Why this exists</h2>
     <p>
-      There are a lot of AI safety fellowships with more junior talent, and a handful of full-time jobs mostly geared towards senior researchers. The fact that nearly everyone is now using AI (Claude Code) to accelerate their research also means there is less and less for junior researchers to do.
+      I am a Senior Research Manager at ERA. I see many thousands of applications from people who want to get into AI safety. <strong>ERA cannot scale to this level; no fellowships can.</strong>
     </p>
     <p>
-      This difficulty is <strong>structural</strong> — a growing pain from the field expanding so rapidly. It is not a verdict on you or your work.
+      So this site is an attempt to put a lot of useful resources in one place, and let people self-learn — the guidance that would otherwise only reach the small number of people who make it through a program.
     </p>
   </div>
 
-  <!-- MATS study callout -->
+  <!-- The paid call -->
   <div class="callout fade-in">
     <div class="callout__glow"></div>
-    <p class="callout__label">What hiring managers say</p>
-    <p class="callout__text">
-      Organizations are being hyper-selective and conservative in hiring choices.
-    </p>
-    <ul class="wants">
-      <li>They want senior researchers who require minimal supervision</li>
-      <li>Who can set research agendas</li>
-      <li>Who can contribute independently from day one</li>
-      <li>Junior hires carry too much risk and potential time investment, and require senior supervision (for "research taste")</li>
-    </ul>
-    <p class="callout__source" style="margin-top: 24px;">
-      From a MATS study of 23 hiring managers, research leads, and funders.
-      <a href="https://forum.effectivealtruism.org/posts/jwwrC4n9H53doRjRH/ai-safety-talent-needs-in-2026-insights-for-field-building" target="_blank" rel="noopener noreferrer">Read the study →</a>
-    </p>
-  </div>
-
-  <!-- What works -->
-  <div class="prose fade-in">
-    <h2>What actually works: collaborate with a known researcher</h2>
+    <p class="callout__label">One extra step</p>
+    <h3 class="callout__title">A paid career call</h3>
     <p>
-      That's why the best way to get a foot in the door is by collaborating with a well-known researcher in the field. A personal recommendation from a credible researcher provides <strong>far stronger evidence of a candidate's ability than degrees, interviews, or even publications.</strong>
+      Beyond the free resources here, there's one extra step: a paid career call with me, and eventually with other people too.
     </p>
     <p>
-      That's one reason AI safety has so many fellowships — they provide exactly this signal: you work under a qualified mentor.
+      There are free mentoring services out there, and they're worth using — but <strong>demand exceeds supply.</strong> Paid calls are a way to make more of that time available.
     </p>
+    <p>
+      I'm also hoping this turns out to be a reasonable way to supplement AI safety salaries, and that others may want to use the same model in future.
+    </p>
+    <a class="callout__btn" href="https://dwkmentoring.com" target="_blank" rel="noopener">dwkmentoring.com →</a>
   </div>
 
-  <!-- Fellowships -->
+  <!-- Who -->
   <div class="section fade-in">
-    <h2>Programs to apply to</h2>
-    <p class="section__intro">Programs like MATS, ERA, and LASR Labs all run on their own cycles, so check each one for current deadlines.</p>
-
-    <div class="resource-cards">
-
-      <a href="fellowships.html" class="resource-card">
-        <div class="resource-card__icon">🎓</div>
-        <div class="resource-card__text">
-          <p class="resource-card__source">Our guide</p>
-          <h3 class="resource-card__title">Fellowships</h3>
-          <p class="resource-card__desc">MATS, ERA, LASR Labs, ARENA, Astra and the rest of the landscape — how each program works, when they run, what they look for, and how to build a strong application.</p>
+    <h2>Who's behind it</h2>
+    <div class="author" style="margin-top: 20px;">
+      <div class="author__avatar">DW</div>
+      <div class="author__text">
+        <p class="author__name">David Williams-King</p>
+        <p class="author__role">Senior Research Manager, ERA</p>
+        <div class="author__links">
+          <a class="author__link" href="https://www.linkedin.com/in/david-williams-king/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="author__link" href="https://dwkmentoring.com" target="_blank" rel="noopener">DWK Mentoring</a>
+          <a class="author__link" href="https://github.com/dwks/safetyapprentice" target="_blank" rel="noopener">GitHub</a>
         </div>
-        <span class="resource-card__arrow">→</span>
-      </a>
-
+      </div>
     </div>
   </div>
 
-  <!-- Beyond fellowships -->
+  <!-- Get in touch -->
   <div class="prose fade-in">
-    <h2>You don't need a formal structure</h2>
+    <h2>Get in touch</h2>
     <p>
-      It's also a good idea to set up collaborations directly with people in the field — for example, with people you meet at <a href="conferences.html">conferences</a>. Many people in AI safety make their own roles and submit their own grants; <strong>the field rewards being entrepreneurial.</strong>
+      <strong>Please do reach out — I'm interested to find collaborators!</strong> If you'd like to add a page, correct something, or help build this out, the site is on <a href="https://github.com/dwks/safetyapprentice" target="_blank" rel="noopener">GitHub</a> and I'm reachable on <a href="https://www.linkedin.com/in/david-williams-king/" target="_blank" rel="noopener">LinkedIn</a>.
     </p>
-    <p>
-      If you are new to the field, consider going to EA Global events, and look into Coefficient Giving's career transition funding.
-    </p>
-  </div>
-
-  <div class="section fade-in">
-    <div class="resource-cards">
-      <a href="https://coefficientgiving.org/funds/global-catastrophic-risks-opportunities/career-development-and-transition-funding/" target="_blank" rel="noopener noreferrer" class="resource-card">
-        <div class="resource-card__icon">💰</div>
-        <div class="resource-card__text">
-          <p class="resource-card__source">Coefficient Giving</p>
-          <h3 class="resource-card__title">Career Development and Transition Funding</h3>
-          <p class="resource-card__desc">Funding to support people moving into work on global catastrophic risks — including self-directed study, retraining, and independent research.</p>
-        </div>
-        <span class="resource-card__arrow">→</span>
-      </a>
-    </div>
-  </div>
-
-  <!-- References -->
-  <div class="refs fade-in">
-    <p class="refs__label">References</p>
-    <ol>
-      <li><a href="https://forum.effectivealtruism.org/posts/jwwrC4n9H53doRjRH/ai-safety-talent-needs-in-2026-insights-for-field-building" target="_blank" rel="noopener noreferrer">AI Safety Talent Needs in 2026: Insights for Field-Building</a> — EA Forum</li>
-      <li><a href="https://erafellowship.org/" target="_blank" rel="noopener noreferrer">erafellowship.org</a></li>
-      <li><a href="https://www.lasrlabs.org/" target="_blank" rel="noopener noreferrer">lasrlabs.org</a></li>
-      <li><a href="https://coefficientgiving.org/funds/global-catastrophic-risks-opportunities/career-development-and-transition-funding/" target="_blank" rel="noopener noreferrer">Coefficient Giving — Career Development and Transition Funding</a></li>
-    </ol>
   </div>
 
 </section>
