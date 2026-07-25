@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Geography of AI Safety — The Safety Apprentice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #F8F3EC;
+    -webkit-font-smoothing: antialiased;
+    font-family: 'DM Sans', sans-serif;
+    color: #2C2520;
+  }
+  ::selection { background: #C4687A33; color: #2C2520; }
+
+  @keyframes grain {
+    0%, 100% { transform: translate(0, 0); }
+    10% { transform: translate(-2%, -2%); }
+    30% { transform: translate(3%, -1%); }
+    50% { transform: translate(-1%, 3%); }
+    70% { transform: translate(2%, 1%); }
+    90% { transform: translate(-3%, 2%); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0; pointer-events: none; z-index: 1000; opacity: 0.025;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    animation: grain 4s steps(6) infinite;
+  }
+
+  /* Map background — larger and more prominent for this page */
+  .map-bg {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    overflow: hidden; pointer-events: none; z-index: 0;
+  }
+  .map-bg__img {
+    position: absolute; inset: 0;
+    background-image: url('./shokunin_World_Map.svg');
+    background-size: cover; background-position: center top; background-repeat: no-repeat;
+    opacity: 0.18; filter: saturate(0.3) sepia(0.2);
+  }
+  .map-bg__fade-bottom {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 400px;
+    background: linear-gradient(to top, #F8F3EC 0%, #F8F3EC 10%, transparent 100%);
+  }
+  .map-bg__fade-top {
+    position: absolute; top: 0; left: 0; right: 0; height: 80px;
+    background: linear-gradient(to bottom, #F8F3EC 0%, transparent 100%);
+  }
+
+  /* Nav */
+  .nav-bar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 16px 32px; display: flex; align-items: center;
+    justify-content: space-between; transition: all 0.35s ease;
+  }
+  .nav-bar.scrolled {
+    background: rgba(248, 243, 236, 0.88);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(232, 224, 212, 0.13);
+    padding: 12px 32px;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-logo__icon {
+    width: 32px; height: 32px; border-radius: 10px;
+    background: linear-gradient(135deg, #B85C38 0%, #C2793D 100%);
+    display: flex; align-items: center; justify-content: center; font-size: 16px;
+    box-shadow: 0 2px 8px rgba(184, 92, 56, 0.25);
+  }
+  .nav-logo__text {
+    font-family: 'Lora', serif; font-weight: 700; font-size: 18px; color: #2C2520;
+  }
+  .nav-links { display: flex; gap: 8px; }
+  .nav-link {
+    font-size: 13.5px; font-weight: 500; color: #6B6058; text-decoration: none;
+    padding: 8px 14px; border-radius: 8px; transition: all 0.2s ease;
+  }
+  .nav-link:hover { background: rgba(184, 92, 56, 0.06); }
+  .nav-link--cta {
+    font-weight: 600; color: #FFFCF7; padding: 8px 18px;
+    background: linear-gradient(135deg, #2C2520, #3D3530); border-radius: 8px;
+  }
+  .nav-link--cta:hover { opacity: 0.9; }
+
+  /* Hero */
+  .hero {
+    text-align: center; padding: 140px 32px 40px;
+    max-width: 780px; margin: 0 auto; position: relative; z-index: 1;
+  }
+  .hero h1 {
+    font-family: 'Lora', serif; font-size: clamp(36px, 5.5vw, 58px);
+    font-weight: 700; color: #2C2520; line-height: 1.15; margin-bottom: 20px;
+    animation: fadeInUp 0.8s ease both; animation-delay: 0.2s;
+  }
+  .hero h1 span {
+    background: linear-gradient(135deg, #C4687A, #D98E9C, #B85C38);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero p.tagline {
+    font-size: 18px; color: #6B6058; line-height: 1.7;
+    max-width: 600px; margin: 0 auto;
+    animation: fadeInUp 0.8s ease both; animation-delay: 0.35s;
+  }
+
+  .divider {
+    width: 48px; height: 3px; border-radius: 2px;
+    background: linear-gradient(90deg, #C4687A, #D98E9C);
+    margin: 40px auto 56px; opacity: 0.5; position: relative; z-index: 1;
+  }
+
+  /* Content */
+  .content { max-width: 960px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 1; }
+
+  /* Region sections */
+  .region {
+    margin-bottom: 48px;
+  }
+  .region__header {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 20px;
+  }
+  .region__icon { font-size: 28px; line-height: 1; }
+  .region__name {
+    font-family: 'Lora', serif; font-size: 22px; font-weight: 600; color: #2C2520;
+  }
+  .region__count {
+    font-size: 12px; font-weight: 600; color: #8B7E72;
+    background: rgba(139, 126, 114, 0.08); border: 1px solid rgba(139, 126, 114, 0.12);
+    padding: 3px 10px; border-radius: 100px; margin-left: 4px;
+  }
+
+  .spaces-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+  }
+
+  /* Space card */
+  .space {
+    background: #FFFCF7; border-radius: 16px; border: 1px solid #E8E0D4;
+    padding: 24px 24px 20px; position: relative;
+    transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 2px 8px rgba(120, 80, 40, 0.04);
+  }
+  .space:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(120, 80, 40, 0.1), 0 4px 12px rgba(120, 80, 40, 0.05);
+  }
+  .space__city {
+    font-size: 11.5px; font-weight: 600; letter-spacing: 0.06em;
+    text-transform: uppercase; color: #C4687A; margin-bottom: 8px;
+  }
+  .space__name {
+    font-family: 'Lora', serif; font-size: 19px; font-weight: 600;
+    color: #2C2520; margin-bottom: 8px; line-height: 1.3;
+  }
+  .space__desc {
+    font-size: 14px; color: #6B6058; line-height: 1.6; margin-bottom: 14px;
+  }
+  .space__meta {
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .space__tag {
+    font-size: 11.5px; font-weight: 500; color: #8B7E72;
+    background: rgba(240, 233, 223, 0.85); border: 1px solid #E0D6C8;
+    padding: 4px 10px; border-radius: 100px;
+  }
+  .space__tag--highlight {
+    color: #C4687A; background: rgba(196, 104, 122, 0.06);
+    border-color: rgba(196, 104, 122, 0.15);
+  }
+
+  /* Callout banner */
+  .callout {
+    background: linear-gradient(135deg, #2C2520 0%, #3D3028 50%, #2C2520 100%);
+    border-radius: 20px; padding: 40px 40px 36px;
+    box-shadow: 0 12px 40px rgba(44, 37, 32, 0.2);
+    position: relative; overflow: hidden; margin-bottom: 48px;
+  }
+  .callout__glow {
+    position: absolute; top: -60px; right: -40px; width: 240px; height: 240px;
+    border-radius: 50%; background: radial-gradient(circle, rgba(196,104,122,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .callout__title {
+    font-family: 'Lora', serif; font-size: 22px; color: #F5EDE3;
+    margin: 0 0 8px; font-weight: 600; line-height: 1.3;
+  }
+  .callout__desc {
+    font-size: 15px; color: #C4B8AA; margin: 0; line-height: 1.6; max-width: 600px;
+  }
+
+  /* Fade in */
+  .fade-in {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* Footer */
+  .footer {
+    border-top: 1px solid #E0D6C8; padding: 40px 32px;
+    text-align: center; margin-top: 80px; position: relative; z-index: 1;
+  }
+  .footer p { font-size: 13.5px; color: #8B7E72; line-height: 1.7; }
+  .footer p.small { font-size: 12px; color: #A89E94; margin-top: 12px; }
+  .footer a {
+    color: #8B7E72; text-decoration: underline; text-underline-offset: 3px;
+    transition: color 0.2s ease;
+  }
+  .footer a:hover { color: #C4687A; }
+
+  @media (max-width: 720px) {
+    .spaces-grid { grid-template-columns: 1fr; }
+    .content { padding: 0 20px; }
+    .callout { padding: 32px 24px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="map-bg">
+  <div class="map-bg__img"></div>
+  <div class="map-bg__fade-bottom"></div>
+  <div class="map-bg__fade-top"></div>
+</div>
+
+<nav class="nav-bar" id="navbar">
+  <a class="nav-logo" href="index.html">
+    <div class="nav-logo__icon">🛡️</div>
+    <span class="nav-logo__text">The Safety Apprentice</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="#contribute" class="nav-link nav-link--cta">Contribute</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <h1>
+    Geography of<br />
+    <span>AI Safety</span>
+  </h1>
+  <p class="tagline">
+    AI safety work doesn't happen in a vacuum. These are the coworking spaces, research hubs, and cities where alignment researchers cluster — and where you can find collaborators.
+  </p>
+</header>
+
+<div class="divider"></div>
+
+<section class="content">
+
+  <!-- Callout -->
+  <div class="fade-in callout" style="margin-bottom: 48px;">
+    <div class="callout__glow"></div>
+    <h3 class="callout__title">Why location matters</h3>
+    <p class="callout__desc">Being physically near other safety researchers dramatically accelerates your work. Hallway conversations, whiteboard sessions, and spontaneous collaborations are how many of the best ideas in alignment have started. If you can, consider relocating to one of these hubs — even temporarily.</p>
+  </div>
+
+  <!-- San Francisco Bay Area -->
+  <div class="region fade-in">
+    <div class="region__header">
+      <span class="region__icon">🇺🇸</span>
+      <h2 class="region__name">San Francisco Bay Area</h2>
+      <span class="region__count">2 spaces</span>
+    </div>
+    <div class="spaces-grid">
+
+      <div class="space">
+        <div class="space__city">Berkeley, CA</div>
+        <div class="space__name">Constellation</div>
+        <div class="space__desc">The largest AI safety coworking space in the world. Home to MATS scholars, independent researchers, and visiting academics. The de facto center of gravity for alignment work.</div>
+        <div class="space__meta">
+          <span class="space__tag space__tag--highlight">Major hub</span>
+          <span class="space__tag">Coworking</span>
+          <span class="space__tag">Events</span>
+          <span class="space__tag">Community</span>
+        </div>
+      </div>
+
+      <div class="space">
+        <div class="space__city">San Francisco, CA</div>
+        <div class="space__name">Mox</div>
+        <div class="space__desc">A coworking space in San Francisco for people working on AI safety and existential risk reduction. Provides desk space, meeting rooms, and a community of alignment-focused professionals.</div>
+        <div class="space__meta">
+          <span class="space__tag">Coworking</span>
+          <span class="space__tag">Community</span>
+          <span class="space__tag">AI safety</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- London -->
+  <div class="region fade-in">
+    <div class="region__header">
+      <span class="region__icon">🇬🇧</span>
+      <h2 class="region__name">London, UK</h2>
+      <span class="region__count">2 spaces</span>
+    </div>
+    <div class="spaces-grid">
+
+      <div class="space">
+        <div class="space__city">London</div>
+        <div class="space__name">LISA (London Initiative for Safe AI)</div>
+        <div class="space__desc">A coworking and community space for AI safety researchers in London. Hosts reading groups, talks, and provides desk space for independent researchers and small orgs.</div>
+        <div class="space__meta">
+          <span class="space__tag space__tag--highlight">Major hub</span>
+          <span class="space__tag">Coworking</span>
+          <span class="space__tag">Events</span>
+        </div>
+      </div>
+
+      <div class="space">
+        <div class="space__city">London</div>
+        <div class="space__name">GovAI</div>
+        <div class="space__desc">The Centre for the Governance of AI offers coworking space and a research community focused on AI governance. A hub for researchers working on the policy and institutional dimensions of AI safety.</div>
+        <div class="space__meta">
+          <span class="space__tag">Coworking</span>
+          <span class="space__tag">Governance</span>
+          <span class="space__tag">Research</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Cambridge -->
+  <div class="region fade-in">
+    <div class="region__header">
+      <span class="region__icon">🇬🇧</span>
+      <h2 class="region__name">Cambridge, UK</h2>
+      <span class="region__count">2 spaces</span>
+    </div>
+    <div class="spaces-grid">
+
+      <div class="space">
+        <div class="space__city">Cambridge</div>
+        <div class="space__name">Meridian</div>
+        <div class="space__desc">A coworking space in Cambridge for AI safety researchers and aligned organisations. Provides a physical home for the Cambridge safety community to collaborate and build together.</div>
+        <div class="space__meta">
+          <span class="space__tag">Coworking</span>
+          <span class="space__tag">Community</span>
+        </div>
+      </div>
+
+      <div class="space">
+        <div class="space__city">Cambridge</div>
+        <div class="space__name">Mantle (ERA, MARS)</div>
+        <div class="space__desc">Home to the Existential Risk Alliance (ERA) and MARS. A coworking space that brings together researchers and organisations focused on existential risk and AI safety in Cambridge.</div>
+        <div class="space__meta">
+          <span class="space__tag">Coworking</span>
+          <span class="space__tag">ERA</span>
+          <span class="space__tag">MARS</span>
+          <span class="space__tag">X-risk</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Singapore -->
+  <div class="region fade-in">
+    <div class="region__header">
+      <span class="region__icon">🇸🇬</span>
+      <h2 class="region__name">Singapore</h2>
+      <span class="region__count">1 space</span>
+    </div>
+    <div class="spaces-grid">
+
+      <div class="space">
+        <div class="space__city">Singapore</div>
+        <div class="space__name">SASH</div>
+        <div class="space__desc">The Singapore AI Safety Hub — a coworking space for AI safety researchers and professionals in Southeast Asia. A growing community providing a base for alignment work in the region.</div>
+        <div class="space__meta">
+          <span class="space__tag">Coworking</span>
+          <span class="space__tag">Community</span>
+          <span class="space__tag">Southeast Asia</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toronto -->
+  <div class="region fade-in">
+    <div class="region__header">
+      <span class="region__icon">🇨🇦</span>
+      <h2 class="region__name">Toronto, Canada</h2>
+      <span class="region__count">1 space</span>
+    </div>
+    <div class="spaces-grid">
+
+      <div class="space">
+        <div class="space__city">Toronto</div>
+        <div class="space__name">Trajectory Labs</div>
+        <div class="space__desc">A coworking space in Toronto for AI safety researchers and organisations. Part of Canada's growing alignment community, providing collaborative workspace and a local hub for safety-focused work.</div>
+        <div class="space__meta">
+          <span class="space__tag">Coworking</span>
+          <span class="space__tag">Community</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Tip callout -->
+  <div class="fade-in callout">
+    <div class="callout__glow"></div>
+    <h3 class="callout__title">Not near a hub? Start online.</h3>
+    <p class="callout__desc">Many of these communities have active online presences. Join the AI Alignment Forum, EleutherAI Discord, or the AI Safety Fundamentals course to start connecting with researchers worldwide. When you're ready, visiting a hub for even a few weeks can be transformative.</p>
+  </div>
+
+</section>
+
+<footer class="footer">
+  <p>
+    <a href="index.html">Back to home</a> ·
+    <a href="#contribute">Contribute on GitHub</a> ·
+    <a href="#about">About this project</a>
+  </p>
+  <p class="small">The Safety Apprentice is not affiliated with any specific organisation or lab.</p>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

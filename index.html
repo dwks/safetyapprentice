@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Safety Apprentice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #F8F3EC;
+    -webkit-font-smoothing: antialiased;
+    font-family: 'DM Sans', sans-serif;
+    color: #2C2520;
+  }
+  ::selection { background: #B85C3833; color: #2C2520; }
+
+  @keyframes grain {
+    0%, 100% { transform: translate(0, 0); }
+    10% { transform: translate(-2%, -2%); }
+    30% { transform: translate(3%, -1%); }
+    50% { transform: translate(-1%, 3%); }
+    70% { transform: translate(2%, 1%); }
+    90% { transform: translate(-3%, 2%); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0; pointer-events: none; z-index: 1000; opacity: 0.025;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    animation: grain 4s steps(6) infinite;
+  }
+
+  .map-bg {
+    position: absolute; top: 0; left: 0; right: 0; height: 900px;
+    overflow: hidden; pointer-events: none; z-index: 0;
+  }
+  .map-bg__img {
+    position: absolute; inset: 0;
+    top: -300px;
+    background-image: url('./map3b.png');
+    background-size: cover; background-position: center; background-repeat: no-repeat;
+    opacity: 0.12; filter: saturate(0.4) sepia(0.25);
+  }
+  .map-bg__fade-bottom {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 350px;
+    background: linear-gradient(to top, #F8F3EC 0%, #F8F3EC 15%, transparent 100%);
+  }
+  .map-bg__fade-top {
+    position: absolute; top: 0; left: 0; right: 0; height: 80px;
+    background: linear-gradient(to bottom, #F8F3EC 0%, transparent 100%);
+  }
+
+  .nav-bar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 16px 32px; display: flex; align-items: center;
+    justify-content: space-between; transition: all 0.35s ease;
+  }
+  .nav-bar.scrolled {
+    background: rgba(248, 243, 236, 0.88);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(232, 224, 212, 0.13);
+    padding: 12px 32px;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-logo__icon {
+    width: 32px; height: 32px; border-radius: 10px;
+    background: linear-gradient(135deg, #B85C38 0%, #C2793D 100%);
+    display: flex; align-items: center; justify-content: center; font-size: 16px;
+    box-shadow: 0 2px 8px rgba(184, 92, 56, 0.25);
+  }
+  .nav-logo__text {
+    font-family: 'Lora', serif; font-weight: 700; font-size: 18px; color: #2C2520;
+  }
+  .nav-links { display: flex; gap: 8px; }
+  .nav-link {
+    font-size: 13.5px; font-weight: 500; color: #6B6058; text-decoration: none;
+    padding: 8px 14px; border-radius: 8px; transition: all 0.2s ease;
+  }
+  .nav-link:hover { background: rgba(184, 92, 56, 0.06); }
+  .nav-link--cta {
+    font-weight: 600; color: #FFFCF7; padding: 8px 18px;
+    background: linear-gradient(135deg, #2C2520, #3D3530); border-radius: 8px;
+  }
+  .nav-link--cta:hover { opacity: 0.9; }
+
+  .hero {
+    text-align: center; padding: 140px 32px 40px;
+    max-width: 780px; margin: 0 auto; position: relative; z-index: 1;
+  }
+  .hero h1 {
+    font-family: 'Lora', serif; font-size: clamp(36px, 5.5vw, 58px);
+    font-weight: 700; color: #2C2520; line-height: 1.15; margin-bottom: 20px;
+    animation: fadeInUp 0.8s ease both; animation-delay: 0.2s;
+  }
+  .hero h1 span {
+    background: linear-gradient(135deg, #B85C38, #C2793D, #A45B5B);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero p.tagline {
+    font-size: 18px; color: #6B6058; line-height: 1.7;
+    max-width: 580px; margin: 0 auto;
+    animation: fadeInUp 0.8s ease both; animation-delay: 0.35s;
+  }
+  .audience-tags {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+    margin-top: 32px; animation: fadeInUp 0.8s ease both; animation-delay: 0.5s;
+  }
+  .audience-tag {
+    font-size: 12.5px; font-weight: 500; color: #8B7E72;
+    background: rgba(240, 233, 223, 0.85); border: 1px solid #E0D6C8;
+    padding: 6px 14px; border-radius: 100px; backdrop-filter: blur(4px);
+  }
+
+  .divider {
+    width: 48px; height: 3px; border-radius: 2px;
+    background: linear-gradient(90deg, #B85C38, #C2793D);
+    margin: 40px auto 56px; opacity: 0.5; position: relative; z-index: 1;
+  }
+
+  .content { max-width: 920px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 1; }
+  .pair-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+
+  .card {
+    display: block; text-decoration: none; color: inherit;
+    background: #FFFCF7; border-radius: 18px; border: 1px solid #E8E0D4;
+    overflow: hidden; transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 2px 8px rgba(120, 80, 40, 0.04); height: 100%;
+  }
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 48px rgba(120, 80, 40, 0.12), 0 4px 12px rgba(120, 80, 40, 0.06);
+  }
+  .card__bar { height: 5px; transition: height 0.3s ease; }
+  .card:hover .card__bar { height: 6px; }
+  .card__body { padding: 26px 26px 22px; }
+  .card--full .card__body {
+    padding: 30px 34px 26px; display: flex; gap: 40px;
+    align-items: center; flex-wrap: wrap;
+  }
+  .card__top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
+  .card__tag {
+    display: inline-block; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 6px;
+  }
+  .card__icon { font-size: 28px; line-height: 1; }
+  .card__title {
+    font-family: 'Lora', serif; font-size: 21px; font-weight: 600;
+    color: #2C2520; margin: 0 0 10px; line-height: 1.25;
+  }
+  .card--full .card__title { font-size: 25px; }
+  .card__desc { font-size: 14.5px; color: #6B6058; margin: 0; line-height: 1.6; }
+  .card--full .card__desc { max-width: 480px; }
+  .card__arrow {
+    margin-top: 16px; display: flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 600; opacity: 0.5;
+    transform: translateX(0); transition: all 0.3s ease;
+  }
+  .card:hover .card__arrow { opacity: 1; transform: translateX(4px); }
+  .card__arrow span { font-size: 16px; }
+  .card__hero-visual {
+    flex: 0 0 auto; display: flex; align-items: center; justify-content: center;
+    width: 160px; height: 120px; border-radius: 14px; font-size: 56px; line-height: 1;
+    transition: transform 0.5s ease;
+  }
+  .card:hover .card__hero-visual { transform: scale(1.06) rotate(-2deg); }
+
+  .career {
+    background: linear-gradient(135deg, #2C2520 0%, #3D3028 50%, #2C2520 100%);
+    border-radius: 20px; padding: 44px 44px 40px;
+    box-shadow: 0 12px 40px rgba(44, 37, 32, 0.2);
+    position: relative; overflow: hidden; margin-bottom: 24px;
+  }
+  .career__glow1 {
+    position: absolute; top: -60px; right: -40px; width: 240px; height: 240px;
+    border-radius: 50%; background: radial-gradient(circle, rgba(184,92,56,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .career__glow2 {
+    position: absolute; bottom: -40px; left: -20px; width: 180px; height: 180px;
+    border-radius: 50%; background: radial-gradient(circle, rgba(194,121,61,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .career__label {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: #C49A6C; margin: 0 0 10px;
+  }
+  .career__title {
+    font-family: 'Lora', serif; font-size: 25px; color: #F5EDE3;
+    margin: 0 0 8px; font-weight: 600; line-height: 1.3;
+  }
+  .career__desc {
+    font-size: 15px; color: #C4B8AA; margin: 0 0 32px;
+    line-height: 1.6; max-width: 540px;
+  }
+  .career__roles {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 14px; margin-bottom: 32px;
+  }
+  .career__role {
+    background: rgba(255,252,247,0.06); border: 1px solid rgba(255,252,247,0.08);
+    border-radius: 12px; padding: 18px 18px 16px;
+  }
+  .career__role-icon { font-size: 24px; margin-bottom: 8px; }
+  .career__role-name { font-size: 14.5px; font-weight: 600; color: #F5EDE3; margin-bottom: 3px; }
+  .career__role-where { font-size: 12.5px; color: #A89E94; }
+  .career__btn {
+    font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600;
+    color: #2C2520; background: linear-gradient(135deg, #F5EDE3 0%, #EAE0D3 100%);
+    border: none; border-radius: 12px; padding: 14px 28px; cursor: pointer;
+    transition: all 0.25s ease; box-shadow: 0 2px 8px rgba(245, 237, 227, 0.15);
+  }
+  .career__btn:hover {
+    transform: scale(1.03);
+    background: linear-gradient(135deg, #F5EDE3 0%, #E8DDD0 100%);
+    box-shadow: 0 4px 16px rgba(245, 237, 227, 0.3);
+  }
+
+  .fade-in {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  .footer {
+    border-top: 1px solid #E0D6C8; padding: 40px 32px;
+    text-align: center; margin-top: 80px; position: relative; z-index: 1;
+  }
+  .footer p { font-size: 13.5px; color: #8B7E72; line-height: 1.7; }
+  .footer p.small { font-size: 12px; color: #A89E94; margin-top: 12px; }
+  .footer a {
+    color: #8B7E72; text-decoration: underline; text-underline-offset: 3px;
+    transition: color 0.2s ease;
+  }
+  .footer a:hover { color: #B85C38; }
+
+  @media (max-width: 720px) {
+    .pair-row { grid-template-columns: 1fr; }
+    .content { padding: 0 20px; }
+    .career { padding: 32px 24px 28px; }
+    .card--full .card__body { padding: 24px 24px 20px; }
+    .card--full .card__hero-visual { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="map-bg">
+  <div class="map-bg__img"></div>
+  <div class="map-bg__fade-bottom"></div>
+  <div class="map-bg__fade-top"></div>
+</div>
+
+<nav class="nav-bar" id="navbar">
+  <a class="nav-logo" href="#">
+    <div class="nav-logo__icon">🛡️</div>
+    <span class="nav-logo__text">The Safety Apprentice</span>
+  </a>
+  <div class="nav-links">
+    <a href="#about" class="nav-link">About</a>
+    <a href="#contribute" class="nav-link nav-link--cta">Contribute</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <h1>
+    The most important<br />
+    <span>work of our time</span>
+  </h1>
+  <p class="tagline">
+    Welcome to AI safety! We need more people like you.
+    This is a curated (and somewhat opinionated) guide for safety apprentices,
+    covering everything we wish someone had told us when we started.
+  </p>
+  <div class="audience-tags">
+    <span class="audience-tag">CS/ML students</span>
+    <span class="audience-tag">Career changers</span>
+    <span class="audience-tag">Fellowship applicants</span>
+  </div>
+</header>
+
+<div class="divider"></div>
+
+<section class="content">
+
+  <!-- Why AI Safety — full width -->
+  <div class="fade-in" style="margin-bottom: 24px;">
+    <a href="why-ai-safety.html" class="card card--full">
+      <div class="card__bar" style="background: linear-gradient(135deg, #B85C38 0%, #E08457 100%);"></div>
+      <div class="card__body">
+        <div style="flex: 1 1 360px;">
+          <div class="card__top">
+            <span class="card__tag" style="color: #B85C38; background: rgba(184,92,56,0.08);">Start here</span>
+          </div>
+          <h3 class="card__title">Why AI Safety Matters</h3>
+          <p class="card__desc">Why thoughtful people are dedicating their careers to making AI go well — and why you might want to join them.</p>
+          <div class="card__arrow" style="color: #B85C38;">Explore <span>→</span></div>
+        </div>
+        <div class="card__hero-visual" style="background: rgba(184,92,56,0.04); border: 1px solid rgba(184,92,56,0.09);">🌍</div>
+      </div>
+    </a>
+  </div>
+
+  <!-- Geography + Conferences -->
+  <div class="pair-row">
+    <div class="fade-in" style="transition-delay: 0.05s;">
+      <a href="geography.html" class="card">
+        <div class="card__bar" style="background: linear-gradient(135deg, #C4687A 0%, #D98E9C 100%);"></div>
+        <div class="card__body">
+          <div class="card__top">
+            <span class="card__tag" style="color: #C4687A; background: rgba(196,104,122,0.08);">Find your people</span>
+            <span class="card__icon">📍</span>
+          </div>
+          <h3 class="card__title">Geography of AI Safety</h3>
+          <p class="card__desc">The coworking spaces, hubs, and cities where safety researchers cluster — from Constellation in Berkeley to LISA in London.</p>
+          <div class="card__arrow" style="color: #C4687A;">Explore <span>→</span></div>
+        </div>
+      </a>
+    </div>
+    <div class="fade-in" style="transition-delay: 0.12s;">
+      <a href="conferences.html" class="card">
+        <div class="card__bar" style="background: linear-gradient(135deg, #A0784C 0%, #C49A6C 100%);"></div>
+        <div class="card__body">
+          <div class="card__top">
+            <span class="card__tag" style="color: #A0784C; background: rgba(160,120,76,0.08);">Get connected</span>
+            <span class="card__icon">🎤</span>
+          </div>
+          <h3 class="card__title">Conferences & Events</h3>
+          <p class="card__desc">The recurring conferences, workshops, and unconferences that shape the field — and how to get the most from your first one.</p>
+          <div class="card__arrow" style="color: #A0784C;">Explore <span>→</span></div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Fellowships + Funding -->
+  <div class="pair-row">
+    <div class="fade-in" style="transition-delay: 0.05s;">
+      <a href="fellowships.html" class="card">
+        <div class="card__bar" style="background: linear-gradient(135deg, #C2793D 0%, #E09B5F 100%);"></div>
+        <div class="card__body">
+          <div class="card__top">
+            <span class="card__tag" style="color: #C2793D; background: rgba(194,121,61,0.08);">Your way in</span>
+            <span class="card__icon">🎓</span>
+          </div>
+          <h3 class="card__title">Fellowships</h3>
+          <p class="card__desc">MATS, ARENA, Astra, and beyond — how programs work, what they look for, and how to build a strong application.</p>
+          <div class="card__arrow" style="color: #C2793D;">Explore <span>→</span></div>
+        </div>
+      </a>
+    </div>
+    <div class="fade-in" style="transition-delay: 0.12s;">
+      <a href="funding.html" class="card">
+        <div class="card__bar" style="background: linear-gradient(135deg, #8B7040 0%, #B09358 100%);"></div>
+        <div class="card__body">
+          <div class="card__top">
+            <span class="card__tag" style="color: #8B7040; background: rgba(139,112,64,0.08);">Make it viable</span>
+            <span class="card__icon">💰</span>
+          </div>
+          <h3 class="card__title">Funding & Grants</h3>
+          <p class="card__desc">How to find grants, write proposals, and fund your transition into alignment work.</p>
+          <div class="card__arrow" style="color: #8B7040;">Explore <span>→</span></div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Career section -->
+  <div class="fade-in career">
+    <div class="career__glow1"></div>
+    <div class="career__glow2"></div>
+    <p class="career__label">The landscape</p>
+    <h3 class="career__title">What AI safety careers look like</h3>
+    <p class="career__desc">Research, governance, engineering, strategy — safety careers are more varied (and more viable) than most people think.</p>
+    <div class="career__roles">
+      <div class="career__role">
+        <div class="career__role-icon">🔬</div>
+        <div class="career__role-name">Research Scientist</div>
+        <div class="career__role-where">Labs & nonprofits</div>
+      </div>
+      <div class="career__role">
+        <div class="career__role-icon">📜</div>
+        <div class="career__role-name">Policy & Governance</div>
+        <div class="career__role-where">Governments & think tanks</div>
+      </div>
+      <div class="career__role">
+        <div class="career__role-icon">🛡️</div>
+        <div class="career__role-name">Red-Teaming</div>
+        <div class="career__role-where">AI labs & consultancies</div>
+      </div>
+    </div>
+    <button class="career__btn">Explore career paths →</button>
+  </div>
+
+  <!-- Papers + Glossary -->
+  <div class="pair-row" style="margin-bottom: 0;">
+    <div class="fade-in" style="transition-delay: 0.05s;">
+      <a href="#papers" class="card">
+        <div class="card__bar" style="background: linear-gradient(135deg, #9B6B5C 0%, #BF8D7D 100%);"></div>
+        <div class="card__body">
+          <div class="card__top">
+            <span class="card__tag" style="color: #9B6B5C; background: rgba(155,107,92,0.08);">Go deep</span>
+            <span class="card__icon">📄</span>
+          </div>
+          <h3 class="card__title">Key Papers</h3>
+          <p class="card__desc">A curated timeline of the most influential papers — from early x-risk arguments to cutting-edge alignment research.</p>
+          <div class="card__arrow" style="color: #9B6B5C;">Explore <span>→</span></div>
+        </div>
+      </a>
+    </div>
+    <div class="fade-in" style="transition-delay: 0.12s;">
+      <a href="#glossary" class="card">
+        <div class="card__bar" style="background: linear-gradient(135deg, #8B6F5C 0%, #AD8E7A 100%);"></div>
+        <div class="card__body">
+          <div class="card__top">
+            <span class="card__tag" style="color: #8B6F5C; background: rgba(139,111,92,0.08);">Reference</span>
+            <span class="card__icon">📖</span>
+          </div>
+          <h3 class="card__title">Technical Glossary</h3>
+          <p class="card__desc">RLHF, mesa-optimisers, corrigibility — the key terms explained without assuming a PhD.</p>
+          <div class="card__arrow" style="color: #8B6F5C;">Explore <span>→</span></div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+</section>
+
+<footer class="footer">
+  <p>
+    Built by the community, for the community.
+    <a href="#contribute">Contribute on GitHub</a> ·
+    <a href="#about">About this project</a>
+  </p>
+  <p class="small">The Safety Apprentice is not affiliated with any specific organisation or lab.</p>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
