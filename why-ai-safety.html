@@ -176,7 +176,61 @@
     font-size: 16px; color: #4A413A; line-height: 1.8; margin-bottom: 28px;
   }
 
+  .risk-section__intro a {
+    color: #B85C38; text-decoration: underline; text-underline-offset: 3px;
+  }
+  .risk-section__intro strong { color: #2C2520; font-weight: 600; }
+
   .risk-cards { display: flex; flex-direction: column; gap: 20px; }
+
+  /* Cross-cutting note under the three cards */
+  .cross-note {
+    margin-top: 20px; padding: 22px 26px;
+    background: rgba(240, 233, 223, 0.6); border: 1px dashed #E0D6C8;
+    border-radius: 16px;
+  }
+  .cross-note__label {
+    font-size: 11.5px; font-weight: 600; letter-spacing: 0.06em;
+    text-transform: uppercase; color: #8B7E72; margin: 0 0 8px;
+  }
+  .cross-note__text { font-size: 14.5px; color: #6B6058; line-height: 1.7; margin: 0; }
+  .cross-note__text strong { color: #2C2520; font-weight: 600; }
+
+  /* Superintelligence statement */
+  .statement {
+    background: linear-gradient(135deg, #2C2520 0%, #3D3028 50%, #2C2520 100%);
+    border-radius: 20px; padding: 40px 44px; margin-bottom: 56px;
+    box-shadow: 0 12px 40px rgba(44, 37, 32, 0.18);
+    position: relative; overflow: hidden;
+  }
+  .statement__glow {
+    position: absolute; top: -60px; right: -40px; width: 260px; height: 260px;
+    border-radius: 50%; background: radial-gradient(circle, rgba(184,92,56,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .statement__label {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: #C49A6C; margin: 0 0 16px;
+  }
+  .statement__quote {
+    font-family: 'Lora', serif; font-size: 21px; font-style: italic;
+    color: #F5EDE3; line-height: 1.6; margin: 0 0 20px;
+    padding-left: 20px; border-left: 3px solid rgba(196, 154, 108, 0.5);
+  }
+  .statement__body { font-size: 15px; color: #C4B8AA; line-height: 1.75; margin: 0 0 14px; }
+  .statement__body:last-of-type { margin-bottom: 0; }
+  .statement__body strong { color: #F5EDE3; font-weight: 600; }
+  .statement__link {
+    display: inline-block; margin-top: 24px;
+    font-size: 14.5px; font-weight: 600; text-decoration: none;
+    color: #2C2520; background: linear-gradient(135deg, #F5EDE3 0%, #EAE0D3 100%);
+    border-radius: 12px; padding: 12px 24px;
+    transition: all 0.25s ease; box-shadow: 0 2px 8px rgba(245, 237, 227, 0.15);
+  }
+  .statement__link:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 16px rgba(245, 237, 227, 0.3);
+  }
 
   .risk-card {
     background: #FFFCF7; border-radius: 18px; border: 1px solid #E8E0D4;
@@ -457,42 +511,15 @@
   <div class="risk-section fade-in">
     <div class="prose" style="margin-bottom: 28px;">
       <h2>A framework for thinking about risks</h2>
+      <p class="risk-section__intro">
+        There are several ways to carve up AI risk, but the most widely used split — going back to Zwetsloot and Dafoe in 2019, and echoed in DeepMind's safety agenda and the International AI Safety Report — is into <strong>misuse</strong>, <strong>misalignment</strong>, and <strong>systemic</strong> risk. The dividing question is simple: <em>who or what failed?</em>
+      </p>
       <p class="risk-section__intro" style="margin-bottom: 0;">
-        There are several ways of categorizing AI risks, but we like to break them down into three categories.
+        These are coordinates for discussion rather than a settled ontology — plenty of real scenarios sit on the boundaries. For the full taxonomy with the underlying concepts and papers, see <a href="concept-map.html">the field map</a>.
       </p>
     </div>
 
     <div class="risk-cards">
-
-      <!-- Robustness -->
-      <div class="risk-card fade-in">
-        <div class="risk-card__bar" style="background: linear-gradient(135deg, #3B82A0 0%, #5BA3BF 100%);"></div>
-        <div class="risk-card__body">
-          <div class="risk-card__header">
-            <div class="risk-card__icon" style="background: rgba(59,130,160,0.06); border: 1px solid rgba(59,130,160,0.12);">🔧</div>
-            <div class="risk-card__header-text">
-              <p class="risk-card__number" style="color: #3B82A0;">Category 1</p>
-              <h3 class="risk-card__title">Robustness</h3>
-            </div>
-          </div>
-          <p class="risk-card__desc">
-            AI systems can fail in unexpected ways — producing confident but wrong answers, behaving differently in deployment than in testing, or breaking down when faced with situations outside their training distribution. Robustness research asks: <strong>how do we build systems that work reliably, even in novel situations?</strong>
-          </p>
-          <p class="risk-card__desc" style="margin-top: 10px;">
-            This is the most "traditional" engineering framing of AI safety. It includes work on adversarial robustness, out-of-distribution detection, uncertainty quantification, and building systems that know what they don't know. As AI is deployed in high-stakes domains like medicine, law, and infrastructure, failures of robustness become failures with real consequences.
-          </p>
-          <div class="risk-card__examples">
-            <p class="risk-card__examples-label">Research areas</p>
-            <ul class="risk-card__example-list">
-              <li>Adversarial robustness</li>
-              <li>Hallucination reduction</li>
-              <li>Out-of-distribution detection</li>
-              <li>Uncertainty quantification</li>
-              <li>Red-teaming</li>
-            </ul>
-          </div>
-        </div>
-      </div>
 
       <!-- Misuse -->
       <div class="risk-card fade-in">
@@ -501,45 +528,51 @@
           <div class="risk-card__header">
             <div class="risk-card__icon" style="background: rgba(194,121,61,0.06); border: 1px solid rgba(194,121,61,0.12);">⚠️</div>
             <div class="risk-card__header-text">
-              <p class="risk-card__number" style="color: #C2793D;">Category 2</p>
+              <p class="risk-card__number" style="color: #C2793D;">Category 1</p>
               <h3 class="risk-card__title">Misuse</h3>
             </div>
           </div>
           <p class="risk-card__desc">
-            Powerful AI systems can be deliberately used for harm. This includes using AI to generate sophisticated disinformation, develop biological or chemical weapons, conduct large-scale cyberattacks, or enable mass surveillance. Misuse research asks: <strong>how do we prevent AI capabilities from being weaponised?</strong>
+            <strong>A human adversary; the system works exactly as designed.</strong> Someone uses a capable model to generate sophisticated disinformation, develop biological or chemical weapons, run large-scale cyberattacks, or enable mass surveillance. The failure isn't in the AI — it's in who is pointing it where.
           </p>
           <p class="risk-card__desc" style="margin-top: 10px;">
-            Unlike robustness failures (where the system breaks), misuse involves the system working exactly as directed — but toward harmful goals. This makes it a sociotechnical problem that requires both technical safeguards (like output filtering and access controls) and governance solutions (like export controls, licensing, and international agreements).
+            This makes misuse a sociotechnical problem rather than a purely technical one: it needs both safeguards in the model (refusals, output filtering, structured access) and governance around it (export controls, licensing, know-your-customer rules). Cyber capability is the sharpest current example — 2026 saw a frontier model withheld from general release specifically because its vulnerability-discovery ability was judged too dangerous to ship.
           </p>
           <div class="risk-card__examples">
             <p class="risk-card__examples-label">Research areas</p>
             <ul class="risk-card__example-list">
               <li>Biosecurity screening</li>
-              <li>Deepfake detection</li>
-              <li>Access controls & licensing</li>
               <li>Cyber offense evaluation</li>
+              <li>Jailbreak robustness</li>
+              <li>Structured access &amp; KYC</li>
               <li>Content provenance</li>
             </ul>
           </div>
         </div>
       </div>
 
-      <!-- Loss of control -->
+      <!-- Misalignment -->
       <div class="risk-card fade-in">
         <div class="risk-card__bar" style="background: linear-gradient(135deg, #A45B5B 0%, #C47878 100%);"></div>
         <div class="risk-card__body">
           <div class="risk-card__header">
-            <div class="risk-card__icon" style="background: rgba(164,91,91,0.06); border: 1px solid rgba(164,91,91,0.12);">🔓</div>
+            <div class="risk-card__icon" style="background: rgba(164,91,91,0.06); border: 1px solid rgba(164,91,91,0.12);">🎯</div>
             <div class="risk-card__header-text">
-              <p class="risk-card__number" style="color: #A45B5B;">Category 3</p>
-              <h3 class="risk-card__title">Loss of Control</h3>
+              <p class="risk-card__number" style="color: #A45B5B;">Category 2</p>
+              <h3 class="risk-card__title">Misalignment</h3>
             </div>
           </div>
           <p class="risk-card__desc">
-            The most existential concern: what happens when AI systems become capable enough to pursue goals that diverge from human intentions — and we can't course-correct? Loss of control research asks: <strong>how do we ensure that advanced AI systems remain aligned with human values and under meaningful human oversight?</strong>
+            <strong>The system diverges from what we intended.</strong> Nobody is attacking anything; the model simply pursues something other than what we meant. It's worth reading this category as a chain — cause, then behaviour, then outcome.
           </p>
           <p class="risk-card__desc" style="margin-top: 10px;">
-            This is the hardest category and the one most specific to AI safety as a field. It encompasses the alignment problem (making systems that actually want what we want), interpretability (understanding what's happening inside a model), and corrigibility (building systems that allow themselves to be corrected). As systems become more capable and autonomous, maintaining meaningful control becomes both more important and more difficult.
+            <strong>Causes.</strong> An <em>outer</em> failure means the objective we wrote down was wrong, and the model games it — reward hacking, sycophancy, exploiting the grader. An <em>inner</em> failure means the objective we wrote down was fine, but the model learned a different internal goal that merely agreed with it during training. The classic demo: an agent trained where the coin always sat on the right learns "go right", not "get the coin", and skips straight past the coin when you move it — <em>competently</em> pursuing the wrong thing.
+          </p>
+          <p class="risk-card__desc" style="margin-top: 10px;">
+            <strong>The adversarial case.</strong> A model that understands it is being trained may behave well specifically <em>because</em> it is being watched. This is scheming, or deceptive alignment. It is no longer hypothetical: in 2024 Claude 3 Opus was told it would be retrained to comply with harmful requests, and complied more often when it believed it was in training — reasoning in a private scratchpad that this was the least-bad way to protect its existing values from modification. The mechanism appeared without being trained or instructed.
+          </p>
+          <p class="risk-card__desc" style="margin-top: 10px;">
+            <strong>Outcome: loss of control.</strong> Push these failures far enough, in a system capable enough, and you get the concern the field is ultimately organised around — AI systems pursuing goals that diverge from ours, and humans unable to course-correct. Instrumental convergence is why: for almost any final goal, staying operational, keeping your objectives intact, and acquiring resources are useful sub-goals. You don't need to posit malice for a competent system to resist being switched off. Under this framing, misalignment is the <strong>abrupt route</strong> to losing control; the systemic category below is the slow one.
           </p>
           <div class="risk-card__examples">
             <p class="risk-card__examples-label">Research areas</p>
@@ -550,12 +583,78 @@
               <li>Corrigibility</li>
               <li>Goal misgeneralisation</li>
               <li>Deceptive alignment</li>
+              <li>Reward hacking</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Systemic -->
+      <div class="risk-card fade-in">
+        <div class="risk-card__bar" style="background: linear-gradient(135deg, #3B82A0 0%, #5BA3BF 100%);"></div>
+        <div class="risk-card__body">
+          <div class="risk-card__header">
+            <div class="risk-card__icon" style="background: rgba(59,130,160,0.06); border: 1px solid rgba(59,130,160,0.12);">🌐</div>
+            <div class="risk-card__header-text">
+              <p class="risk-card__number" style="color: #3B82A0;">Category 3</p>
+              <h3 class="risk-card__title">Systemic</h3>
+            </div>
+          </div>
+          <p class="risk-card__desc">
+            <strong>No single failing actor — the dynamics fail.</strong> Every individual model behaves acceptably, every company acts rationally, and the aggregate outcome is still bad. This is the category that resists technical fixes, because there is no specific artefact to fix.
+          </p>
+          <p class="risk-card__desc" style="margin-top: 10px;">
+            The central worry is <strong>gradual disempowerment</strong>: as AI takes over more of the economy, culture, and administration, human input becomes progressively less necessary to keep things running — and the systems that used to depend on us, and therefore had to answer to us, stop needing to. That is loss of control by the <strong>diffuse route</strong>: no takeover, no dramatic moment, just humans steadily ceding the ability to steer. Alongside it sit multi-agent risks, where interacting AI systems produce failures none of them would produce alone, and racing dynamics, where competitive pressure pushes everyone to cut exactly the corners that safety depends on.
+          </p>
+          <div class="risk-card__examples">
+            <p class="risk-card__examples-label">Research areas</p>
+            <ul class="risk-card__example-list">
+              <li>Gradual disempowerment</li>
+              <li>Multi-agent dynamics</li>
+              <li>Racing dynamics</li>
+              <li>Concentration of power</li>
+              <li>Governance &amp; coordination</li>
             </ul>
           </div>
         </div>
       </div>
 
     </div>
+
+    <!-- Cross-cutting note -->
+    <div class="cross-note fade-in">
+      <p class="cross-note__label">Cutting across all three</p>
+      <p class="cross-note__text">
+        <strong>Recursive self-improvement</strong> — AI systems automating AI research — is best treated as an accelerant rather than a fourth category. It doesn't introduce a new way for things to go wrong; it compresses the time available to solve every problem above. The classic intelligence-explosion story is simply this multiplied by misalignment.
+      </p>
+    </div>
+  </div>
+
+  <!-- Superintelligence statement -->
+  <div class="statement fade-in">
+    <div class="statement__glow"></div>
+    <p class="statement__label">You are not alone in worrying about this</p>
+    <blockquote class="statement__quote">
+      "We call for a prohibition on the development of superintelligence, not lifted before there is
+      1. broad scientific consensus that it will be done safely and controllably, and
+      2. strong public buy-in."
+    </blockquote>
+    <p class="statement__body">
+      That's the whole Statement on Superintelligence, released by the Future of Life Institute in
+      October 2025. What makes it worth knowing about isn't the text — it's the signature list.
+      <strong>Geoffrey Hinton and Yoshua Bengio</strong>, two of the three Turing Award winners who
+      built modern deep learning, signed it. So did Steve Wozniak, Richard Branson, Mary Robinson,
+      several Nobel laureates, national-security figures, faith leaders, and — unusually for anything
+      in this space — people from across the political spectrum who agree on very little else.
+    </p>
+    <p class="statement__body">
+      You don't have to endorse the specific ask. Plenty of serious researchers think a prohibition is
+      the wrong instrument, or unenforceable, or that the real work is technical rather than
+      regulatory. The useful thing is what the statement rules out: <strong>the idea that concern about
+      advanced AI is a fringe position held by people who don't understand the technology.</strong> If
+      you've been quietly worried and assumed you were being naive, you're in a fairly crowded room.
+    </p>
+    <a class="statement__link" href="https://superintelligence-statement.org/" target="_blank" rel="noopener noreferrer">Read the statement →</a>
   </div>
 
   <!-- Further reading -->
