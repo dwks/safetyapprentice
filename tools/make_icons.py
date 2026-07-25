@@ -11,7 +11,7 @@ and the one modern browsers actually use.
 from PIL import Image, ImageDraw
 
 TILE_FROM, TILE_TO = (0xB8, 0x5C, 0x38), (0xC2, 0x79, 0x3D)   # terracotta gradient
-SHIELD = (0xF8, 0xF3, 0xEC, 255)                              # paper cream
+SHIELD = (0xFF, 0xFF, 0xFF, 255)                              # white
 
 
 def draw(size: int) -> Image.Image:
