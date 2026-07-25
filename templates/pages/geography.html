@@ -145,6 +145,20 @@
     .pin__label { display: none; }
     .pin__dot { width: 13px; height: 13px; }
   }
+
+  /* Cities with a single space sit two-up on desktop, so a lone card does not
+     leave half a row empty. */
+  .group-pair {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px;
+    margin-bottom: 52px;
+  }
+  /* the shared .group:last-of-type rule would zero the margin on the second
+     column only, so the pair owns the spacing instead */
+  .group-pair .group { margin-bottom: 0; }
+  .group-pair .items-grid { grid-template-columns: 1fr; }
+  @media (max-width: 760px) {
+    .group-pair { grid-template-columns: 1fr; gap: 0; }
+  }
 {% endblock %}
 
 {% block hero %}
@@ -291,174 +305,182 @@
       </div>
   </div>
 
-  <!-- Cambridge -->
-  <div class="group fade-in" id="cambridge">
-    <div class="group__head">
-      <span class="group__icon">🇬🇧</span>
-      <h2 class="group__name">Cambridge, UK</h2>
-      <span class="group__count">1 space</span>
-    </div>
-          <div class="items-grid">
-                <a class="item" href="https://www.meridiancambridge.org/" target="_blank" rel="noopener noreferrer">
-          <div class="item__type">Cambridge</div>
-          <div class="item__name">Meridian</div>
-          <div class="item__desc">A coworking space in Cambridge for AI safety researchers and aligned organisations. Provides a physical home for the Cambridge safety community to collaborate and build together.</div>
-          <div class="item__meta">
-            <span class="item__tag">Coworking</span>
-            <span class="item__tag">Community</span>
-          </div>
-          <span class="item__go">Visit Meridian →</span>
-        </a>
+  <div class="group-pair">
+    <!-- Cambridge -->
+    <div class="group fade-in" id="cambridge">
+      <div class="group__head">
+        <span class="group__icon">🇬🇧</span>
+        <h2 class="group__name">Cambridge, UK</h2>
+        <span class="group__count">1 space</span>
       </div>
+            <div class="items-grid">
+                  <a class="item" href="https://www.meridiancambridge.org/" target="_blank" rel="noopener noreferrer">
+            <div class="item__type">Cambridge</div>
+            <div class="item__name">Meridian</div>
+            <div class="item__desc">A coworking space in Cambridge for AI safety researchers and aligned organisations. Provides a physical home for the Cambridge safety community to collaborate and build together.</div>
+            <div class="item__meta">
+              <span class="item__tag">Coworking</span>
+              <span class="item__tag">Community</span>
+            </div>
+            <span class="item__go">Visit Meridian →</span>
+          </a>
+        </div>
+    </div>
+
+    <div class="group fade-in" id="blackpool">
+      <div class="group__head">
+        <span class="group__icon">🇬🇧</span>
+        <h2 class="group__name">Blackpool, UK</h2>
+        <span class="group__count">1 space</span>
+      </div>
+        <div class="items-grid">
+                  <a class="item" href="https://www.ceealar.org/" target="_blank" rel="noopener noreferrer">
+            <div class="item__type">Blackpool</div>
+            <div class="item__name">CEEALAR (the "EA Hotel")</div>
+            <div class="item__desc">The Centre for Enabling EA Learning and Research offers free or heavily subsidised accommodation and workspace to people working on AI safety and other high-impact projects. An unusually cheap way to work on the problem full-time between roles or while waiting on funding.</div>
+            <div class="item__meta">
+              <span class="item__tag">Free accommodation</span>
+              <span class="item__tag">Long stays</span>
+              <span class="item__tag">Low cost</span>
+            </div>
+            <span class="item__go">Visit CEEALAR &rarr;</span>
+          </a>
+        </div>
+    </div>
   </div>
 
-  <div class="group fade-in" id="blackpool">
-    <div class="group__head">
-      <span class="group__icon">🇬🇧</span>
-      <h2 class="group__name">Blackpool, UK</h2>
-      <span class="group__count">1 space</span>
-    </div>
-      <div class="items-grid">
-                <a class="item" href="https://www.ceealar.org/" target="_blank" rel="noopener noreferrer">
-          <div class="item__type">Blackpool</div>
-          <div class="item__name">CEEALAR (the "EA Hotel")</div>
-          <div class="item__desc">The Centre for Enabling EA Learning and Research offers free or heavily subsidised accommodation and workspace to people working on AI safety and other high-impact projects. An unusually cheap way to work on the problem full-time between roles or while waiting on funding.</div>
-          <div class="item__meta">
-            <span class="item__tag">Free accommodation</span>
-            <span class="item__tag">Long stays</span>
-            <span class="item__tag">Low cost</span>
-          </div>
-          <span class="item__go">Visit CEEALAR &rarr;</span>
-        </a>
+  <div class="group-pair">
+    <div class="group fade-in" id="zurich">
+      <div class="group__head">
+        <span class="group__icon">🇨🇭</span>
+        <h2 class="group__name">Zurich, Switzerland</h2>
+        <span class="group__count">1 space</span>
       </div>
+        <div class="items-grid">
+                  <a class="item" href="https://peaks-office.ch/" target="_blank" rel="noopener noreferrer">
+            <div class="item__type">Zurich</div>
+            <div class="item__name">PEAKS</div>
+            <div class="item__desc">A coworking space in central Zurich for people in AI safety and effective altruism. Home to EA Switzerland, Zurich AI Safety and Apollo Research, with meeting rooms, events and a small lending library.</div>
+            <div class="item__meta">
+              <span class="item__tag">Coworking</span>
+              <span class="item__tag">Apollo Research</span>
+              <span class="item__tag">Community</span>
+            </div>
+            <span class="item__go">Visit PEAKS &rarr;</span>
+          </a>
+        </div>
+    </div>
+
+    <!-- Cape Town -->
+    <div class="group fade-in" id="cape-town">
+      <div class="group__head">
+        <span class="group__icon">🇿🇦</span>
+        <h2 class="group__name">Cape Town, South Africa</h2>
+        <span class="group__count">1 space</span>
+      </div>
+        <div class="items-grid">
+          <a class="item" href="https://www.aisafetysa.com/" target="_blank" rel="noopener noreferrer">
+            <div class="item__type">Cape Town</div>
+            <div class="item__name">AI Safety Cape Town</div>
+            <div class="item__desc">The coworking space run by AI Safety South Africa, which builds the field locally through events, courses and shared desks. The main hub for safety work on the African continent.</div>
+            <div class="item__meta">
+              <span class="item__tag">Coworking</span>
+              <span class="item__tag">Events</span>
+              <span class="item__tag">Courses</span>
+            </div>
+            <span class="item__go">Visit AI Safety South Africa &rarr;</span>
+          </a>
+        </div>
+    </div>
   </div>
 
-  <div class="group fade-in" id="zurich">
-    <div class="group__head">
-      <span class="group__icon">🇨🇭</span>
-      <h2 class="group__name">Zurich, Switzerland</h2>
-      <span class="group__count">1 space</span>
-    </div>
-      <div class="items-grid">
-                <a class="item" href="https://peaks-office.ch/" target="_blank" rel="noopener noreferrer">
-          <div class="item__type">Zurich</div>
-          <div class="item__name">PEAKS</div>
-          <div class="item__desc">A coworking space in central Zurich for people in AI safety and effective altruism. Home to EA Switzerland, Zurich AI Safety and Apollo Research, with meeting rooms, events and a small lending library.</div>
-          <div class="item__meta">
-            <span class="item__tag">Coworking</span>
-            <span class="item__tag">Apollo Research</span>
-            <span class="item__tag">Community</span>
-          </div>
-          <span class="item__go">Visit PEAKS &rarr;</span>
-        </a>
+  <div class="group-pair">
+    <!-- Singapore -->
+    <div class="group fade-in" id="singapore">
+      <div class="group__head">
+        <span class="group__icon">🇸🇬</span>
+        <h2 class="group__name">Singapore</h2>
+        <span class="group__count">1 space</span>
       </div>
+            <div class="items-grid">
+                  <a class="item" href="https://www.aisafety.sg/" target="_blank" rel="noopener noreferrer">
+            <div class="item__type">Singapore</div>
+            <div class="item__name">SASH</div>
+            <div class="item__desc">The Singapore AI Safety Hub — a coworking space for AI safety researchers and professionals in Southeast Asia. A growing community providing a base for alignment work in the region.</div>
+            <div class="item__meta">
+              <span class="item__tag">Coworking</span>
+              <span class="item__tag">Community</span>
+              <span class="item__tag">Southeast Asia</span>
+            </div>
+            <span class="item__go">Visit SASH →</span>
+          </a>
+        </div>
+    </div>
+
+    <div class="group fade-in" id="sydney">
+      <div class="group__head">
+        <span class="group__icon">🇦🇺</span>
+        <h2 class="group__name">Sydney, Australia</h2>
+        <span class="group__count">1 space</span>
+      </div>
+        <div class="items-grid">
+                  <a class="item" href="https://sydneyaisafetyspace.org/" target="_blank" rel="noopener noreferrer">
+            <div class="item__type">Sydney</div>
+            <div class="item__name">Sydney AI Safety Space</div>
+            <div class="item__desc">A volunteer-run, donation-supported space in Chippendale giving free desks to people working on AI safety — technical research, policy, field-building or self-study. Members chip in on events and upkeep.</div>
+            <div class="item__meta">
+              <span class="item__tag">Free desks</span>
+              <span class="item__tag">Volunteer-run</span>
+              <span class="item__tag">Community</span>
+            </div>
+            <span class="item__go">Visit the space &rarr;</span>
+          </a>
+        </div>
+    </div>
   </div>
 
-  <!-- Cape Town -->
-  <div class="group fade-in" id="cape-town">
-    <div class="group__head">
-      <span class="group__icon">🇿🇦</span>
-      <h2 class="group__name">Cape Town, South Africa</h2>
-      <span class="group__count">1 space</span>
-    </div>
-      <div class="items-grid">
-        <a class="item" href="https://www.aisafetysa.com/" target="_blank" rel="noopener noreferrer">
-          <div class="item__type">Cape Town</div>
-          <div class="item__name">AI Safety Cape Town</div>
-          <div class="item__desc">The coworking space run by AI Safety South Africa, which builds the field locally through events, courses and shared desks. The main hub for safety work on the African continent.</div>
-          <div class="item__meta">
-            <span class="item__tag">Coworking</span>
-            <span class="item__tag">Events</span>
-            <span class="item__tag">Courses</span>
-          </div>
-          <span class="item__go">Visit AI Safety South Africa &rarr;</span>
-        </a>
+  <div class="group-pair">
+    <!-- Toronto -->
+    <div class="group fade-in" id="toronto">
+      <div class="group__head">
+        <span class="group__icon">🇨🇦</span>
+        <h2 class="group__name">Toronto, Canada</h2>
+        <span class="group__count">1 space</span>
       </div>
-  </div>
+            <div class="items-grid">
+                  <a class="item" href="https://trajectorylabs.org/" target="_blank" rel="noopener noreferrer">
+            <div class="item__type">Toronto</div>
+            <div class="item__name">Trajectory Labs</div>
+            <div class="item__desc">A coworking space in Toronto for AI safety researchers and organisations. Part of Canada's growing alignment community, providing collaborative workspace and a local hub for safety-focused work.</div>
+            <div class="item__meta">
+              <span class="item__tag">Coworking</span>
+              <span class="item__tag">Community</span>
+            </div>
+            <span class="item__go">Visit Trajectory Labs →</span>
+          </a>
+        </div>
+    </div>
 
-  <!-- Singapore -->
-  <div class="group fade-in" id="singapore">
-    <div class="group__head">
-      <span class="group__icon">🇸🇬</span>
-      <h2 class="group__name">Singapore</h2>
-      <span class="group__count">1 space</span>
-    </div>
-          <div class="items-grid">
-                <a class="item" href="https://www.aisafety.sg/" target="_blank" rel="noopener noreferrer">
-          <div class="item__type">Singapore</div>
-          <div class="item__name">SASH</div>
-          <div class="item__desc">The Singapore AI Safety Hub — a coworking space for AI safety researchers and professionals in Southeast Asia. A growing community providing a base for alignment work in the region.</div>
-          <div class="item__meta">
-            <span class="item__tag">Coworking</span>
-            <span class="item__tag">Community</span>
-            <span class="item__tag">Southeast Asia</span>
-          </div>
-          <span class="item__go">Visit SASH →</span>
-        </a>
+    <div class="group fade-in" id="new-york">
+      <div class="group__head">
+        <span class="group__icon">🇺🇸</span>
+        <h2 class="group__name">New York, USA</h2>
+        <span class="group__count">1 space</span>
       </div>
-  </div>
-
-  <div class="group fade-in" id="sydney">
-    <div class="group__head">
-      <span class="group__icon">🇦🇺</span>
-      <h2 class="group__name">Sydney, Australia</h2>
-      <span class="group__count">1 space</span>
+        <div class="items-grid">
+                  <a class="item" href="https://collider.nyc/" target="_blank" rel="noopener noreferrer">
+            <div class="item__type">New York, NY</div>
+            <div class="item__name">Collider</div>
+            <div class="item__desc">New York's coworking and events space for people working on AI safety and other high-impact problems, spanning technical research, policy and field-building.</div>
+            <div class="item__meta">
+              <span class="item__tag">Coworking</span>
+              <span class="item__tag">Events</span>
+              <span class="item__tag">Community</span>
+            </div>
+            <span class="item__go">Visit Collider &rarr;</span>
+          </a>
+        </div>
     </div>
-      <div class="items-grid">
-                <a class="item" href="https://sydneyaisafetyspace.org/" target="_blank" rel="noopener noreferrer">
-          <div class="item__type">Sydney</div>
-          <div class="item__name">Sydney AI Safety Space</div>
-          <div class="item__desc">A volunteer-run, donation-supported space in Chippendale giving free desks to people working on AI safety — technical research, policy, field-building or self-study. Members chip in on events and upkeep.</div>
-          <div class="item__meta">
-            <span class="item__tag">Free desks</span>
-            <span class="item__tag">Volunteer-run</span>
-            <span class="item__tag">Community</span>
-          </div>
-          <span class="item__go">Visit the space &rarr;</span>
-        </a>
-      </div>
-  </div>
-
-  <!-- Toronto -->
-  <div class="group fade-in" id="toronto">
-    <div class="group__head">
-      <span class="group__icon">🇨🇦</span>
-      <h2 class="group__name">Toronto, Canada</h2>
-      <span class="group__count">1 space</span>
-    </div>
-          <div class="items-grid">
-                <a class="item" href="https://trajectorylabs.org/" target="_blank" rel="noopener noreferrer">
-          <div class="item__type">Toronto</div>
-          <div class="item__name">Trajectory Labs</div>
-          <div class="item__desc">A coworking space in Toronto for AI safety researchers and organisations. Part of Canada's growing alignment community, providing collaborative workspace and a local hub for safety-focused work.</div>
-          <div class="item__meta">
-            <span class="item__tag">Coworking</span>
-            <span class="item__tag">Community</span>
-          </div>
-          <span class="item__go">Visit Trajectory Labs →</span>
-        </a>
-      </div>
-  </div>
-
-  <div class="group fade-in" id="new-york">
-    <div class="group__head">
-      <span class="group__icon">🇺🇸</span>
-      <h2 class="group__name">New York, USA</h2>
-      <span class="group__count">1 space</span>
-    </div>
-      <div class="items-grid">
-                <a class="item" href="https://collider.nyc/" target="_blank" rel="noopener noreferrer">
-          <div class="item__type">New York, NY</div>
-          <div class="item__name">Collider</div>
-          <div class="item__desc">New York's coworking and events space for people working on AI safety and other high-impact problems, spanning technical research, policy and field-building.</div>
-          <div class="item__meta">
-            <span class="item__tag">Coworking</span>
-            <span class="item__tag">Events</span>
-            <span class="item__tag">Community</span>
-          </div>
-          <span class="item__go">Visit Collider &rarr;</span>
-        </a>
-      </div>
   </div>
 
   <!-- Tip callout -->
