@@ -21,7 +21,7 @@
 {% block page_css %}{% endblock %}
 </style>
 </head>
-<body>
+<body class="page-{{ page.slug }}">
 
 {% block background %}
 <div class="map-bg">
@@ -35,7 +35,7 @@
 
 {% block hero %}{% endblock %}
 
-<div class="divider"></div>
+{% block divider %}<div class="divider"></div>{% endblock %}
 
 {% block content %}{% endblock %}
 
