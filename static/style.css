@@ -107,6 +107,16 @@ body::before {
   padding: 8px 14px; border-radius: 8px; transition: all 0.2s ease;
 }
 .nav-link:hover { background: rgba(184, 92, 56, 0.06); }
+.nav-link--cta {
+  margin-left: 6px; font-weight: 600; color: #FFFCF7;
+  background: linear-gradient(135deg, #B85C38 0%, #C2793D 100%);
+  padding: 8px 16px; border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(184, 92, 56, 0.2);
+}
+.nav-link--cta:hover {
+  background: linear-gradient(135deg, #B85C38 0%, #C2793D 100%);
+  box-shadow: 0 4px 14px rgba(184, 92, 56, 0.3);
+}
 .nav-group { position: relative; }
 .nav-link--group {
   font-family: inherit; font-size: 13.5px; font-weight: 500; color: var(--ink-soft);
@@ -158,6 +168,7 @@ body::before {
     max-height: calc(100vh - 90px); overflow-y: auto;
   }
   .nav-links.open { display: flex; }
+  .nav-link--cta { margin-left: 0; margin-top: 6px; text-align: center; }
   .nav-group { position: static; }
   .nav-link--group { width: 100%; justify-content: space-between; }
   .nav-menu {

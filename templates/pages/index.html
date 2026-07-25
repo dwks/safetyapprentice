@@ -1,85 +1,94 @@
 {% extends "base.html" %}
 
 {% block page_css %}
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  /* --- themed section headings --- */
+  .theme { margin-bottom: 26px; }
+  .theme:not(:first-child) { margin-top: 64px; }
+  .theme__label {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 11.5px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--theme); margin: 0 0 10px;
+  }
+  .theme__label::after {
+    content: ''; flex: 1; height: 1px; background: var(--line-strong); opacity: 0.7;
+  }
+  .theme__title {
+    font-family: 'Lora', serif; font-size: 28px; font-weight: 600;
+    color: var(--ink); margin: 0 0 8px; line-height: 1.25;
+  }
+  .theme__desc {
+    font-size: 16px; color: var(--ink-soft); line-height: 1.7;
+    margin: 0; max-width: 620px;
+  }
 
-  .pair-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+  /* --- card grids --- */
+  .card-grid { display: grid; gap: 24px; }
+  .card-grid--3 { grid-template-columns: repeat(3, 1fr); }
+  .card-grid--2 { grid-template-columns: repeat(2, 1fr); }
 
   .card {
-      display: block; text-decoration: none; color: inherit;
-      background: #FFFCF7; border-radius: 18px; border: 1px solid #E8E0D4;
-      overflow: hidden; transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
-      box-shadow: 0 2px 8px rgba(120, 80, 40, 0.04); height: 100%;
-    }
-
+    display: block; text-decoration: none; color: inherit;
+    background: var(--card); border-radius: 18px; border: 1px solid var(--line);
+    overflow: hidden; transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 2px 8px rgba(120, 80, 40, 0.04); height: 100%;
+  }
   .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 48px rgba(120, 80, 40, 0.12), 0 4px 12px rgba(120, 80, 40, 0.06);
-    }
-
-  .card__bar { height: 5px; transition: height 0.3s ease; }
-
+    transform: translateY(-6px);
+    box-shadow: 0 20px 48px rgba(120, 80, 40, 0.12), 0 4px 12px rgba(120, 80, 40, 0.06);
+  }
+  .card__bar { height: 5px; transition: height 0.3s ease; background: var(--bar); }
   .card:hover .card__bar { height: 6px; }
-
   .card__body { padding: 26px 26px 22px; }
-
   .card__top { display: flex; justify-content: flex-end; align-items: flex-start; margin-bottom: 14px; }
-
   .card__icon { font-size: 28px; line-height: 1; }
-
   .card__title {
-      font-family: 'Lora', serif; font-size: 21px; font-weight: 600;
-      color: #2C2520; margin: 0 0 10px; line-height: 1.25;
-    }
-
-  .card__desc { font-size: 14.5px; color: #6B6058; margin: 0; line-height: 1.6; }
-
+    font-family: 'Lora', serif; font-size: 21px; font-weight: 600;
+    color: var(--ink); margin: 0 0 10px; line-height: 1.25;
+  }
+  .card__desc { font-size: 14.5px; color: var(--ink-soft); margin: 0; line-height: 1.6; }
   .card__arrow {
-      margin-top: 16px; display: flex; align-items: center; gap: 6px;
-      font-size: 13px; font-weight: 600; opacity: 0.5;
-      transform: translateX(0); transition: all 0.3s ease;
-    }
-
+    margin-top: 16px; display: flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 600; opacity: 0.5; color: var(--tone);
+    transform: translateX(0); transition: all 0.3s ease;
+  }
   .card:hover .card__arrow { opacity: 1; transform: translateX(4px); }
-
   .card__arrow span { font-size: 16px; }
 
+  /* --- consulting --- */
   .consult {
-      display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
-      background: #FFFCF7; border: 1px solid #E8E0D4; border-left: 4px solid #B85C38;
-      border-radius: 14px; padding: 24px 28px; margin-top: 24px;
-      box-shadow: 0 2px 8px rgba(120, 80, 40, 0.04);
-    }
-
+    display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+    background: var(--card); border: 1px solid var(--line); border-left: 4px solid #B85C38;
+    border-radius: 14px; padding: 24px 28px; margin-top: 64px;
+    box-shadow: 0 2px 8px rgba(120, 80, 40, 0.04);
+  }
   .consult__icon { font-size: 30px; line-height: 1; }
-
   .consult__text { flex: 1 1 340px; }
-
   .consult__title {
-      font-family: 'Lora', serif; font-size: 18px; font-weight: 600;
-      color: #2C2520; margin: 0 0 6px;
-    }
-
-  .consult__desc { font-size: 14.5px; color: #6B6058; margin: 0; line-height: 1.6; }
-
+    font-family: 'Lora', serif; font-size: 18px; font-weight: 600;
+    color: var(--ink); margin: 0 0 6px;
+  }
+  .consult__desc { font-size: 14.5px; color: var(--ink-soft); margin: 0; line-height: 1.6; }
   .consult__link {
-      flex: 0 0 auto; font-size: 14.5px; font-weight: 600; text-decoration: none;
-      color: #FFFCF7; background: linear-gradient(135deg, #B85C38 0%, #C2793D 100%);
-      padding: 12px 22px; border-radius: 10px; transition: all 0.25s ease;
-      box-shadow: 0 2px 8px rgba(184, 92, 56, 0.2);
-    }
-
+    flex: 0 0 auto; font-size: 14.5px; font-weight: 600; text-decoration: none;
+    color: var(--card); background: linear-gradient(135deg, #B85C38 0%, #C2793D 100%);
+    padding: 12px 22px; border-radius: 10px; transition: all 0.25s ease;
+    box-shadow: 0 2px 8px rgba(184, 92, 56, 0.2);
+  }
   .consult__link:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(184, 92, 56, 0.28);
-    }
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(184, 92, 56, 0.28);
+  }
 
-  @media (max-width: 720px) {
-      .pair-row { grid-template-columns: 1fr; }
-      .content { padding: 0 20px; }
-      .consult { padding: 22px 20px; }
-      .consult__link { width: 100%; text-align: center; }
-    }
+  @media (max-width: 900px) {
+    .card-grid--3 { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .card-grid--3, .card-grid--2 { grid-template-columns: 1fr; }
+    .theme:not(:first-child) { margin-top: 48px; }
+    .theme__title { font-size: 24px; }
+    .consult { padding: 22px 20px; margin-top: 48px; }
+    .consult__link { width: 100%; text-align: center; }
+  }
 {% endblock %}
 
 {% block hero %}
@@ -99,121 +108,139 @@
 {% block content %}
 <section class="content">
 
-  <!-- Why AI Safety + Getting hired -->
-  <div class="pair-row">
+  <!-- ============================ LEARN ============================ -->
+  <div class="theme fade-in" style="--theme: #B85C38;">
+    <p class="theme__label">01 — Learn</p>
+    <h2 class="theme__title">Understand the problem</h2>
+    <p class="theme__desc">
+      Why the field exists, how it got here, and the vocabulary you'll need to follow a
+      conversation without nodding along.
+    </p>
+  </div>
+
+  <div class="card-grid card-grid--3">
     <div class="fade-in" style="transition-delay: 0.05s;">
-      <a href="why-ai-safety.html" class="card">
-        <div class="card__bar" style="background: linear-gradient(135deg, #B85C38 0%, #E08457 100%);"></div>
+      <a href="why-ai-safety.html" class="card" style="--bar: linear-gradient(135deg, #B85C38 0%, #E08457 100%); --tone: #B85C38;">
+        <div class="card__bar"></div>
         <div class="card__body">
-          <div class="card__top">
-            <span class="card__icon">🌍</span>
-          </div>
+          <div class="card__top"><span class="card__icon">🌍</span></div>
           <h3 class="card__title">Why AI Safety Matters</h3>
-          <p class="card__desc">Why thoughtful people are dedicating their careers to making AI go well — and why you might want to join them.</p>
-          <div class="card__arrow" style="color: #B85C38;">Explore <span>→</span></div>
+          <p class="card__desc">The case for taking this seriously, and a framework for thinking about risk: misuse, misalignment, and systemic.</p>
+          <div class="card__arrow">Explore <span>→</span></div>
         </div>
       </a>
     </div>
     <div class="fade-in" style="transition-delay: 0.12s;">
-      <a href="hard-to-get-hired.html" class="card">
-        <div class="card__bar" style="background: linear-gradient(135deg, #A45B5B 0%, #C47878 100%);"></div>
+      <a href="timeline.html" class="card" style="--bar: linear-gradient(135deg, #9B6B5C 0%, #BF8D7D 100%); --tone: #9B6B5C;">
+        <div class="card__bar"></div>
         <div class="card__body">
-          <div class="card__top">
-            <span class="card__icon">📉</span>
-          </div>
+          <div class="card__top"><span class="card__icon">📅</span></div>
+          <h3 class="card__title">Key Events</h3>
+          <p class="card__desc">The papers, capability milestones, policy moves, and incidents that shaped the field — from <em>Superintelligence</em> to models escaping their sandboxes.</p>
+          <div class="card__arrow">Explore <span>→</span></div>
+        </div>
+      </a>
+    </div>
+    <div class="fade-in" style="transition-delay: 0.19s;">
+      <a href="concept-map.html" class="card" style="--bar: linear-gradient(135deg, #8B6F5C 0%, #AD8E7A 100%); --tone: #8B6F5C;">
+        <div class="card__bar"></div>
+        <div class="card__body">
+          <div class="card__top"><span class="card__icon">🗺️</span></div>
+          <h3 class="card__title">A Field Map of AI Safety</h3>
+          <p class="card__desc">Mesa-optimisers, scheming, scalable oversight — the core concepts, each with a definition, the key papers, and the open problems.</p>
+          <div class="card__arrow">Explore <span>→</span></div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- ========================== GETTING IN ========================== -->
+  <div class="theme fade-in" style="--theme: #C2793D;">
+    <p class="theme__label">02 — Getting in</p>
+    <h2 class="theme__title">Find your way in</h2>
+    <p class="theme__desc">
+      What hiring actually looks like right now, the programs that work as entry points,
+      and how to pay for the transition.
+    </p>
+  </div>
+
+  <div class="card-grid card-grid--2">
+    <div class="fade-in" style="transition-delay: 0.05s;">
+      <a href="hard-to-get-hired.html" class="card" style="--bar: linear-gradient(135deg, #A45B5B 0%, #C47878 100%); --tone: #A45B5B;">
+        <div class="card__bar"></div>
+        <div class="card__body">
+          <div class="card__top"><span class="card__icon">📉</span></div>
           <h3 class="card__title">Getting hired in AI safety</h3>
           <p class="card__desc">The job market is structurally tough for junior researchers — here's why, and what actually gets you a foot in the door.</p>
-          <div class="card__arrow" style="color: #A45B5B;">Explore <span>→</span></div>
+          <div class="card__arrow">Explore <span>→</span></div>
+        </div>
+      </a>
+    </div>
+    <div class="fade-in" style="transition-delay: 0.12s;">
+      <a href="fellowships.html" class="card" style="--bar: linear-gradient(135deg, #C2793D 0%, #E09B5F 100%); --tone: #C2793D;">
+        <div class="card__bar"></div>
+        <div class="card__body">
+          <div class="card__top"><span class="card__icon">🎓</span></div>
+          <h3 class="card__title">Fellowships</h3>
+          <p class="card__desc">MATS, ERA, LASR Labs, ARENA and beyond — how programs work, what they look for, and how to build a strong application.</p>
+          <div class="card__arrow">Explore <span>→</span></div>
+        </div>
+      </a>
+    </div>
+    <div class="fade-in" style="transition-delay: 0.05s;">
+      <a href="funding.html" class="card" style="--bar: linear-gradient(135deg, #8B7040 0%, #B09358 100%); --tone: #8B7040;">
+        <div class="card__bar"></div>
+        <div class="card__body">
+          <div class="card__top"><span class="card__icon">💰</span></div>
+          <h3 class="card__title">Funding &amp; Grants</h3>
+          <p class="card__desc">How to find grants, write proposals, and fund your transition into alignment work.</p>
+          <div class="card__arrow">Explore <span>→</span></div>
+        </div>
+      </a>
+    </div>
+    <div class="fade-in" style="transition-delay: 0.12s;">
+      <a href="jobs.html" class="card" style="--bar: linear-gradient(135deg, #4A7C6F 0%, #6FA294 100%); --tone: #4A7C6F;">
+        <div class="card__bar"></div>
+        <div class="card__body">
+          <div class="card__top"><span class="card__icon">💼</span></div>
+          <h3 class="card__title">Job Listings</h3>
+          <p class="card__desc">Where roles actually get posted, starting with the 80,000 Hours board — and why many positions never get advertised at all.</p>
+          <div class="card__arrow">Explore <span>→</span></div>
         </div>
       </a>
     </div>
   </div>
 
-  <!-- Geography + Conferences -->
-  <div class="pair-row">
+  <!-- ========================== COMMUNITY =========================== -->
+  <div class="theme fade-in" style="--theme: #C4687A;">
+    <p class="theme__label">03 — Community</p>
+    <h2 class="theme__title">Find your people</h2>
+    <p class="theme__desc">
+      AI safety runs on people who know each other. These are the places they cluster,
+      and the events where you can meet them.
+    </p>
+  </div>
+
+  <div class="card-grid card-grid--2">
     <div class="fade-in" style="transition-delay: 0.05s;">
-      <a href="geography.html" class="card">
-        <div class="card__bar" style="background: linear-gradient(135deg, #C4687A 0%, #D98E9C 100%);"></div>
+      <a href="geography.html" class="card" style="--bar: linear-gradient(135deg, #C4687A 0%, #D98E9C 100%); --tone: #C4687A;">
+        <div class="card__bar"></div>
         <div class="card__body">
-          <div class="card__top">
-            <span class="card__icon">📍</span>
-          </div>
+          <div class="card__top"><span class="card__icon">📍</span></div>
           <h3 class="card__title">Geography of AI Safety</h3>
           <p class="card__desc">The coworking spaces, hubs, and cities where safety researchers cluster — from Constellation in Berkeley to LISA in London.</p>
-          <div class="card__arrow" style="color: #C4687A;">Explore <span>→</span></div>
+          <div class="card__arrow">Explore <span>→</span></div>
         </div>
       </a>
     </div>
     <div class="fade-in" style="transition-delay: 0.12s;">
-      <a href="conferences.html" class="card">
-        <div class="card__bar" style="background: linear-gradient(135deg, #A0784C 0%, #C49A6C 100%);"></div>
+      <a href="conferences.html" class="card" style="--bar: linear-gradient(135deg, #A0784C 0%, #C49A6C 100%); --tone: #A0784C;">
+        <div class="card__bar"></div>
         <div class="card__body">
-          <div class="card__top">
-            <span class="card__icon">🎤</span>
-          </div>
-          <h3 class="card__title">Conferences & Events</h3>
+          <div class="card__top"><span class="card__icon">🎤</span></div>
+          <h3 class="card__title">Conferences &amp; Events</h3>
           <p class="card__desc">The recurring conferences, workshops, and unconferences that shape the field — and how to get the most from your first one.</p>
-          <div class="card__arrow" style="color: #A0784C;">Explore <span>→</span></div>
-        </div>
-      </a>
-    </div>
-  </div>
-
-  <!-- Fellowships + Funding -->
-  <div class="pair-row">
-    <div class="fade-in" style="transition-delay: 0.05s;">
-      <a href="fellowships.html" class="card">
-        <div class="card__bar" style="background: linear-gradient(135deg, #C2793D 0%, #E09B5F 100%);"></div>
-        <div class="card__body">
-          <div class="card__top">
-            <span class="card__icon">🎓</span>
-          </div>
-          <h3 class="card__title">Fellowships</h3>
-          <p class="card__desc">MATS, ARENA, Astra, and beyond — how programs work, what they look for, and how to build a strong application.</p>
-          <div class="card__arrow" style="color: #C2793D;">Explore <span>→</span></div>
-        </div>
-      </a>
-    </div>
-    <div class="fade-in" style="transition-delay: 0.12s;">
-      <a href="funding.html" class="card">
-        <div class="card__bar" style="background: linear-gradient(135deg, #8B7040 0%, #B09358 100%);"></div>
-        <div class="card__body">
-          <div class="card__top">
-            <span class="card__icon">💰</span>
-          </div>
-          <h3 class="card__title">Funding & Grants</h3>
-          <p class="card__desc">How to find grants, write proposals, and fund your transition into alignment work.</p>
-          <div class="card__arrow" style="color: #8B7040;">Explore <span>→</span></div>
-        </div>
-      </a>
-    </div>
-  </div>
-
-  <!-- Key Events + Field Map -->
-  <div class="pair-row" style="margin-bottom: 0;">
-    <div class="fade-in" style="transition-delay: 0.05s;">
-      <a href="timeline.html" class="card">
-        <div class="card__bar" style="background: linear-gradient(135deg, #9B6B5C 0%, #BF8D7D 100%);"></div>
-        <div class="card__body">
-          <div class="card__top">
-            <span class="card__icon">📅</span>
-          </div>
-          <h3 class="card__title">Key Events</h3>
-          <p class="card__desc">A timeline of the papers, capability milestones, policy moves, and incidents that shaped the field — from <em>Superintelligence</em> to models breaking out of their sandboxes.</p>
-          <div class="card__arrow" style="color: #9B6B5C;">Explore <span>→</span></div>
-        </div>
-      </a>
-    </div>
-    <div class="fade-in" style="transition-delay: 0.12s;">
-      <a href="concept-map.html" class="card">
-        <div class="card__bar" style="background: linear-gradient(135deg, #4A7C6F 0%, #6FA294 100%);"></div>
-        <div class="card__body">
-          <div class="card__top">
-            <span class="card__icon">🗺️</span>
-          </div>
-          <h3 class="card__title">A Field Map of AI Safety</h3>
-          <p class="card__desc">Mesa-optimisers, scheming, scalable oversight — 29 core concepts across foundations, threat models, alignment, evaluation, and governance. Each with a definition, the key papers, and the open problems.</p>
-          <div class="card__arrow" style="color: #4A7C6F;">Explore <span>→</span></div>
+          <div class="card__arrow">Explore <span>→</span></div>
         </div>
       </a>
     </div>

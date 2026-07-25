@@ -30,6 +30,7 @@ SITE["nav"] = [
         {"label": "Conferences &amp; Events", "href": "conferences.html"},
     ]},
     {"label": "About", "href": "about.html"},
+    {"label": "Mentoring", "href": SITE["consulting"], "external": True, "cta": True},
 ]
 
 SITE["footer_links"] = [

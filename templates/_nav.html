@@ -15,7 +15,7 @@
       </div>
     </div>
     {%- else %}
-    <a href="{{ item.href }}" class="nav-link"{% if item.href == page.slug ~ '.html' %} aria-current="page"{% endif %}>{{ item.label }}</a>
+    <a href="{{ item.href }}" class="nav-link{% if item.cta is defined and item.cta %} nav-link--cta{% endif %}"{% if item.external is defined and item.external %} target="_blank" rel="noopener"{% endif %}{% if item.href == page.slug ~ '.html' %} aria-current="page"{% endif %}>{{ item.label }}</a>
     {%- endif %}
   {%- endfor %}
   </div>
