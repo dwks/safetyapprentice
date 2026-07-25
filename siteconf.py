@@ -9,6 +9,12 @@ SITE = {
     "repo": "https://github.com/dwks/safetyapprentice",
     "consulting": "https://dwkmentoring.com",
     "footer_note": "The Safety Apprentice is a community resource started by David Williams-King.",
+
+    # Optional Plausible analytics. None disables it entirely — no script is
+    # emitted. Set to the domain you registered with Plausible to switch on.
+    # See docs/analytics.md, including how to proxy it through this domain.
+    "plausible": None,
+    "plausible_src": "https://plausible.io/js/script.js",
 }
 
 SITE["nav"] = [

@@ -1,8 +1,9 @@
 # Analytics
 
-The site carries **no analytics script, no cookies, and no third-party
-requests**. Visitor numbers come from nginx's own access logs, aggregated on
-the server with [GoAccess](https://goaccess.io).
+Visitor numbers come from nginx's own access logs, aggregated on the server
+with [GoAccess](https://goaccess.io). By default the site carries **no
+analytics script, no cookies, and no third-party requests** — optional
+[Plausible](#plausible) support exists but ships disabled.
 
 That choice is deliberate. This site's audience is unusually likely to run
 tracker blockers, so a client-side tool like Google Analytics would undercount
@@ -286,12 +287,51 @@ block list rather than a replacement.
   countries are what logs can tell you.
 - No live data. The dashboard updates once a day at rotation.
 
-## If you ever want more
+## Plausible
 
-The natural next step is [Plausible](https://plausible.io) — ~1KB, cookieless,
-no consent banner, self-hostable. It would give per-page and live figures, at
-the cost of a script on the page and being blockable by some lists (avoidable by
-proxying it through this domain).
+Logs are an *upper* bound: they count every bot that doesn't announce itself.
+[Plausible](https://plausible.io) is the natural complement — a ~1KB cookieless
+beacon that crawlers never trigger, because they don't run JavaScript. It is a
+*lower* bound, since some visitors block it. Real readership is between the two,
+and having both numbers is more informative than either alone.
 
-If that happens, add an `analytics` field to `siteconf.py` and a conditional
-script tag in `templates/base.html`, so it stays one line to enable or remove.
+It also removes the manual work: bot filtering becomes Plausible's problem, and
+the dashboard reports visitors and pages directly rather than requests.
+
+### Enabling it
+
+Support is already wired in and disabled. In `siteconf.py`:
+
+```python
+"plausible": "safetyapprentice.com",     # was None
+```
+
+Rebuild, and a single deferred script tag appears in the head of every page.
+Set it back to `None` to remove it completely — no leftovers.
+
+Sign up at plausible.io first (from ~€9/month), or
+[self-host](https://github.com/plausible/community-edition) it free, in which
+case also point `plausible_src` at your own instance.
+
+### Proxying it through this domain
+
+Plausible's default domain is on several blocklists, so a meaningful slice of
+this audience would block it. Serving the script and collecting events from
+`safetyapprentice.com` avoids that, and makes the request first-party.
+
+Add a proxy to the nginx server block and set:
+
+```python
+"plausible_src": "/js/script.js",
+```
+
+Plausible documents the nginx configuration —
+[follow their proxy guide](https://plausible.io/docs/proxy/introduction) rather
+than copying a snippet from here, as the upstream hostnames have changed before.
+
+### If you enable it
+
+The site would no longer be script-free, so the claim at the top of this file
+needs revising, and a short privacy line on the about page becomes worth adding.
+Plausible sets no cookies and stores no personal data, so it stays a couple of
+sentences and no consent banner is required.
