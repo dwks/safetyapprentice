@@ -1,0 +1,8 @@
+<footer class="footer">
+  <p>
+  {%- for link in site.footer_links %}
+    <a href="{{ link.href }}"{% if link.external is defined and link.external %} target="_blank" rel="noopener"{% endif %}>{{ link.label }}</a>{% if not loop.last %} ·{% endif %}
+  {%- endfor %}
+  </p>
+  <p class="small">{{ site.footer_note }}</p>
+</footer>

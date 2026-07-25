@@ -1,0 +1,245 @@
+{% extends "base.html" %}
+
+{% block page_css %}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* Prose */
+  .prose { margin-bottom: 48px; }
+
+  .prose h2 {
+      font-family: 'Lora', serif; font-size: 26px; font-weight: 600;
+      color: #2C2520; margin: 0 0 16px; line-height: 1.3;
+    }
+
+  .prose p {
+      font-size: 16px; color: #4A413A; line-height: 1.8; margin-bottom: 18px;
+    }
+
+  .prose p:last-child { margin-bottom: 0; }
+
+  .prose strong { color: #2C2520; font-weight: 600; }
+
+  .prose a {
+      color: #8B7040; text-decoration: underline; text-underline-offset: 3px;
+      font-weight: 500; transition: color 0.2s ease;
+    }
+
+  .prose a:hover { color: #6B5530; }
+
+  /* Category sections */
+  .category { margin-bottom: 48px; }
+
+  .category__header {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 20px;
+    }
+
+  .category__icon { font-size: 28px; line-height: 1; }
+
+  .category__name {
+      font-family: 'Lora', serif; font-size: 22px; font-weight: 600; color: #2C2520;
+    }
+
+  .sources-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+    }
+
+  /* Source card */
+  .source {
+      background: #FFFCF7; border-radius: 16px; border: 1px solid #E8E0D4;
+      padding: 24px 24px 20px; position: relative;
+      transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+      box-shadow: 0 2px 8px rgba(120, 80, 40, 0.04);
+    }
+
+  .source:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(120, 80, 40, 0.1), 0 4px 12px rgba(120, 80, 40, 0.05);
+    }
+
+  .source__type {
+      font-size: 11.5px; font-weight: 600; letter-spacing: 0.06em;
+      text-transform: uppercase; color: #8B7040; margin-bottom: 8px;
+    }
+
+  .source__name {
+      font-family: 'Lora', serif; font-size: 19px; font-weight: 600;
+      color: #2C2520; margin-bottom: 8px; line-height: 1.3;
+    }
+
+  .source__desc {
+      font-size: 14px; color: #6B6058; line-height: 1.6; margin-bottom: 14px;
+    }
+
+  .source__meta {
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+
+  .source__tag {
+      font-size: 11.5px; font-weight: 500; color: #8B7E72;
+      background: rgba(240, 233, 223, 0.85); border: 1px solid #E0D6C8;
+      padding: 4px 10px; border-radius: 100px;
+    }
+
+  .source__tag--highlight {
+      color: #8B7040; background: rgba(139, 112, 64, 0.06);
+      border-color: rgba(139, 112, 64, 0.15);
+    }
+
+  /* Callout banner */
+  .callout {
+      background: linear-gradient(135deg, #2C2520 0%, #3D3028 50%, #2C2520 100%);
+      border-radius: 20px; padding: 40px 40px 36px;
+      box-shadow: 0 12px 40px rgba(44, 37, 32, 0.2);
+      position: relative; overflow: hidden; margin-bottom: 48px;
+    }
+
+  .callout__glow {
+      position: absolute; top: -60px; right: -40px; width: 240px; height: 240px;
+      border-radius: 50%; background: radial-gradient(circle, rgba(139,112,64,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+  .callout__title {
+      font-family: 'Lora', serif; font-size: 22px; color: #F5EDE3;
+      margin: 0 0 8px; font-weight: 600; line-height: 1.3;
+    }
+
+  .callout__desc {
+      font-size: 15px; color: #C4B8AA; margin: 0; line-height: 1.6; max-width: 600px;
+    }
+
+  @media (max-width: 720px) {
+      .sources-grid { grid-template-columns: 1fr; }
+      .content { padding: 0 20px; }
+      .callout { padding: 32px 24px 28px; }
+    }
+{% endblock %}
+
+{% block hero %}
+<header class="hero">
+  <h1>
+    Funding &<br />
+    <span>Grants</span>
+  </h1>
+  <p class="tagline">
+    You don't need to work at a lab to do AI safety research. Independent research is viable — if you know where to find funding and support.
+  </p>
+</header>
+{% endblock %}
+
+{% block content %}
+<section class="content">
+
+  <!-- Independent research intro -->
+  <div class="prose fade-in">
+    <h2>Getting started as an independent researcher</h2>
+    <p>
+      Many of the most impactful contributions to AI safety have come from independent researchers — people who aren't employed by a major lab but are doing serious, original work. The ecosystem is set up to support this: there are grants specifically for independent alignment research, coworking spaces that provide community and structure, and visiting researcher programs that give you access to resources without a full-time position.
+    </p>
+    <p>
+      The typical path looks something like this: complete a fellowship or program to build your skills, develop a concrete research agenda, then apply for funding to support 6-12 months of independent work. Many researchers base themselves at a coworking space like <a href="geography.html">Constellation, LISA, or Meridian</a> for the community and accountability.
+    </p>
+    <p>
+      The bar for funding is lower than you might think. Grantmakers in this space are actively looking for promising researchers and are willing to take bets on people early in their careers. <strong>A clear research question, a credible plan for investigating it, and evidence that you can execute</strong> — that's often enough to get started. For a practical guide to the grant writing process, see Marc Sheraton-Sherbourne's <a href="https://marcgeddes.uk/opinion/everything-i-learnt-about-grant-writing-without-going-mad" target="_blank" rel="noopener noreferrer">Everything I Learnt About Grant Writing Without Going Mad</a>.
+    </p>
+  </div>
+
+  <!-- Funding sources -->
+  <div class="category fade-in">
+    <div class="category__header">
+      <span class="category__icon">💰</span>
+      <h2 class="category__name">Where to Apply for Funding</h2>
+    </div>
+    <div class="sources-grid">
+
+      <div class="source">
+        <div class="source__type">Career transition grant</div>
+        <div class="source__name">Coefficient Giving — Career Transition</div>
+        <div class="source__desc">Specifically designed for people transitioning into AI safety work. Provides funding to cover living costs while you ramp up your skills and research. One of the few grants explicitly targeting career changers — if you're leaving another field for alignment work, this should be your first stop.</div>
+        <div class="source__meta">
+          <span class="source__tag source__tag--highlight">Career changers</span>
+          <span class="source__tag">Living costs</span>
+          <span class="source__tag">Transition support</span>
+        </div>
+      </div>
+
+      <div class="source">
+        <div class="source__type">Research grant</div>
+        <div class="source__name">Long-Term Future Fund (LTFF)</div>
+        <div class="source__desc">Run by Effective Ventures, the LTFF is one of the most active funders of independent AI safety research. Grants range from small project funding to full-time research support. They review applications on a rolling basis and are known for being willing to fund early-career researchers with strong proposals.</div>
+        <div class="source__meta">
+          <span class="source__tag source__tag--highlight">Major funder</span>
+          <span class="source__tag">Rolling applications</span>
+          <span class="source__tag">Flexible scope</span>
+        </div>
+      </div>
+
+      <div class="source">
+        <div class="source__type">Research grant</div>
+        <div class="source__name">Future of Life Institute (FLI)</div>
+        <div class="source__desc">FLI runs grant programs focused on existential risk from AI, including technical safety research and AI governance. Their grants tend to be larger and more structured — well-suited for researchers with a defined agenda and track record, or for collaborative projects between multiple researchers.</div>
+        <div class="source__meta">
+          <span class="source__tag">X-risk focused</span>
+          <span class="source__tag">Larger grants</span>
+          <span class="source__tag">Technical & governance</span>
+        </div>
+      </div>
+
+      <div class="source">
+        <div class="source__type">Crowdfunding / Regranting</div>
+        <div class="source__name">Manifund</div>
+        <div class="source__desc">A regranting and crowdfunding platform where you can pitch your research project directly to funders in the AI safety community. More lightweight than a traditional grant application — you create a project page, and regrantors or individual donors can fund it. Good for smaller projects, pilot studies, or supplementary funding.</div>
+        <div class="source__meta">
+          <span class="source__tag">Regranting</span>
+          <span class="source__tag">Crowdfunding</span>
+          <span class="source__tag">Low barrier</span>
+          <span class="source__tag">Fast turnaround</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Visiting researcher programs -->
+  <div class="category fade-in">
+    <div class="category__header">
+      <span class="category__icon">🏠</span>
+      <h2 class="category__name">Visiting Researcher Programs</h2>
+    </div>
+    <div class="sources-grid">
+
+      <div class="source">
+        <div class="source__type">Cambridge, UK</div>
+        <div class="source__name">Meridian — Visiting Researcher Program</div>
+        <div class="source__desc">Meridian offers a visiting researcher program that gives you desk space, community, and access to the Cambridge AI safety ecosystem for a defined period. A good option if you want to spend time in Cambridge working on your research while connecting with the local safety community.</div>
+        <div class="source__meta">
+          <span class="source__tag">Desk space</span>
+          <span class="source__tag">Cambridge community</span>
+          <span class="source__tag">Temporary</span>
+        </div>
+      </div>
+
+      <div class="source">
+        <div class="source__type">Berkeley, CA</div>
+        <div class="source__name">Constellation — Visiting Researchers</div>
+        <div class="source__desc">Constellation welcomes visiting researchers who are working on AI safety. As the largest safety coworking space, it offers unparalleled access to the Berkeley alignment community — including MATS scholars, independent researchers, and people from major labs. Being at Constellation for even a few weeks can transform your network and research direction.</div>
+        <div class="source__meta">
+          <span class="source__tag source__tag--highlight">Major hub</span>
+          <span class="source__tag">Berkeley community</span>
+          <span class="source__tag">Networking</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Tip callout -->
+  <div class="fade-in callout">
+    <div class="callout__glow"></div>
+    <h3 class="callout__title">Writing a strong grant application</h3>
+    <p class="callout__desc">Be specific about what you'll work on and why it matters for AI safety. Grantmakers see many vague proposals — the ones that stand out have a clear research question, a concrete plan for the first few months, and honest reasoning about why this approach might work. If you've done a fellowship or published on the Alignment Forum, reference that work directly.</p>
+  </div>
+
+</section>
+{% endblock %}

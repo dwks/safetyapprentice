@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{% if page.title %}{{ page.title }} — {{ site.name }}{% else %}{{ site.name }}{% endif %}</title>
+{%- if page.description %}
+<meta name="description" content="{{ page.description }}" />
+{%- endif %}
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<style>
+  :root {
+    --accent: {{ page.accent[0] }};
+    --accent-2: {{ page.accent[1] }};
+    --accent-3: {{ page.accent[2] }};
+    --content-width: {{ page.content_width }}px;
+  }
+{% block page_css %}{% endblock %}
+</style>
+</head>
+<body>
+
+{% block background %}
+<div class="map-bg">
+  <div class="map-bg__img"></div>
+  <div class="map-bg__fade-bottom"></div>
+  <div class="map-bg__fade-top"></div>
+</div>
+{% endblock %}
+
+{% include "_nav.html" %}
+
+{% block hero %}{% endblock %}
+
+<div class="divider"></div>
+
+{% block content %}{% endblock %}
+
+{% include "_footer.html" %}
+
+<script src="site.js"></script>
+{% block scripts %}{% endblock %}
+
+</body>
+</html>

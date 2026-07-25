@@ -1,0 +1,23 @@
+<nav class="nav-bar" id="navbar">
+  <a class="nav-logo" href="index.html">
+    <div class="nav-logo__icon">{{ site.logo }}</div>
+    <span class="nav-logo__text">{{ site.name }}</span>
+  </a>
+  <div class="nav-links" id="navLinks">
+  {%- for item in site.nav %}
+    {%- if item.children is defined %}
+    <div class="nav-group{% if page.group == item.label %} nav-group--active{% endif %}">
+      <button class="nav-link nav-link--group" type="button" aria-expanded="false" aria-haspopup="true">{{ item.label }}<span class="nav-caret" aria-hidden="true">&#9662;</span></button>
+      <div class="nav-menu">
+      {%- for child in item.children %}
+        <a href="{{ child.href }}"{% if child.href == page.slug ~ '.html' %} aria-current="page"{% endif %}>{{ child.label }}</a>
+      {%- endfor %}
+      </div>
+    </div>
+    {%- else %}
+    <a href="{{ item.href }}" class="nav-link"{% if item.href == page.slug ~ '.html' %} aria-current="page"{% endif %}>{{ item.label }}</a>
+    {%- endif %}
+  {%- endfor %}
+  </div>
+  <button class="nav-toggle" id="navToggleTop" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">&#9776;</button>
+</nav>
