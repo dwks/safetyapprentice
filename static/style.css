@@ -308,6 +308,9 @@ a.item:hover .item__go { opacity: 1; transform: translateX(3px); }
 }
 
 .rows { display: block; }
+
+/* the rows pattern has its own top padding; the card grid does not */
+.group__head + .items-grid { margin-top: 20px; }
 .row {
   display: block; text-decoration: none; color: inherit;
   padding: 22px 0 20px; border-bottom: 1px solid var(--line);
