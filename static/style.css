@@ -95,9 +95,11 @@ body::before {
 .nav-logo__icon {
   width: 32px; height: 32px; border-radius: 10px;
   background: linear-gradient(135deg, #B85C38 0%, #C2793D 100%);
-  display: flex; align-items: center; justify-content: center; font-size: 16px;
+  display: flex; align-items: center; justify-content: center;
   box-shadow: 0 2px 8px rgba(184, 92, 56, 0.25);
+  color: #F8F3EC;                 /* the shield, not the tile */
 }
+.nav-logo__icon svg { width: 20px; height: 20px; display: block; }
 .nav-logo__text {
   font-family: 'Lora', serif; font-weight: 700; font-size: 18px; color: var(--ink);
 }

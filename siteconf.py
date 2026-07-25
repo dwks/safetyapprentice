@@ -6,7 +6,6 @@ adding an entry to PAGES and (if it should be linked) to NAV.
 
 SITE = {
     "name": "The Safety Apprentice",
-    "logo": "\U0001F6E1️",           # 🛡️
     "repo": "https://github.com/dwks/safetyapprentice",
     "consulting": "https://dwkmentoring.com",
     "footer_note": "The Safety Apprentice is a community resource started by David Williams-King.",
@@ -65,4 +64,5 @@ PAGES = [
 ]
 
 # Files copied verbatim into the output directory.
-ASSETS = ["map3b.png", "map3.png", "shokunin_World_Map.svg"]
+ASSETS = ["map3b.png", "map3.png", "shokunin_World_Map.svg",
+          "favicon.svg", "favicon.png", "favicon.ico", "apple-touch-icon.png"]
