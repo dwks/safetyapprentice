@@ -26,6 +26,9 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
+/* The navbar is fixed, so anything scrolled to via an in-page link would land
+   underneath it. Keep every potential anchor target clear of it. */
+[id] { scroll-margin-top: 90px; }
 body {
   background: var(--paper);
   -webkit-font-smoothing: antialiased;
