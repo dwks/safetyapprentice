@@ -168,46 +168,6 @@
   }
   .prose a:hover { opacity: 0.75; }
 
-  /* Section */
-  .section { margin-bottom: 48px; }
-  .section h2 {
-    font-family: 'Lora', serif; font-size: 26px; font-weight: 600;
-    color: #2C2520; margin: 0 0 8px; line-height: 1.3;
-  }
-  .section > p.section__intro {
-    font-size: 16px; color: #6B6058; line-height: 1.7; margin-bottom: 24px;
-  }
-
-  /* Board cards */
-  .boards { display: flex; flex-direction: column; gap: 16px; }
-  .board {
-    display: flex; align-items: center; gap: 20px;
-    background: #FFFCF7; border-radius: 16px; border: 1px solid #E8E0D4;
-    padding: 22px 24px; text-decoration: none; color: inherit;
-    transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
-    box-shadow: 0 2px 8px rgba(120, 80, 40, 0.04);
-  }
-  .board:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 40px rgba(120, 80, 40, 0.1), 0 4px 12px rgba(120, 80, 40, 0.05);
-  }
-  .board__icon {
-    width: 52px; height: 52px; border-radius: 14px; flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center; font-size: 26px;
-    background: rgba(74, 124, 111, 0.05); border: 1px solid rgba(74, 124, 111, 0.1);
-  }
-  .board__text { flex: 1; min-width: 0; }
-  .board__name {
-    font-family: 'Lora', serif; font-size: 18px; font-weight: 600;
-    color: #2C2520; margin: 0 0 5px; line-height: 1.3;
-  }
-  .board__desc { font-size: 14px; color: #6B6058; line-height: 1.6; margin: 0; }
-  .board__arrow {
-    font-size: 20px; color: #4A7C6F; opacity: 0.4; flex-shrink: 0;
-    transition: all 0.3s ease;
-  }
-  .board:hover .board__arrow { opacity: 1; transform: translateX(4px); }
-
   /* Dark callout */
   .callout {
     background: linear-gradient(135deg, #2C2520 0%, #3D3028 50%, #2C2520 100%);
@@ -260,8 +220,6 @@
     .primary { padding: 26px 22px; }
     .primary__btn { display: block; text-align: center; }
     .callout { padding: 28px 22px; }
-    .board { flex-direction: column; align-items: flex-start; gap: 14px; }
-    .board__arrow { display: none; }
   }
 
   /* ---- nav: grouped links + dropdowns ---- */
@@ -379,7 +337,7 @@
     <span>jobs are listed</span>
   </h1>
   <p class="tagline">
-    Almost every AI safety role gets posted in one place. Start there, then widen out.
+    Almost every AI safety role gets posted in one place.
   </p>
 </header>
 
@@ -424,52 +382,6 @@
       are the most reliable entry route, <a href="funding.html">grants</a> can fund your own project,
       and a personal recommendation from someone credible beats a cold application by a wide margin.
     </p>
-  </div>
-
-  <!-- Other boards -->
-  <div class="section fade-in">
-    <h2>Other places roles get posted</h2>
-    <p class="section__intro">Once you've worked through the main board, these are worth checking — especially the labs' own pages, which sometimes post before aggregators pick things up.</p>
-
-    <div class="boards">
-
-      <a class="board" href="https://aisafety.com/" target="_blank" rel="noopener noreferrer">
-        <div class="board__icon">🧭</div>
-        <div class="board__text">
-          <h3 class="board__name">AISafety.com</h3>
-          <p class="board__desc">A community-maintained hub linking jobs, training programmes, events, and funding in one place. Good for spotting opportunities that never reach a formal job board.</p>
-        </div>
-        <span class="board__arrow">→</span>
-      </a>
-
-      <a class="board" href="https://www.aisafety.careers/" target="_blank" rel="noopener noreferrer">
-        <div class="board__icon">🎯</div>
-        <div class="board__text">
-          <h3 class="board__name">AI Safety Careers</h3>
-          <p class="board__desc">Dedicated to AI safety roles specifically, with less of the broader effective-altruism framing. Useful as a cross-check against the main board.</p>
-        </div>
-        <span class="board__arrow">→</span>
-      </a>
-
-      <a class="board" href="https://www.lesswrong.com/" target="_blank" rel="noopener noreferrer">
-        <div class="board__icon">💬</div>
-        <div class="board__text">
-          <h3 class="board__name">LessWrong and the EA Forum</h3>
-          <p class="board__desc">Smaller orgs, independent researchers, and one-off collaborations often advertise here first — or never advertise anywhere else. Watch the job-posting tags.</p>
-        </div>
-        <span class="board__arrow">→</span>
-      </a>
-
-      <a class="board" href="https://www.anthropic.com/careers" target="_blank" rel="noopener noreferrer">
-        <div class="board__icon">🏢</div>
-        <div class="board__text">
-          <h3 class="board__name">Lab and org career pages</h3>
-          <p class="board__desc">Anthropic, Google DeepMind, OpenAI, Redwood Research, Apollo Research, METR, FAR.AI, and the UK AI Security Institute all run their own listings. Check them directly rather than waiting for a board to aggregate them.</p>
-        </div>
-        <span class="board__arrow">→</span>
-      </a>
-
-    </div>
   </div>
 
   <!-- Make your own role -->
