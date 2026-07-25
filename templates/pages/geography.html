@@ -177,11 +177,15 @@
       0.3342*lon*X(lat) + 43.81, y% = -64.96*Y(lat) + 60.88, where X and Y are
       the Robinson tables. To add a hub, run that formula and check it. -#}
   {%- set hubs = [
-        {'id': 'bay-area',  'label': 'Bay Area',  'x':  5.60, 'y': 29.70, 'n': 2, 'side': 'right'},
-        {'id': 'toronto',   'label': 'Toronto',   'x': 20.14, 'y': 26.48, 'n': 1, 'side': 'right'},
-        {'id': 'cambridge', 'label': 'Cambridge', 'x': 43.56, 'y': 18.99, 'n': 1, 'side': 'left', 'ly': -13},
-        {'id': 'london',    'label': 'London',    'x': 43.49, 'y': 19.53, 'n': 2, 'side': 'left', 'ly':  13},
-        {'id': 'singapore', 'label': 'Singapore', 'x': 78.85, 'y': 58.35, 'n': 1, 'side': 'left'}
+        {'id': 'bay-area',  'label': 'Bay Area',  'x':  5.60, 'y': 29.70, 'n': 4, 'side': 'right'},
+        {'id': 'toronto',   'label': 'Toronto',   'x': 20.14, 'y': 26.48, 'n': 1, 'side': 'right', 'ly': -12},
+        {'id': 'new-york',  'label': 'New York',  'x': 21.39, 'y': 28.82, 'n': 1, 'side': 'right', 'ly':  12},
+        {'id': 'blackpool', 'label': 'Blackpool', 'x': 42.67, 'y': 17.75, 'n': 1, 'side': 'left',  'ly': -26},
+        {'id': 'cambridge', 'label': 'Cambridge', 'x': 43.56, 'y': 18.99, 'n': 1, 'side': 'left',  'ly':   0},
+        {'id': 'london',    'label': 'London',    'x': 43.49, 'y': 19.53, 'n': 2, 'side': 'left',  'ly':  26},
+        {'id': 'zurich',    'label': 'Zurich',    'x': 46.05, 'y': 22.76, 'n': 1, 'side': 'right'},
+        {'id': 'singapore', 'label': 'Singapore', 'x': 78.85, 'y': 58.35, 'n': 1, 'side': 'left'},
+        {'id': 'sydney',    'label': 'Sydney',    'x': 91.70, 'y': 86.55, 'n': 1, 'side': 'left'}
       ] -%}
 
   <div class="worldmap fade-in">
@@ -195,7 +199,7 @@
       </a>
       {%- endfor %}
     </div>
-    <p class="worldmap__note">Select a pin to jump to a city.</p>
+    <p class="worldmap__note">Select a pin to jump to a city. For a fuller directory, including local meetup groups, see <a href="https://aisafety.com/communities" target="_blank" rel="noopener noreferrer">AISafety.com&rsquo;s community map</a>.</p>
   </div>
 
 
@@ -206,7 +210,7 @@
     <div class="group__head">
       <span class="group__icon">🇺🇸</span>
       <h2 class="group__name">San Francisco Bay Area</h2>
-      <span class="group__count">2 spaces</span>
+      <span class="group__count">4 spaces</span>
     </div>
           <div class="rows">
         <a class="row" href="https://www.constellation.org/" target="_blank" rel="noopener noreferrer">
@@ -226,6 +230,25 @@
           <p class="row__desc">A coworking space in San Francisco for people working on AI safety and existential risk reduction. Provides desk space, meeting rooms, and a community of alignment-focused professionals.</p>
           <p class="row__tags"><span>Coworking</span><span>Community</span><span>AI safety</span></p>
           <span class="row__go">Visit Mox →</span>
+        </a>
+
+        <a class="row" href="https://www.lighthaven.space/" target="_blank" rel="noopener noreferrer">
+          <div class="row__head">
+            <span class="row__name">Lighthaven</span>
+            <span class="row__where">Berkeley, CA</span>
+          </div>
+          <p class="row__desc">A campus run by Lightcone Infrastructure, used for conferences, retreats and workshops — LessOnline and Manifest among them. Less a desk-rental than a venue the community gathers at.</p>
+          <p class="row__tags"><span>Events</span><span>Venue</span><span>Community</span></p>
+          <span class="row__go">Visit Lighthaven &rarr;</span>
+        </a>
+        <a class="row" href="https://www.far.ai/programs#farlabs" target="_blank" rel="noopener noreferrer">
+          <div class="row__head">
+            <span class="row__name">FAR.Labs</span>
+            <span class="row__where">Berkeley, CA</span>
+          </div>
+          <p class="row__desc">A coworking space in downtown Berkeley run by FAR.AI, with desks, seminars and a research community aimed particularly at independent and early-career safety researchers.</p>
+          <p class="row__tags"><span>Coworking</span><span>Research</span><span>FAR.AI</span></p>
+          <span class="row__go">Visit FAR.Labs &rarr;</span>
         </a>
       </div>
   </div>
@@ -279,6 +302,44 @@
       </div>
   </div>
 
+  <div class="group fade-in" id="blackpool">
+    <div class="group__head">
+      <span class="group__icon">🇬🇧</span>
+      <h2 class="group__name">Blackpool, UK</h2>
+      <span class="group__count">1 space</span>
+    </div>
+      <div class="rows">
+        <a class="row" href="https://www.ceealar.org/" target="_blank" rel="noopener noreferrer">
+          <div class="row__head">
+            <span class="row__name">CEEALAR (the "EA Hotel")</span>
+            <span class="row__where">Blackpool</span>
+          </div>
+          <p class="row__desc">The Centre for Enabling EA Learning and Research offers free or heavily subsidised accommodation and workspace to people working on AI safety and other high-impact projects. An unusually cheap way to work on the problem full-time between roles or while waiting on funding.</p>
+          <p class="row__tags"><span>Free accommodation</span><span>Long stays</span><span>Low cost</span></p>
+          <span class="row__go">Visit CEEALAR &rarr;</span>
+        </a>
+      </div>
+  </div>
+
+  <div class="group fade-in" id="zurich">
+    <div class="group__head">
+      <span class="group__icon">🇨🇭</span>
+      <h2 class="group__name">Zurich, Switzerland</h2>
+      <span class="group__count">1 space</span>
+    </div>
+      <div class="rows">
+        <a class="row" href="https://peaks-office.ch/" target="_blank" rel="noopener noreferrer">
+          <div class="row__head">
+            <span class="row__name">PEAKS</span>
+            <span class="row__where">Zurich</span>
+          </div>
+          <p class="row__desc">A coworking space in central Zurich for people in AI safety and effective altruism. Home to EA Switzerland, Zurich AI Safety and Apollo Research, with meeting rooms, events and a small lending library.</p>
+          <p class="row__tags"><span>Coworking</span><span>Apollo Research</span><span>Community</span></p>
+          <span class="row__go">Visit PEAKS &rarr;</span>
+        </a>
+      </div>
+  </div>
+
   <!-- Singapore -->
   <div class="group fade-in" id="singapore">
     <div class="group__head">
@@ -299,6 +360,25 @@
       </div>
   </div>
 
+  <div class="group fade-in" id="sydney">
+    <div class="group__head">
+      <span class="group__icon">🇦🇺</span>
+      <h2 class="group__name">Sydney, Australia</h2>
+      <span class="group__count">1 space</span>
+    </div>
+      <div class="rows">
+        <a class="row" href="https://sydneyaisafetyspace.org/" target="_blank" rel="noopener noreferrer">
+          <div class="row__head">
+            <span class="row__name">Sydney AI Safety Space</span>
+            <span class="row__where">Sydney</span>
+          </div>
+          <p class="row__desc">A volunteer-run, donation-supported space in Chippendale giving free desks to people working on AI safety — technical research, policy, field-building or self-study. Members chip in on events and upkeep.</p>
+          <p class="row__tags"><span>Free desks</span><span>Volunteer-run</span><span>Community</span></p>
+          <span class="row__go">Visit the space &rarr;</span>
+        </a>
+      </div>
+  </div>
+
   <!-- Toronto -->
   <div class="group fade-in" id="toronto">
     <div class="group__head">
@@ -315,6 +395,25 @@
           <p class="row__desc">A coworking space in Toronto for AI safety researchers and organisations. Part of Canada's growing alignment community, providing collaborative workspace and a local hub for safety-focused work.</p>
           <p class="row__tags"><span>Coworking</span><span>Community</span></p>
           <span class="row__go">Visit Trajectory Labs →</span>
+        </a>
+      </div>
+  </div>
+
+  <div class="group fade-in" id="new-york">
+    <div class="group__head">
+      <span class="group__icon">🇺🇸</span>
+      <h2 class="group__name">New York, USA</h2>
+      <span class="group__count">1 space</span>
+    </div>
+      <div class="rows">
+        <a class="row" href="https://collider.nyc/" target="_blank" rel="noopener noreferrer">
+          <div class="row__head">
+            <span class="row__name">Collider</span>
+            <span class="row__where">New York, NY</span>
+          </div>
+          <p class="row__desc">New York's coworking and events space for people working on AI safety and other high-impact problems, spanning technical research, policy and field-building.</p>
+          <p class="row__tags"><span>Coworking</span><span>Events</span><span>Community</span></p>
+          <span class="row__go">Visit Collider &rarr;</span>
         </a>
       </div>
   </div>
