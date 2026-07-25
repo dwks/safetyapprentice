@@ -83,17 +83,27 @@
     .band__glow, .band h1 span { animation: none; }
   }
 
-  /* nav sits on the dark band until the page scrolls */
+  /* Nav sits on the dark band until the page scrolls.
+     The logo and hamburger are on the band at every width, but below 880px
+     the links move inside the cream mobile panel — so they must stay dark
+     there, or they'd be invisible against it. */
   .page-index .nav-bar:not(.scrolled) .nav-logo__text,
-  .page-index .nav-bar:not(.scrolled) .nav-link,
-  .page-index .nav-bar:not(.scrolled) .nav-link--group,
   .page-index .nav-bar:not(.scrolled) .nav-toggle { color: #F5EDE3; }
-  .page-index .nav-bar:not(.scrolled) .nav-link:hover,
-  .page-index .nav-bar:not(.scrolled) .nav-link--group:hover,
   .page-index .nav-bar:not(.scrolled) .nav-toggle:hover {
     background: rgba(245, 237, 227, 0.12); color: #FFFCF7;
   }
-  .page-index .nav-bar:not(.scrolled) .nav-caret { opacity: 0.7; }
+
+  @media (min-width: 881px) {
+    .page-index .nav-bar:not(.scrolled) .nav-link,
+    .page-index .nav-bar:not(.scrolled) .nav-link--group { color: #F5EDE3; }
+    .page-index .nav-bar:not(.scrolled) .nav-link:hover,
+    .page-index .nav-bar:not(.scrolled) .nav-link--group:hover {
+      background: rgba(245, 237, 227, 0.12); color: #FFFCF7;
+    }
+    .page-index .nav-bar:not(.scrolled) .nav-caret { opacity: 0.7; }
+    /* the current-page terracotta is too dark to read on the band */
+    .page-index .nav-bar:not(.scrolled) .nav-link[aria-current="page"] { color: #E5AC70; }
+  }
 
   /* --------------------------------------------------------- theme rows -- */
   .page-index .content { margin-top: 72px; }
