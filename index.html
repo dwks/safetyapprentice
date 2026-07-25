@@ -114,16 +114,6 @@
     max-width: 580px; margin: 0 auto;
     animation: fadeInUp 0.8s ease both; animation-delay: 0.35s;
   }
-  .audience-tags {
-    display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
-    margin-top: 32px; animation: fadeInUp 0.8s ease both; animation-delay: 0.5s;
-  }
-  .audience-tag {
-    font-size: 12.5px; font-weight: 500; color: #8B7E72;
-    background: rgba(240, 233, 223, 0.85); border: 1px solid #E0D6C8;
-    padding: 6px 14px; border-radius: 100px; backdrop-filter: blur(4px);
-  }
-
   .divider {
     width: 48px; height: 3px; border-radius: 2px;
     background: linear-gradient(90deg, #B85C38, #C2793D);
@@ -150,12 +140,7 @@
     padding: 30px 34px 26px; display: flex; gap: 40px;
     align-items: center; flex-wrap: wrap;
   }
-  .card__top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
-  .card__tag {
-    display: inline-block; font-size: 11px; font-weight: 600;
-    letter-spacing: 0.06em; text-transform: uppercase;
-    padding: 4px 10px; border-radius: 6px;
-  }
+  .card__top { display: flex; justify-content: flex-end; align-items: flex-start; margin-bottom: 14px; }
   .card__icon { font-size: 28px; line-height: 1; }
   .card__title {
     font-family: 'Lora', serif; font-size: 21px; font-weight: 600;
@@ -311,11 +296,6 @@
     This is a curated (and somewhat opinionated) guide for safety apprentices,
     covering everything we wish someone had told us when we started.
   </p>
-  <div class="audience-tags">
-    <span class="audience-tag">CS/ML students</span>
-    <span class="audience-tag">Career changers</span>
-    <span class="audience-tag">Fellowship applicants</span>
-  </div>
 </header>
 
 <div class="divider"></div>
@@ -328,9 +308,6 @@
       <div class="card__bar" style="background: linear-gradient(135deg, #B85C38 0%, #E08457 100%);"></div>
       <div class="card__body">
         <div style="flex: 1 1 360px;">
-          <div class="card__top">
-            <span class="card__tag" style="color: #B85C38; background: rgba(184,92,56,0.08);">Start here</span>
-          </div>
           <h3 class="card__title">Why AI Safety Matters</h3>
           <p class="card__desc">Why thoughtful people are dedicating their careers to making AI go well — and why you might want to join them.</p>
           <div class="card__arrow" style="color: #B85C38;">Explore <span>→</span></div>
@@ -347,7 +324,6 @@
         <div class="card__bar" style="background: linear-gradient(135deg, #C4687A 0%, #D98E9C 100%);"></div>
         <div class="card__body">
           <div class="card__top">
-            <span class="card__tag" style="color: #C4687A; background: rgba(196,104,122,0.08);">Find your people</span>
             <span class="card__icon">📍</span>
           </div>
           <h3 class="card__title">Geography of AI Safety</h3>
@@ -361,7 +337,6 @@
         <div class="card__bar" style="background: linear-gradient(135deg, #A0784C 0%, #C49A6C 100%);"></div>
         <div class="card__body">
           <div class="card__top">
-            <span class="card__tag" style="color: #A0784C; background: rgba(160,120,76,0.08);">Get connected</span>
             <span class="card__icon">🎤</span>
           </div>
           <h3 class="card__title">Conferences & Events</h3>
@@ -378,9 +353,6 @@
       <div class="card__bar" style="background: linear-gradient(135deg, #A45B5B 0%, #C47878 100%);"></div>
       <div class="card__body">
         <div style="flex: 1 1 360px;">
-          <div class="card__top">
-            <span class="card__tag" style="color: #A45B5B; background: rgba(164,91,91,0.08);">Reality check</span>
-          </div>
           <h3 class="card__title">Why it's hard to get hired right now</h3>
           <p class="card__desc">The job market is structurally tough for junior researchers — here's why, and what actually gets you a foot in the door.</p>
           <div class="card__arrow" style="color: #A45B5B;">Explore <span>→</span></div>
@@ -397,7 +369,6 @@
         <div class="card__bar" style="background: linear-gradient(135deg, #C2793D 0%, #E09B5F 100%);"></div>
         <div class="card__body">
           <div class="card__top">
-            <span class="card__tag" style="color: #C2793D; background: rgba(194,121,61,0.08);">Your way in</span>
             <span class="card__icon">🎓</span>
           </div>
           <h3 class="card__title">Fellowships</h3>
@@ -411,7 +382,6 @@
         <div class="card__bar" style="background: linear-gradient(135deg, #8B7040 0%, #B09358 100%);"></div>
         <div class="card__body">
           <div class="card__top">
-            <span class="card__tag" style="color: #8B7040; background: rgba(139,112,64,0.08);">Make it viable</span>
             <span class="card__icon">💰</span>
           </div>
           <h3 class="card__title">Funding & Grants</h3>
@@ -456,7 +426,6 @@
         <div class="card__bar" style="background: linear-gradient(135deg, #9B6B5C 0%, #BF8D7D 100%);"></div>
         <div class="card__body">
           <div class="card__top">
-            <span class="card__tag" style="color: #9B6B5C; background: rgba(155,107,92,0.08);">Go deep</span>
             <span class="card__icon">📄</span>
           </div>
           <h3 class="card__title">Key Papers</h3>
@@ -470,7 +439,6 @@
         <div class="card__bar" style="background: linear-gradient(135deg, #8B6F5C 0%, #AD8E7A 100%);"></div>
         <div class="card__body">
           <div class="card__top">
-            <span class="card__tag" style="color: #8B6F5C; background: rgba(139,111,92,0.08);">Reference</span>
             <span class="card__icon">📖</span>
           </div>
           <h3 class="card__title">Technical Glossary</h3>
