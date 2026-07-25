@@ -39,6 +39,8 @@
 
 {% block content %}{% endblock %}
 
+{% if page.consult is not defined or page.consult %}{% include "_consult.html" %}{% endif %}
+
 {% include "_footer.html" %}
 
 <script src="site.js"></script>

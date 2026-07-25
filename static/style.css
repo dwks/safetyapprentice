@@ -332,6 +332,43 @@ a.row:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; bor
   a.row:hover { padding-left: 0; }
 }
 
+/* ------------------------------------------------------------- consult -- */
+/* Site-level CTA shown at the foot of every page. Deliberately kept in the
+   brand terracotta rather than the page accent, so it reads as chrome. */
+.consult-wrap {
+  max-width: var(--content-width); margin: 72px auto 0; padding: 0 32px;
+  position: relative; z-index: 1;
+}
+.consult {
+  display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+  background: var(--card); border: 1px solid var(--line); border-left: 4px solid #B85C38;
+  border-radius: 14px; padding: 24px 28px;
+  box-shadow: 0 2px 8px rgba(120, 80, 40, 0.04);
+}
+.consult__icon { font-size: 30px; line-height: 1; }
+.consult__text { flex: 1 1 340px; }
+.consult__title {
+  font-family: 'Lora', serif; font-size: 18px; font-weight: 600;
+  color: var(--ink); margin: 0 0 6px;
+}
+.consult__desc { font-size: 14.5px; color: var(--ink-soft); margin: 0; line-height: 1.6; }
+.consult__link {
+  flex: 0 0 auto; font-size: 14.5px; font-weight: 600; text-decoration: none;
+  color: var(--card); background: linear-gradient(135deg, #B85C38 0%, #C2793D 100%);
+  padding: 12px 22px; border-radius: 10px; transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(184, 92, 56, 0.2);
+}
+.consult__link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(184, 92, 56, 0.28);
+}
+
+@media (max-width: 720px) {
+  .consult-wrap { margin-top: 52px; padding: 0 20px; }
+  .consult { padding: 22px 20px; }
+  .consult__link { width: 100%; text-align: center; }
+}
+
 /* --------------------------------------------------------------- footer -- */
 .footer {
   border-top: 1px solid var(--line-strong); padding: 40px 32px;
