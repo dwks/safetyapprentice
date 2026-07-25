@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Why It's Hard to Get Hired — The Safety Apprentice</title>
+<title>Job Boards — The Safety Apprentice</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" />
@@ -16,7 +16,7 @@
     font-family: 'DM Sans', sans-serif;
     color: #2C2520;
   }
-  ::selection { background: #B85C3833; color: #2C2520; }
+  ::selection { background: #4A7C6F33; color: #2C2520; }
 
   @keyframes grain {
     0%, 100% { transform: translate(0, 0); }
@@ -80,7 +80,6 @@
   .nav-logo__text {
     font-family: 'Lora', serif; font-weight: 700; font-size: 18px; color: #2C2520;
   }
-  .nav-links { display: flex; gap: 8px; }
   .nav-link {
     font-size: 13.5px; font-weight: 500; color: #6B6058; text-decoration: none;
     padding: 8px 14px; border-radius: 8px; transition: all 0.2s ease;
@@ -98,7 +97,7 @@
     animation: fadeInUp 0.8s ease both; animation-delay: 0.2s;
   }
   .hero h1 span {
-    background: linear-gradient(135deg, #B85C38, #C2793D, #A45B5B);
+    background: linear-gradient(135deg, #4A7C6F, #6FA294, #3B82A0);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     background-clip: text;
   }
@@ -110,12 +109,47 @@
 
   .divider {
     width: 48px; height: 3px; border-radius: 2px;
-    background: linear-gradient(90deg, #B85C38, #C2793D);
-    margin: 40px auto 56px; opacity: 0.5; position: relative; z-index: 1;
+    background: linear-gradient(90deg, #4A7C6F, #6FA294);
+    margin: 40px auto 48px; opacity: 0.5; position: relative; z-index: 1;
   }
 
   /* Content */
   .content { max-width: 720px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 1; }
+
+  /* Primary board */
+  .primary {
+    display: block; text-decoration: none; color: inherit;
+    background: #FFFCF7; border: 1px solid #E8E0D4; border-left: 4px solid #4A7C6F;
+    border-radius: 18px; padding: 32px 34px; margin-bottom: 48px;
+    box-shadow: 0 2px 8px rgba(120, 80, 40, 0.04);
+    transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 44px rgba(120, 80, 40, 0.11), 0 4px 12px rgba(120, 80, 40, 0.05);
+  }
+  .primary__head { display: flex; align-items: center; gap: 18px; margin-bottom: 16px; }
+  .primary__icon { font-size: 38px; line-height: 1; flex-shrink: 0; }
+  .primary__label {
+    font-size: 11.5px; font-weight: 600; letter-spacing: 0.06em;
+    text-transform: uppercase; color: #4A7C6F; margin: 0 0 5px;
+  }
+  .primary__title {
+    font-family: 'Lora', serif; font-size: 25px; font-weight: 600;
+    color: #2C2520; margin: 0; line-height: 1.25;
+  }
+  .primary__desc { font-size: 15.5px; color: #6B6058; line-height: 1.75; margin: 0 0 14px; }
+  .primary__desc:last-of-type { margin-bottom: 0; }
+  .primary__desc strong { color: #2C2520; font-weight: 600; }
+  .primary__btn {
+    display: inline-block; margin-top: 24px;
+    font-size: 15px; font-weight: 600; color: #FFFCF7;
+    background: linear-gradient(135deg, #4A7C6F 0%, #6FA294 100%);
+    padding: 13px 26px; border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(74, 124, 111, 0.22);
+    transition: all 0.25s ease;
+  }
+  .primary:hover .primary__btn { box-shadow: 0 6px 18px rgba(74, 124, 111, 0.3); }
 
   /* Prose */
   .prose { margin-bottom: 48px; }
@@ -129,47 +163,12 @@
   .prose p:last-child { margin-bottom: 0; }
   .prose strong { color: #2C2520; font-weight: 600; }
   .prose a {
-    color: #B85C38; text-decoration: underline; text-underline-offset: 3px;
+    color: #4A7C6F; text-decoration: underline; text-underline-offset: 3px;
     transition: opacity 0.2s ease;
   }
   .prose a:hover { opacity: 0.75; }
 
-  /* Pull quote / callout */
-  .callout {
-    background: linear-gradient(135deg, #2C2520 0%, #3D3028 50%, #2C2520 100%);
-    border-radius: 20px; padding: 36px 40px;
-    box-shadow: 0 12px 40px rgba(44, 37, 32, 0.18);
-    position: relative; overflow: hidden; margin-bottom: 48px;
-  }
-  .callout__glow {
-    position: absolute; top: -60px; right: -40px; width: 240px; height: 240px;
-    border-radius: 50%; background: radial-gradient(circle, rgba(184,92,56,0.10) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .callout__label {
-    font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
-    text-transform: uppercase; color: #C49A6C; margin: 0 0 12px;
-  }
-  .callout__text {
-    font-family: 'Lora', serif; font-size: 19px; color: #F5EDE3;
-    line-height: 1.6; margin: 0 0 20px; font-weight: 500;
-  }
-  .callout__source { font-size: 13.5px; color: #A89E94; margin: 0; }
-  .callout__source a {
-    color: #C49A6C; text-decoration: underline; text-underline-offset: 3px;
-  }
-
-  /* What they want list */
-  .wants { display: flex; flex-direction: column; gap: 12px; margin: 24px 0 0; list-style: none; }
-  .wants li {
-    display: flex; gap: 14px; align-items: flex-start;
-    font-size: 15px; color: #C4B8AA; line-height: 1.6;
-  }
-  .wants li::before {
-    content: '→'; color: #C49A6C; flex-shrink: 0; font-size: 15px;
-  }
-
-  /* Section heading */
+  /* Section */
   .section { margin-bottom: 48px; }
   .section h2 {
     font-family: 'Lora', serif; font-size: 26px; font-weight: 600;
@@ -179,64 +178,62 @@
     font-size: 16px; color: #6B6058; line-height: 1.7; margin-bottom: 24px;
   }
 
-  /* Resource cards */
-  .resource-cards { display: flex; flex-direction: column; gap: 16px; }
-  .resource-card {
+  /* Board cards */
+  .boards { display: flex; flex-direction: column; gap: 16px; }
+  .board {
     display: flex; align-items: center; gap: 20px;
     background: #FFFCF7; border-radius: 16px; border: 1px solid #E8E0D4;
-    padding: 24px; text-decoration: none; color: inherit;
+    padding: 22px 24px; text-decoration: none; color: inherit;
     transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
     box-shadow: 0 2px 8px rgba(120, 80, 40, 0.04);
   }
-  .resource-card:hover {
+  .board:hover {
     transform: translateY(-4px);
     box-shadow: 0 16px 40px rgba(120, 80, 40, 0.1), 0 4px 12px rgba(120, 80, 40, 0.05);
   }
-  .resource-card__icon {
-    width: 56px; height: 56px; border-radius: 14px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 28px; flex-shrink: 0;
-    background: rgba(184, 92, 56, 0.05); border: 1px solid rgba(184, 92, 56, 0.1);
+  .board__icon {
+    width: 52px; height: 52px; border-radius: 14px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center; font-size: 26px;
+    background: rgba(74, 124, 111, 0.05); border: 1px solid rgba(74, 124, 111, 0.1);
   }
-  .resource-card__text { flex: 1; min-width: 0; }
-  .resource-card__source {
-    font-size: 11.5px; font-weight: 600; letter-spacing: 0.06em;
-    text-transform: uppercase; color: #B85C38; margin-bottom: 4px;
-  }
-  .resource-card__title {
+  .board__text { flex: 1; min-width: 0; }
+  .board__name {
     font-family: 'Lora', serif; font-size: 18px; font-weight: 600;
-    color: #2C2520; margin-bottom: 6px; line-height: 1.3;
+    color: #2C2520; margin: 0 0 5px; line-height: 1.3;
   }
-  .resource-card__desc { font-size: 14px; color: #6B6058; line-height: 1.6; }
-  .resource-card__arrow {
-    font-size: 20px; color: #B85C38; opacity: 0.4; flex-shrink: 0;
+  .board__desc { font-size: 14px; color: #6B6058; line-height: 1.6; margin: 0; }
+  .board__arrow {
+    font-size: 20px; color: #4A7C6F; opacity: 0.4; flex-shrink: 0;
     transition: all 0.3s ease;
   }
-  .resource-card:hover .resource-card__arrow { opacity: 1; transform: translateX(4px); }
+  .board:hover .board__arrow { opacity: 1; transform: translateX(4px); }
 
-  /* References */
-  .refs {
-    border-top: 1px solid #E0D6C8; padding-top: 24px; margin-top: 8px;
+  /* Dark callout */
+  .callout {
+    background: linear-gradient(135deg, #2C2520 0%, #3D3028 50%, #2C2520 100%);
+    border-radius: 20px; padding: 36px 40px;
+    box-shadow: 0 12px 40px rgba(44, 37, 32, 0.18);
+    position: relative; overflow: hidden; margin-bottom: 48px;
   }
-  .refs__label {
-    font-size: 11.5px; font-weight: 600; letter-spacing: 0.06em;
-    text-transform: uppercase; color: #8B7E72; margin-bottom: 14px;
+  .callout__glow {
+    position: absolute; top: -60px; right: -40px; width: 240px; height: 240px;
+    border-radius: 50%; background: radial-gradient(circle, rgba(74,124,111,0.12) 0%, transparent 70%);
+    pointer-events: none;
   }
-  .refs ol { list-style: none; counter-reset: ref; }
-  .refs li {
-    counter-increment: ref; position: relative; padding-left: 30px;
-    font-size: 13.5px; color: #6B6058; line-height: 1.7; margin-bottom: 10px;
-    word-break: break-word;
+  .callout__label {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: #8FB3A8; margin: 0 0 12px;
   }
-  .refs li::before {
-    content: '[' counter(ref) ']'; position: absolute; left: 0;
-    color: #B85C38; font-weight: 600; font-size: 12.5px;
+  .callout__title {
+    font-family: 'Lora', serif; font-size: 22px; color: #F5EDE3;
+    margin: 0 0 14px; font-weight: 600; line-height: 1.3;
   }
-  .refs a {
-    color: #6B6058; text-decoration: underline; text-underline-offset: 3px;
-    transition: color 0.2s ease;
+  .callout p { font-size: 15px; color: #C4B8AA; line-height: 1.7; margin: 0 0 14px; }
+  .callout p:last-child { margin-bottom: 0; }
+  .callout strong { color: #F5EDE3; font-weight: 600; }
+  .callout a {
+    color: #8FB3A8; text-decoration: underline; text-underline-offset: 3px;
   }
-  .refs a:hover { color: #B85C38; }
 
   /* Fade in */
   .fade-in {
@@ -260,9 +257,11 @@
 
   @media (max-width: 720px) {
     .content { padding: 0 20px; }
+    .primary { padding: 26px 22px; }
+    .primary__btn { display: block; text-align: center; }
     .callout { padding: 28px 22px; }
-    .resource-card { flex-direction: column; align-items: flex-start; gap: 14px; }
-    .resource-card__arrow { display: none; }
+    .board { flex-direction: column; align-items: flex-start; gap: 14px; }
+    .board__arrow { display: none; }
   }
 
   /* ---- nav: grouped links + dropdowns ---- */
@@ -356,8 +355,8 @@
     <div class="nav-group nav-group--active">
       <button class="nav-link nav-link--group" type="button" aria-expanded="false" aria-haspopup="true">Getting In<span class="nav-caret" aria-hidden="true">&#9662;</span></button>
       <div class="nav-menu">
-        <a href="hard-to-get-hired.html" aria-current="page">Getting Hired</a>
-        <a href="jobs.html">Job Boards</a>
+        <a href="hard-to-get-hired.html">Getting Hired</a>
+        <a href="jobs.html" aria-current="page">Job Boards</a>
         <a href="fellowships.html">Fellowships</a>
         <a href="funding.html">Funding &amp; Grants</a>
       </div>
@@ -376,11 +375,11 @@
 
 <header class="hero">
   <h1>
-    Why it's hard to<br />
-    <span>get hired right now</span>
+    Where the<br />
+    <span>jobs are listed</span>
   </h1>
   <p class="tagline">
-    If it feels like it's hard to get a job in AI safety right now, that's because it is. Here's what's going on — and what actually works.
+    Almost every AI safety role gets posted in one place. Start there, then widen out.
   </p>
 </header>
 
@@ -388,111 +387,107 @@
 
 <section class="content">
 
-  <!-- The situation -->
+  <!-- Primary board -->
+  <a class="primary fade-in" href="https://jobs.80000hours.org/" target="_blank" rel="noopener noreferrer">
+    <div class="primary__head">
+      <div class="primary__icon">💼</div>
+      <div>
+        <p class="primary__label">Start here</p>
+        <h2 class="primary__title">The 80,000 Hours Job Board</h2>
+      </div>
+    </div>
+    <p class="primary__desc">
+      <strong>The single most useful page for anyone looking for AI safety work.</strong> A curated,
+      continuously updated board covering technical research, engineering, policy, governance,
+      operations, and communications roles across labs, nonprofits, academia, and government.
+    </p>
+    <p class="primary__desc">
+      Roles are filtered for impact rather than scraped in bulk, so the signal-to-noise ratio is
+      unusually high. Filter by AI safety and by role type, and set up email alerts — <strong>good
+      postings often close fast</strong>, and a lot of the field's hiring happens in short bursts.
+    </p>
+    <span class="primary__btn">Browse the job board →</span>
+  </a>
+
+  <!-- Context -->
   <div class="prose fade-in">
-    <h2>The situation</h2>
+    <h2>Before you start applying</h2>
     <p>
-      There are a lot of AI safety fellowships with more junior talent, and a handful of full-time jobs mostly geared towards senior researchers. The fact that nearly everyone is now using AI (Claude Code) to accelerate their research also means there is less and less for junior researchers to do.
+      Worth setting expectations first: the market is <strong>structurally tough for junior
+      candidates right now</strong>, and most full-time postings you'll see are aimed at senior
+      researchers who can work independently from day one. That isn't a reflection on you — see
+      <a href="hard-to-get-hired.html">getting hired in AI safety</a> for why, and for what actually
+      works instead.
     </p>
     <p>
-      This difficulty is <strong>structural</strong> — a growing pain from the field expanding so rapidly. It is not a verdict on you or your work.
+      In practice, a job board should be one of several things you're doing. <a href="fellowships.html">Fellowships</a>
+      are the most reliable entry route, <a href="funding.html">grants</a> can fund your own project,
+      and a personal recommendation from someone credible beats a cold application by a wide margin.
     </p>
   </div>
 
-  <!-- MATS study callout -->
+  <!-- Other boards -->
+  <div class="section fade-in">
+    <h2>Other places roles get posted</h2>
+    <p class="section__intro">Once you've worked through the main board, these are worth checking — especially the labs' own pages, which sometimes post before aggregators pick things up.</p>
+
+    <div class="boards">
+
+      <a class="board" href="https://aisafety.com/" target="_blank" rel="noopener noreferrer">
+        <div class="board__icon">🧭</div>
+        <div class="board__text">
+          <h3 class="board__name">AISafety.com</h3>
+          <p class="board__desc">A community-maintained hub linking jobs, training programmes, events, and funding in one place. Good for spotting opportunities that never reach a formal job board.</p>
+        </div>
+        <span class="board__arrow">→</span>
+      </a>
+
+      <a class="board" href="https://www.aisafety.careers/" target="_blank" rel="noopener noreferrer">
+        <div class="board__icon">🎯</div>
+        <div class="board__text">
+          <h3 class="board__name">AI Safety Careers</h3>
+          <p class="board__desc">Dedicated to AI safety roles specifically, with less of the broader effective-altruism framing. Useful as a cross-check against the main board.</p>
+        </div>
+        <span class="board__arrow">→</span>
+      </a>
+
+      <a class="board" href="https://www.lesswrong.com/" target="_blank" rel="noopener noreferrer">
+        <div class="board__icon">💬</div>
+        <div class="board__text">
+          <h3 class="board__name">LessWrong and the EA Forum</h3>
+          <p class="board__desc">Smaller orgs, independent researchers, and one-off collaborations often advertise here first — or never advertise anywhere else. Watch the job-posting tags.</p>
+        </div>
+        <span class="board__arrow">→</span>
+      </a>
+
+      <a class="board" href="https://www.anthropic.com/careers" target="_blank" rel="noopener noreferrer">
+        <div class="board__icon">🏢</div>
+        <div class="board__text">
+          <h3 class="board__name">Lab and org career pages</h3>
+          <p class="board__desc">Anthropic, Google DeepMind, OpenAI, Redwood Research, Apollo Research, METR, FAR.AI, and the UK AI Security Institute all run their own listings. Check them directly rather than waiting for a board to aggregate them.</p>
+        </div>
+        <span class="board__arrow">→</span>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- Make your own role -->
   <div class="callout fade-in">
     <div class="callout__glow"></div>
-    <p class="callout__label">What hiring managers say</p>
-    <p class="callout__text">
-      Organizations are being hyper-selective and conservative in hiring choices.
-    </p>
-    <ul class="wants">
-      <li>They want senior researchers who require minimal supervision</li>
-      <li>Who can set research agendas</li>
-      <li>Who can contribute independently from day one</li>
-      <li>Junior hires carry too much risk and potential time investment, and require senior supervision (for "research taste")</li>
-    </ul>
-    <p class="callout__source" style="margin-top: 24px;">
-      From a MATS study of 23 hiring managers, research leads, and funders.
-      <a href="https://forum.effectivealtruism.org/posts/jwwrC4n9H53doRjRH/ai-safety-talent-needs-in-2026-insights-for-field-building" target="_blank" rel="noopener noreferrer">Read the study →</a>
-    </p>
-  </div>
-
-  <!-- What works -->
-  <div class="prose fade-in">
-    <h2>What actually works: collaborate with a known researcher</h2>
+    <p class="callout__label">Worth remembering</p>
+    <h3 class="callout__title">Many roles in this field never get posted</h3>
     <p>
-      That's why the best way to get a foot in the door is by collaborating with a well-known researcher in the field. A personal recommendation from a credible researcher provides <strong>far stronger evidence of a candidate's ability than degrees, interviews, or even publications.</strong>
+      A large share of people working in AI safety <strong>made their own role</strong> — they
+      proposed a project, found a mentor or collaborator, and got it funded. The field rewards being
+      entrepreneurial to an unusual degree.
     </p>
     <p>
-      That's one reason AI safety has so many fellowships — they provide exactly this signal: you work under a qualified mentor.
+      So treat job boards as one channel among several, alongside
+      <a href="conferences.html">conferences</a>, <a href="fellowships.html">fellowships</a>, and
+      <a href="funding.html">grant applications</a>. If nothing on a board fits you, that is
+      information about the boards, not a verdict on your prospects.
     </p>
-  </div>
-
-  <!-- Fellowships -->
-  <div class="section fade-in">
-    <h2>Programs to apply to</h2>
-    <p class="section__intro">Programs like MATS, ERA, and LASR Labs all run on their own cycles, so check each one for current deadlines.</p>
-
-    <div class="resource-cards">
-
-      <a href="fellowships.html" class="resource-card">
-        <div class="resource-card__icon">🎓</div>
-        <div class="resource-card__text">
-          <p class="resource-card__source">Our guide</p>
-          <h3 class="resource-card__title">Fellowships</h3>
-          <p class="resource-card__desc">MATS, ERA, LASR Labs, ARENA, Astra and the rest of the landscape — how each program works, when they run, what they look for, and how to build a strong application.</p>
-        </div>
-        <span class="resource-card__arrow">→</span>
-      </a>
-
-      <a href="jobs.html" class="resource-card">
-        <div class="resource-card__icon">💼</div>
-        <div class="resource-card__text">
-          <p class="resource-card__source">Our guide</p>
-          <h3 class="resource-card__title">Job boards</h3>
-          <p class="resource-card__desc">Where roles actually get posted — the 80,000 Hours job board and the other places worth checking. Fewer junior openings than you'd like, but worth watching.</p>
-        </div>
-        <span class="resource-card__arrow">→</span>
-      </a>
-
-    </div>
-  </div>
-
-  <!-- Beyond fellowships -->
-  <div class="prose fade-in">
-    <h2>You don't need a formal structure</h2>
-    <p>
-      It's also a good idea to set up collaborations directly with people in the field — for example, with people you meet at <a href="conferences.html">conferences</a>. Many people in AI safety make their own roles and submit their own grants; <strong>the field rewards being entrepreneurial.</strong>
-    </p>
-    <p>
-      If you are new to the field, consider going to EA Global events, and look into Coefficient Giving's career transition funding.
-    </p>
-  </div>
-
-  <div class="section fade-in">
-    <div class="resource-cards">
-      <a href="https://coefficientgiving.org/funds/global-catastrophic-risks-opportunities/career-development-and-transition-funding/" target="_blank" rel="noopener noreferrer" class="resource-card">
-        <div class="resource-card__icon">💰</div>
-        <div class="resource-card__text">
-          <p class="resource-card__source">Coefficient Giving</p>
-          <h3 class="resource-card__title">Career Development and Transition Funding</h3>
-          <p class="resource-card__desc">Funding to support people moving into work on global catastrophic risks — including self-directed study, retraining, and independent research.</p>
-        </div>
-        <span class="resource-card__arrow">→</span>
-      </a>
-    </div>
-  </div>
-
-  <!-- References -->
-  <div class="refs fade-in">
-    <p class="refs__label">References</p>
-    <ol>
-      <li><a href="https://forum.effectivealtruism.org/posts/jwwrC4n9H53doRjRH/ai-safety-talent-needs-in-2026-insights-for-field-building" target="_blank" rel="noopener noreferrer">AI Safety Talent Needs in 2026: Insights for Field-Building</a> — EA Forum</li>
-      <li><a href="https://erafellowship.org/" target="_blank" rel="noopener noreferrer">erafellowship.org</a></li>
-      <li><a href="https://www.lasrlabs.org/" target="_blank" rel="noopener noreferrer">lasrlabs.org</a></li>
-      <li><a href="https://coefficientgiving.org/funds/global-catastrophic-risks-opportunities/career-development-and-transition-funding/" target="_blank" rel="noopener noreferrer">Coefficient Giving — Career Development and Transition Funding</a></li>
-    </ol>
   </div>
 
 </section>

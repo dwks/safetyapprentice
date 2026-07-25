@@ -174,6 +174,46 @@
     color: #A0784C; background: rgba(160, 120, 76, 0.06);
     border-color: rgba(160, 120, 76, 0.15);
   }
+  a.event { display: block; text-decoration: none; color: inherit; }
+  .event__link {
+    display: inline-flex; align-items: center; gap: 5px; margin-top: 14px;
+    font-size: 12.5px; font-weight: 600; color: #A0784C;
+    opacity: 0.6; transition: all 0.3s ease;
+  }
+  a.event:hover .event__link { opacity: 1; transform: translateX(3px); }
+
+  /* Live tracker banner */
+  .tracker {
+    display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+    background: #FFFCF7; border: 1px solid #E8E0D4; border-left: 4px solid #A0784C;
+    border-radius: 16px; padding: 26px 28px; margin-bottom: 40px;
+    box-shadow: 0 2px 8px rgba(120, 80, 40, 0.04);
+    transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+    text-decoration: none; color: inherit;
+  }
+  .tracker:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(120, 80, 40, 0.1), 0 4px 12px rgba(120, 80, 40, 0.05);
+  }
+  .tracker__icon { font-size: 34px; line-height: 1; flex-shrink: 0; }
+  .tracker__text { flex: 1 1 320px; }
+  .tracker__label {
+    font-size: 11.5px; font-weight: 600; letter-spacing: 0.06em;
+    text-transform: uppercase; color: #A0784C; margin: 0 0 6px;
+  }
+  .tracker__title {
+    font-family: 'Lora', serif; font-size: 20px; font-weight: 600;
+    color: #2C2520; margin: 0 0 6px; line-height: 1.3;
+  }
+  .tracker__desc { font-size: 14.5px; color: #6B6058; margin: 0; line-height: 1.6; }
+  .tracker__btn {
+    flex: 0 0 auto; font-size: 14.5px; font-weight: 600;
+    color: #FFFCF7; background: linear-gradient(135deg, #A0784C 0%, #C49A6C 100%);
+    padding: 12px 22px; border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(160, 120, 76, 0.22);
+    transition: all 0.25s ease;
+  }
+  .tracker:hover .tracker__btn { box-shadow: 0 6px 18px rgba(160, 120, 76, 0.3); }
 
   /* Callout banner */
   .callout {
@@ -219,6 +259,8 @@
     .events-grid { grid-template-columns: 1fr; }
     .content { padding: 0 20px; }
     .callout { padding: 32px 24px 28px; }
+    .tracker { padding: 22px 20px; }
+    .tracker__btn { width: 100%; text-align: center; }
   }
 
   /* ---- nav: grouped links + dropdowns ---- */
@@ -313,6 +355,7 @@
       <button class="nav-link nav-link--group" type="button" aria-expanded="false" aria-haspopup="true">Getting In<span class="nav-caret" aria-hidden="true">&#9662;</span></button>
       <div class="nav-menu">
         <a href="hard-to-get-hired.html">Getting Hired</a>
+        <a href="jobs.html">Job Boards</a>
         <a href="fellowships.html">Fellowships</a>
         <a href="funding.html">Funding &amp; Grants</a>
       </div>
@@ -343,6 +386,17 @@
 
 <section class="content">
 
+  <!-- Live tracker -->
+  <a class="tracker fade-in" href="https://aisafety.com/events-and-training" target="_blank" rel="noopener noreferrer">
+    <div class="tracker__icon">🗓️</div>
+    <div class="tracker__text">
+      <p class="tracker__label">Start here — kept current</p>
+      <h2 class="tracker__title">AISafety.com — Events &amp; Training</h2>
+      <p class="tracker__desc">A continuously maintained tracker of upcoming AI safety conferences, workshops, training programmes, and retreats, with dates and deadlines. Anything on this page can go stale; that one doesn't.</p>
+    </div>
+    <span class="tracker__btn">Browse the tracker →</span>
+  </a>
+
   <!-- Callout -->
   <div class="fade-in callout" style="margin-bottom: 48px;">
     <div class="callout__glow"></div>
@@ -358,7 +412,7 @@
     </div>
     <div class="events-grid">
 
-      <div class="event">
+      <a class="event" href="https://www.effectivealtruism.org/ea-global" target="_blank" rel="noopener noreferrer">
         <div class="event__type">Community conference</div>
         <div class="event__name">EA Global (EAG)</div>
         <div class="event__desc">The flagship Effective Altruism conference, held multiple times a year in cities like San Francisco, London, and Washington DC. A significant portion of attendees and talks focus on AI safety. The best single event for meeting people across the entire AI safety ecosystem — researchers, grantmakers, policy people, and org leaders.</div>
@@ -368,9 +422,10 @@
           <span class="event__tag">Multi-city</span>
           <span class="event__tag">Recurring</span>
         </div>
-      </div>
+        <span class="event__link">Visit EA Global →</span>
+      </a>
 
-      <div class="event">
+      <a class="event" href="https://www.far.ai/events" target="_blank" rel="noopener noreferrer">
         <div class="event__type">Research workshop</div>
         <div class="event__name">FAR.AI Events</div>
         <div class="event__desc">FAR.AI (the Fund for Alignment Research) hosts workshops and research events focused on technical alignment. A good venue for presenting early-stage research, getting feedback from established researchers, and finding collaborators for alignment projects.</div>
@@ -379,9 +434,10 @@
           <span class="event__tag">Alignment research</span>
           <span class="event__tag">Workshops</span>
         </div>
-      </div>
+        <span class="event__link">Visit FAR.AI events →</span>
+      </a>
 
-      <div class="event">
+      <a class="event" href="https://aisecurity.forum/" target="_blank" rel="noopener noreferrer">
         <div class="event__type">Industry conference</div>
         <div class="event__name">AI Security Forum</div>
         <div class="event__desc">Focused on the intersection of AI safety and security — covering topics like red-teaming, adversarial robustness, model security, and safe deployment practices. Brings together researchers from both the safety and security communities.</div>
@@ -390,7 +446,8 @@
           <span class="event__tag">Red-teaming</span>
           <span class="event__tag">Deployment safety</span>
         </div>
-      </div>
+        <span class="event__link">Visit AI Security Forum →</span>
+      </a>
 
       <div class="event">
         <div class="event__type">Community conference</div>

@@ -177,6 +177,35 @@
     color: #C4687A; background: rgba(196, 104, 122, 0.06);
     border-color: rgba(196, 104, 122, 0.15);
   }
+  a.space { display: block; text-decoration: none; color: inherit; }
+  .space__link {
+    display: inline-flex; align-items: center; gap: 5px; margin-top: 14px;
+    font-size: 12.5px; font-weight: 600; color: #C4687A;
+    opacity: 0.6; transition: all 0.3s ease;
+  }
+  a.space:hover .space__link { opacity: 1; transform: translateX(3px); }
+
+  /* Online resource cards inside the closing callout */
+  .online { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
+  .online__card {
+    display: flex; align-items: center; gap: 16px;
+    background: rgba(255, 252, 247, 0.06); border: 1px solid rgba(255, 252, 247, 0.1);
+    border-radius: 14px; padding: 18px 20px;
+    text-decoration: none; color: inherit; transition: all 0.25s ease;
+  }
+  .online__card:hover {
+    background: rgba(255, 252, 247, 0.1); border-color: rgba(255, 252, 247, 0.18);
+    transform: translateY(-2px);
+  }
+  .online__icon { font-size: 26px; line-height: 1; flex-shrink: 0; }
+  .online__text { flex: 1; min-width: 0; }
+  .online__name {
+    font-family: 'Lora', serif; font-size: 17px; font-weight: 600;
+    color: #F5EDE3; margin: 0 0 4px; line-height: 1.3;
+  }
+  .online__desc { font-size: 13.5px; color: #A89E94; line-height: 1.6; margin: 0; }
+  .online__arrow { font-size: 18px; color: #C49A6C; opacity: 0.5; flex-shrink: 0; transition: all 0.3s ease; }
+  .online__card:hover .online__arrow { opacity: 1; transform: translateX(3px); }
 
   /* Callout banner */
   .callout {
@@ -316,6 +345,7 @@
       <button class="nav-link nav-link--group" type="button" aria-expanded="false" aria-haspopup="true">Getting In<span class="nav-caret" aria-hidden="true">&#9662;</span></button>
       <div class="nav-menu">
         <a href="hard-to-get-hired.html">Getting Hired</a>
+        <a href="jobs.html">Job Boards</a>
         <a href="fellowships.html">Fellowships</a>
         <a href="funding.html">Funding &amp; Grants</a>
       </div>
@@ -350,7 +380,7 @@
   <div class="fade-in callout" style="margin-bottom: 48px;">
     <div class="callout__glow"></div>
     <h3 class="callout__title">Why location matters</h3>
-    <p class="callout__desc">Being physically near other safety researchers dramatically accelerates your work. Hallway conversations, whiteboard sessions, and spontaneous collaborations are how many of the best ideas in alignment have started. If you can, consider relocating to one of these hubs — even temporarily.</p>
+    <p class="callout__desc">Being physically near other safety researchers dramatically accelerates your work. Hallway conversations, whiteboard sessions, and spontaneous collaborations are how many of the best ideas in alignment have started. If you can, consider visiting one of these hubs.</p>
   </div>
 
   <!-- San Francisco Bay Area -->
@@ -362,7 +392,7 @@
     </div>
     <div class="spaces-grid">
 
-      <div class="space">
+      <a class="space" href="https://www.constellation.org/" target="_blank" rel="noopener noreferrer">
         <div class="space__city">Berkeley, CA</div>
         <div class="space__name">Constellation</div>
         <div class="space__desc">The largest AI safety coworking space in the world. Home to MATS scholars, independent researchers, and visiting academics. The de facto center of gravity for alignment work.</div>
@@ -372,9 +402,10 @@
           <span class="space__tag">Events</span>
           <span class="space__tag">Community</span>
         </div>
-      </div>
+        <span class="space__link">Visit Constellation →</span>
+      </a>
 
-      <div class="space">
+      <a class="space" href="https://moxsf.com/" target="_blank" rel="noopener noreferrer">
         <div class="space__city">San Francisco, CA</div>
         <div class="space__name">Mox</div>
         <div class="space__desc">A coworking space in San Francisco for people working on AI safety and existential risk reduction. Provides desk space, meeting rooms, and a community of alignment-focused professionals.</div>
@@ -383,7 +414,8 @@
           <span class="space__tag">Community</span>
           <span class="space__tag">AI safety</span>
         </div>
-      </div>
+        <span class="space__link">Visit Mox →</span>
+      </a>
 
     </div>
   </div>
@@ -397,7 +429,7 @@
     </div>
     <div class="spaces-grid">
 
-      <div class="space">
+      <a class="space" href="https://www.safeai.org.uk/" target="_blank" rel="noopener noreferrer">
         <div class="space__city">London</div>
         <div class="space__name">LISA (London Initiative for Safe AI)</div>
         <div class="space__desc">A coworking and community space for AI safety researchers in London. Hosts reading groups, talks, and provides desk space for independent researchers and small orgs.</div>
@@ -406,9 +438,10 @@
           <span class="space__tag">Coworking</span>
           <span class="space__tag">Events</span>
         </div>
-      </div>
+        <span class="space__link">Visit LISA →</span>
+      </a>
 
-      <div class="space">
+      <a class="space" href="https://www.governance.ai/" target="_blank" rel="noopener noreferrer">
         <div class="space__city">London</div>
         <div class="space__name">GovAI</div>
         <div class="space__desc">The Centre for the Governance of AI offers coworking space and a research community focused on AI governance. A hub for researchers working on the policy and institutional dimensions of AI safety.</div>
@@ -417,7 +450,8 @@
           <span class="space__tag">Governance</span>
           <span class="space__tag">Research</span>
         </div>
-      </div>
+        <span class="space__link">Visit GovAI →</span>
+      </a>
 
     </div>
   </div>
@@ -431,7 +465,7 @@
     </div>
     <div class="spaces-grid">
 
-      <div class="space">
+      <a class="space" href="https://www.meridiancambridge.org/" target="_blank" rel="noopener noreferrer">
         <div class="space__city">Cambridge</div>
         <div class="space__name">Meridian</div>
         <div class="space__desc">A coworking space in Cambridge for AI safety researchers and aligned organisations. Provides a physical home for the Cambridge safety community to collaborate and build together.</div>
@@ -439,7 +473,8 @@
           <span class="space__tag">Coworking</span>
           <span class="space__tag">Community</span>
         </div>
-      </div>
+        <span class="space__link">Visit Meridian →</span>
+      </a>
 
       <div class="space">
         <div class="space__city">Cambridge</div>
@@ -465,7 +500,7 @@
     </div>
     <div class="spaces-grid">
 
-      <div class="space">
+      <a class="space" href="https://www.aisafety.sg/" target="_blank" rel="noopener noreferrer">
         <div class="space__city">Singapore</div>
         <div class="space__name">SASH</div>
         <div class="space__desc">The Singapore AI Safety Hub — a coworking space for AI safety researchers and professionals in Southeast Asia. A growing community providing a base for alignment work in the region.</div>
@@ -474,7 +509,8 @@
           <span class="space__tag">Community</span>
           <span class="space__tag">Southeast Asia</span>
         </div>
-      </div>
+        <span class="space__link">Visit SASH →</span>
+      </a>
 
     </div>
   </div>
@@ -488,7 +524,7 @@
     </div>
     <div class="spaces-grid">
 
-      <div class="space">
+      <a class="space" href="https://trajectorylabs.org/" target="_blank" rel="noopener noreferrer">
         <div class="space__city">Toronto</div>
         <div class="space__name">Trajectory Labs</div>
         <div class="space__desc">A coworking space in Toronto for AI safety researchers and organisations. Part of Canada's growing alignment community, providing collaborative workspace and a local hub for safety-focused work.</div>
@@ -496,7 +532,8 @@
           <span class="space__tag">Coworking</span>
           <span class="space__tag">Community</span>
         </div>
-      </div>
+        <span class="space__link">Visit Trajectory Labs →</span>
+      </a>
 
     </div>
   </div>
@@ -505,7 +542,31 @@
   <div class="fade-in callout">
     <div class="callout__glow"></div>
     <h3 class="callout__title">Not near a hub? Start online.</h3>
-    <p class="callout__desc">Many of these communities have active online presences. Join the AI Alignment Forum, EleutherAI Discord, or the AI Safety Fundamentals course to start connecting with researchers worldwide. When you're ready, visiting a hub for even a few weeks can be transformative.</p>
+    <p class="callout__desc">You don't need to relocate to start contributing. The two best on-ramps are a structured course and a weekend research sprint — both are remote, open to newcomers, and give you something concrete to show for your time.</p>
+
+    <div class="online">
+
+      <a class="online__card" href="https://bluedot.org/" target="_blank" rel="noopener noreferrer">
+        <div class="online__icon">📘</div>
+        <div class="online__text">
+          <h4 class="online__name">BlueDot Impact — AI Safety Fundamentals</h4>
+          <p class="online__desc">The standard entry course. Free, remote, and cohort-based: you work through a structured curriculum in a small facilitated group over several weeks. Most people in the field have either taken it or recommend it — and the cohort itself becomes your first network.</p>
+        </div>
+        <span class="online__arrow">→</span>
+      </a>
+
+      <a class="online__card" href="https://www.apartresearch.com/" target="_blank" rel="noopener noreferrer">
+        <div class="online__icon">⚡</div>
+        <div class="online__text">
+          <h4 class="online__name">Apart Research hackathons</h4>
+          <p class="online__desc">Weekend research sprints on a set alignment problem, run remotely with teams from all over the world. A rare chance to do real research with essentially no barrier to entry — and the strongest submissions sometimes turn into papers.</p>
+        </div>
+        <span class="online__arrow">→</span>
+      </a>
+
+    </div>
+
+    <p class="callout__desc" style="margin-top: 24px;">Beyond those, the AI Alignment Forum and the EleutherAI Discord are good places to lurk and then participate. When you're ready, visiting a hub for even a few weeks can be transformative.</p>
   </div>
 
 </section>
