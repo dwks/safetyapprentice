@@ -92,11 +92,9 @@
     }
 
   .author__avatar {
-      width: 68px; height: 68px; border-radius: 50%; flex-shrink: 0;
-      background: linear-gradient(135deg, #B85C38 0%, #C2793D 100%);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Lora', serif; font-size: 24px; font-weight: 600; color: #FFFCF7;
-      box-shadow: 0 4px 12px rgba(184, 92, 56, 0.22);
+      width: 96px; height: 96px; border-radius: 50%; flex-shrink: 0;
+      object-fit: cover; display: block;
+      box-shadow: 0 4px 14px rgba(120, 80, 40, 0.18);
     }
 
   .author__text { flex: 1 1 300px; }
@@ -176,7 +174,8 @@
   <div class="section fade-in">
     <h2>Who's behind it</h2>
     <div class="author" style="margin-top: 20px;">
-      <div class="author__avatar">DW</div>
+      <img class="author__avatar" src="david-williams-king.jpg" width="96" height="96"
+           alt="David Williams-King" loading="lazy" />
       <div class="author__text">
         <p class="author__name">David Williams-King</p>
         <p class="author__role">Senior Research Manager, ERA</p>

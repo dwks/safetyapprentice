@@ -1,5 +1,6 @@
+{%- set here = "/" if page.slug == "index" else page.slug ~ ".html" %}
 <nav class="nav-bar" id="navbar">
-  <a class="nav-logo" href="index.html">
+  <a class="nav-logo" href="/">
     <div class="nav-logo__icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 6.2 L24.2 9.2 V16.1 c0 5.3-3.4 8.7-8.2 10.2 -4.8-1.5-8.2-4.9-8.2-10.2 V9.2 Z" fill="currentColor"/><path d="M16 6.2 L24.2 9.2 V16.1 c0 5.3-3.4 8.7-8.2 10.2 Z" fill="#EBDDCC"/></svg></div>
     <span class="nav-logo__text">{{ site.name }}</span>
   </a>
@@ -10,12 +11,12 @@
       <button class="nav-link nav-link--group" type="button" aria-expanded="false" aria-haspopup="true">{{ item.label }}<span class="nav-caret" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9l7 7 7-7"/></svg></span></button>
       <div class="nav-menu">
       {%- for child in item.children %}
-        <a href="{{ child.href }}"{% if child.href == page.slug ~ '.html' %} aria-current="page"{% endif %}>{{ child.label }}</a>
+        <a href="{{ child.href }}"{% if child.href == here %} aria-current="page"{% endif %}>{{ child.label }}</a>
       {%- endfor %}
       </div>
     </div>
     {%- else %}
-    <a href="{{ item.href }}" class="nav-link{% if item.cta is defined and item.cta %} nav-link--cta{% endif %}"{% if item.external is defined and item.external %} target="_blank" rel="noopener"{% endif %}{% if item.href == page.slug ~ '.html' %} aria-current="page"{% endif %}>{{ item.label }}</a>
+    <a href="{{ item.href }}" class="nav-link{% if item.cta is defined and item.cta %} nav-link--cta{% endif %}"{% if item.external is defined and item.external %} target="_blank" rel="noopener"{% endif %}{% if item.href == here %} aria-current="page"{% endif %}>{{ item.label }}</a>
     {%- endif %}
   {%- endfor %}
   </div>

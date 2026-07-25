@@ -40,15 +40,15 @@ def build(out_dir: Path) -> int:
 
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    # Wipe only what we generate, so a stray output dir isn't destructive.
-    for stale in out_dir.glob("*.html"):
-        stale.unlink()
+    # Track everything we write, so renamed or removed sources don't linger.
+    written = set()
 
     for page in PAGES:
         page = {"content_width": 720, "group": None, "description": None, **page}
         template = env.get_template(f"pages/{page['slug']}.html")
         html = template.render(page=page, site=SITE)
         (out_dir / f"{page['slug']}.html").write_text(html, encoding="utf-8")
+        written.add(f"{page['slug']}.html")
         print(f"  {page['slug']}.html")
 
     for name in ["style.css", "site.js", *ASSETS]:
@@ -59,7 +59,14 @@ def build(out_dir: Path) -> int:
             print(f"  ! missing asset: {name}")
             continue
         shutil.copy2(src, out_dir / name)
+        written.add(name)
         print(f"  {name}")
+
+    # Anything we did not write this run is stale output from an earlier build.
+    for path in sorted(out_dir.iterdir()):
+        if path.is_file() and path.name not in written:
+            path.unlink()
+            print(f"  removed stale {path.name}")
 
     return len(PAGES)
 

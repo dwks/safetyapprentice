@@ -17,7 +17,7 @@ SITE = {
 }
 
 SITE["nav"] = [
-    {"label": "Home", "href": "index.html"},
+    {"label": "Home", "href": "/"},
     {"label": "Learn", "children": [
         {"label": "Why AI Safety Matters", "href": "why-ai-safety.html"},
         {"label": "Key Events",            "href": "timeline.html"},
@@ -69,5 +69,6 @@ PAGES = [
 ]
 
 # Files copied verbatim into the output directory.
-ASSETS = ["map3b.png", "map3.png", "shokunin_World_Map.svg",
-          "favicon.svg", "favicon.png", "favicon.ico", "apple-touch-icon.png"]
+ASSETS = ["neurons.png", "shokunin_World_Map.svg",
+          "favicon.svg", "favicon.png", "favicon.ico", "apple-touch-icon.png",
+          "david-williams-king.jpg"]
