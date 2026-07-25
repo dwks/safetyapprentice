@@ -93,6 +93,8 @@ stylesheet, and build script that produce it. It does not extend to short
 quotations from papers, reports, and statements, which remain with their
 authors; nor to the project name, so please rename anything you fork.
 
-The world map is ["World Map" by shokunin](https://openclipart.org/detail/19011/world-map-by-shokunin)
-via Openclipart, public domain. DM Sans and Lora are loaded from Google Fonts
-under the SIL Open Font License.
+World maps: the decorative one is ["World Map" by shokunin](https://openclipart.org/detail/19011/world-map-by-shokunin)
+via Openclipart; the pinned map on the geography page is derived from
+[BlankMap-World by Canuckguy](https://commons.wikimedia.org/wiki/File:BlankMap-World.svg)
+on Wikimedia Commons, rasterised and cropped. Both are public domain. DM Sans
+and Lora are loaded from Google Fonts under the SIL Open Font License.

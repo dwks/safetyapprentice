@@ -69,6 +69,6 @@ PAGES = [
 ]
 
 # Files copied verbatim into the output directory.
-ASSETS = ["neurons.png", "shokunin_World_Map.svg",
+ASSETS = ["neurons.png", "shokunin_World_Map.svg", "world-map.png",
           "favicon.svg", "favicon.png", "favicon.ico", "apple-touch-icon.png",
           "david-williams-king.jpg"]

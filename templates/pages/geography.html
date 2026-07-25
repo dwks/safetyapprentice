@@ -7,12 +7,6 @@
       position: fixed; top: 0; left: 0; right: 0; bottom: 0;
       overflow: hidden; pointer-events: none; z-index: 0;
     }
-  .map-bg__img {
-      position: absolute; inset: 0;
-      background-image: url('./shokunin_World_Map.svg');
-      background-size: cover; background-position: center top; background-repeat: no-repeat;
-      opacity: 0.18; filter: saturate(0.3) sepia(0.2);
-    }
   .map-bg__fade-bottom {
       position: absolute; bottom: 0; left: 0; right: 0; height: 400px;
       background: linear-gradient(to top, #F8F3EC 0%, #F8F3EC 10%, transparent 100%);
@@ -74,6 +68,70 @@
     .content { padding: 0 20px; }
     .callout { padding: 32px 24px 28px; }
   }
+
+  /* --- world map with hub pins --- */
+  .worldmap {
+    margin: 0 auto 52px; max-width: 780px;
+    background: rgba(240, 233, 223, 0.5);
+    border: 1px solid var(--line); border-radius: 18px;
+    padding: 18px 20px 22px;
+  }
+  .worldmap__frame { position: relative; }
+  .worldmap__img {
+    display: block; width: 100%; height: auto;
+    opacity: 0.30; filter: saturate(0) brightness(0.92);
+  }
+  .pin {
+    position: absolute; transform: translate(-50%, -50%);
+    text-decoration: none; color: inherit; white-space: nowrap;
+    display: flex; align-items: center; gap: 7px; z-index: 2;
+  }
+  .pin--left { flex-direction: row-reverse; }
+  .pin__dot {
+    position: relative; flex-shrink: 0;
+    width: 11px; height: 11px; border-radius: 50%;
+    background: var(--accent); box-shadow: 0 0 0 3px rgba(248, 243, 236, 0.9);
+    transition: transform 0.2s ease;
+  }
+  .pin__pulse {
+    position: absolute; inset: -4px; border-radius: 50%;
+    border: 1.5px solid var(--accent); opacity: 0;
+    animation: pinPulse 3.2s ease-out infinite;
+  }
+  .pin:nth-of-type(2) .pin__pulse { animation-delay: 0.6s; }
+  .pin:nth-of-type(3) .pin__pulse { animation-delay: 1.2s; }
+  .pin:nth-of-type(4) .pin__pulse { animation-delay: 1.8s; }
+  .pin:nth-of-type(5) .pin__pulse { animation-delay: 2.4s; }
+  @keyframes pinPulse {
+    0%   { transform: scale(0.7); opacity: 0.85; }
+    70%  { transform: scale(2.3); opacity: 0; }
+    100% { transform: scale(2.3); opacity: 0; }
+  }
+  .pin__label {
+    font-size: 12.5px; font-weight: 600; color: var(--ink);
+    background: rgba(255, 252, 247, 0.92); border: 1px solid var(--line-strong);
+    padding: 3px 9px; border-radius: 100px;
+    transition: all 0.2s ease;
+  }
+  .pin__label b {
+    font-weight: 600; color: var(--accent); margin-left: 3px;
+  }
+  .pin:hover .pin__dot { transform: scale(1.3); }
+  .pin:hover .pin__label { border-color: var(--accent); color: var(--accent); }
+  .pin:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 100px; }
+
+  .worldmap__note {
+    margin-top: 10px; text-align: center;
+    font-size: 12.5px; color: var(--ink-faint);
+  }
+
+  @media (prefers-reduced-motion: reduce) { .pin__pulse { animation: none; } }
+
+  @media (max-width: 620px) {
+    .worldmap { padding: 12px 12px 16px; }
+    .pin__label { display: none; }
+    .pin__dot { width: 13px; height: 13px; }
+  }
 {% endblock %}
 
 {% block hero %}
@@ -91,6 +149,34 @@
 {% block content %}
 <section class="content">
 
+  {#- World map. The artwork is a public-domain Robinson-projection silhouette
+      (Wikimedia BlankMap-World by Canuckguy), rasterised and cropped. Robinson
+      is not linear in lat/lon, so pin positions are percentages measured
+      against this specific image rather than computed — verified by rendering.
+      To add a hub, place it visually and record x/y here. -#}
+  {%- set hubs = [
+        {'id': 'bay-area',  'label': 'Bay Area',  'x':  5.6, 'y': 29.7, 'n': 2, 'side': 'right'},
+        {'id': 'toronto',   'label': 'Toronto',   'x': 18.5, 'y': 27.0, 'n': 1, 'side': 'right'},
+        {'id': 'cambridge', 'label': 'Cambridge', 'x': 43.9, 'y': 19.4, 'n': 1, 'side': 'left', 'lx': -2.0, 'ly': -6.0},
+        {'id': 'london',    'label': 'London',    'x': 44.1, 'y': 20.0, 'n': 2, 'side': 'left', 'lx':  0.0, 'ly':  5.5},
+        {'id': 'singapore', 'label': 'Singapore', 'x': 79.2, 'y': 51.9, 'n': 1, 'side': 'left'}
+      ] -%}
+
+  <div class="worldmap fade-in">
+    <div class="worldmap__frame">
+      <img class="worldmap__img" src="world-map.png" alt="" width="1240" height="623" />
+      {%- for h in hubs %}
+      <a class="pin pin--{{ h.side }}" href="#{{ h.id }}"
+         style="left: {{ h.x }}%; top: {{ h.y }}%;">
+        <span class="pin__dot"><span class="pin__pulse"></span></span>
+        <span class="pin__label"{% if h.lx is defined %} style="transform: translate({{ h.lx }}em, {{ h.ly }}em);"{% endif %}>{{ h.label }} <b>{{ h.n }}</b></span>
+      </a>
+      {%- endfor %}
+    </div>
+    <p class="worldmap__note">Five cities, eight spaces. Select a pin to jump to one.</p>
+  </div>
+
+
   <!-- Callout -->
   <div class="fade-in callout" style="margin-bottom: 48px;">
     <div class="callout__glow"></div>
@@ -99,7 +185,7 @@
   </div>
 
   <!-- San Francisco Bay Area -->
-  <div class="group fade-in">
+  <div class="group fade-in" id="bay-area">
     <div class="group__head">
       <span class="group__icon">🇺🇸</span>
       <h2 class="group__name">San Francisco Bay Area</h2>
@@ -128,7 +214,7 @@
   </div>
 
   <!-- London -->
-  <div class="group fade-in">
+  <div class="group fade-in" id="london">
     <div class="group__head">
       <span class="group__icon">🇬🇧</span>
       <h2 class="group__name">London, UK</h2>
@@ -157,7 +243,7 @@
   </div>
 
   <!-- Cambridge -->
-  <div class="group fade-in">
+  <div class="group fade-in" id="cambridge">
     <div class="group__head">
       <span class="group__icon">🇬🇧</span>
       <h2 class="group__name">Cambridge, UK</h2>
@@ -177,7 +263,7 @@
   </div>
 
   <!-- Singapore -->
-  <div class="group fade-in">
+  <div class="group fade-in" id="singapore">
     <div class="group__head">
       <span class="group__icon">🇸🇬</span>
       <h2 class="group__name">Singapore</h2>
@@ -197,7 +283,7 @@
   </div>
 
   <!-- Toronto -->
-  <div class="group fade-in">
+  <div class="group fade-in" id="toronto">
     <div class="group__head">
       <span class="group__icon">🇨🇦</span>
       <h2 class="group__name">Toronto, Canada</h2>
