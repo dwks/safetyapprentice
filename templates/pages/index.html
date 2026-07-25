@@ -106,11 +106,15 @@
   }
 
   /* --------------------------------------------------------- theme rows -- */
-  .page-index .content { margin-top: 72px; }
+  /* Each theme is a full-bleed band with a centred inner column, so 02 can
+     carry a tint edge to edge. No rules between them — the tint separates. */
+  .themes { margin-top: 26px; }
+  .theme-band { padding: 46px 0; }
+  .theme-band--tint { background: #F2EADF; }
 
-  .theme-row { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 52px; }
-  .theme-row + .theme-row {
-    margin-top: 52px; padding-top: 52px; border-top: 1px solid var(--line);
+  .theme-row {
+    max-width: var(--content-width); margin: 0 auto; padding: 0 32px;
+    display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 52px;
   }
   .theme__num {
     font-family: 'Lora', serif; font-size: 78px; font-weight: 700; line-height: 0.8;
@@ -134,6 +138,7 @@
     text-decoration: none; color: inherit; transition: padding 0.25s ease;
   }
   .theme__items .tile:first-child { border-top: 1px solid var(--line); }
+  .theme-band--tint .tile { border-color: #E6DACB; }
   .tile:hover { padding-left: 8px; }
   .tile:hover .tile__name { color: var(--theme); }
   .tile:hover .tile__go { opacity: 1; transform: translateX(3px); }
@@ -151,8 +156,8 @@
     color: var(--ink); line-height: 1.35; transition: color 0.25s ease;
   }
   .tile__blurb {
-    display: block; font-size: 13.5px; color: var(--ink-faint);
-    margin-top: 3px; line-height: 1.5;
+    display: block; font-size: 14px; color: var(--ink-soft);
+    margin-top: 5px; line-height: 1.6;
   }
   .tile__go {
     flex-shrink: 0; font-size: 15px; color: var(--theme); opacity: 0.35;
@@ -165,12 +170,13 @@
     .band { padding: 132px 24px 76px; }
   }
   @media (max-width: 560px) {
-    .theme-row { grid-template-columns: 1fr; gap: 20px; }
+    .theme-row { grid-template-columns: 1fr; gap: 20px; padding: 0 20px; }
     .theme__num { font-size: 52px; margin-bottom: 10px; }
+    .theme-band { padding: 36px 0; }
     .band { padding: 120px 20px 64px; }
     .band__glow { width: 460px; height: 300px; }
     .band__cta { width: 100%; justify-content: center; }
-    .page-index .content { margin-top: 48px; }
+    .themes { margin-top: 12px; }
   }
 {% endblock %}
 
@@ -199,112 +205,118 @@
 {% endblock %}
 
 {% block content %}
-<section class="content">
+<div class="themes">
 
-  <div class="theme-row fade-in" style="--theme: #B85C38;">
-    <div class="theme__head">
-      <div class="theme__num">01</div>
-      <p class="theme__label">Learn</p>
-      <h2 class="theme__title">Understand the problem</h2>
-      <p class="theme__desc">Why the field exists, how it got here, and the vocabulary you need to follow a conversation.</p>
+  <section class="theme-band">
+    <div class="theme-row fade-in" style="--theme: #B85C38;">
+      <div class="theme__head">
+        <div class="theme__num">01</div>
+        <p class="theme__label">Learn</p>
+        <h2 class="theme__title">Understand the problem</h2>
+        <p class="theme__desc">Why the field exists, how it got here, and the vocabulary you need to follow a conversation.</p>
+      </div>
+      <div class="theme__items">
+        <a class="tile" href="why-ai-safety.html">
+          <span class="tile__icon">{{ icons.icon('globe') }}</span>
+          <span class="tile__text">
+            <span class="tile__name">Why AI Safety Matters</span>
+            <span class="tile__blurb">The case for taking this seriously, and a framework for thinking about the risks: misuse, misalignment, and systemic.</span>
+          </span>
+          <span class="tile__go">&rarr;</span>
+        </a>
+        <a class="tile" href="timeline.html">
+          <span class="tile__icon">{{ icons.icon('timeline') }}</span>
+          <span class="tile__text">
+            <span class="tile__name">Key Events</span>
+            <span class="tile__blurb">A timeline of the papers, capability milestones, policy moves, and incidents that shaped the field.</span>
+          </span>
+          <span class="tile__go">&rarr;</span>
+        </a>
+        <a class="tile" href="concept-map.html">
+          <span class="tile__icon">{{ icons.icon('graph') }}</span>
+          <span class="tile__text">
+            <span class="tile__name">Field Map</span>
+            <span class="tile__blurb">The core concepts of the field, each with a working definition, the key papers, and the open problems.</span>
+          </span>
+          <span class="tile__go">&rarr;</span>
+        </a>
+      </div>
     </div>
-    <div class="theme__items">
-      <a class="tile" href="why-ai-safety.html">
-        <span class="tile__icon">{{ icons.icon('globe') }}</span>
-        <span class="tile__text">
-          <span class="tile__name">Why AI Safety Matters</span>
-          <span class="tile__blurb">the case, and a framework for risk</span>
-        </span>
-        <span class="tile__go">&rarr;</span>
-      </a>
-      <a class="tile" href="timeline.html">
-        <span class="tile__icon">{{ icons.icon('timeline') }}</span>
-        <span class="tile__text">
-          <span class="tile__name">Key Events</span>
-          <span class="tile__blurb">papers, milestones, incidents</span>
-        </span>
-        <span class="tile__go">&rarr;</span>
-      </a>
-      <a class="tile" href="concept-map.html">
-        <span class="tile__icon">{{ icons.icon('graph') }}</span>
-        <span class="tile__text">
-          <span class="tile__name">Field Map</span>
-          <span class="tile__blurb">the core concepts, defined</span>
-        </span>
-        <span class="tile__go">&rarr;</span>
-      </a>
-    </div>
-  </div>
+  </section>
 
-  <div class="theme-row fade-in" style="--theme: #C2793D;">
-    <div class="theme__head">
-      <div class="theme__num">02</div>
-      <p class="theme__label">Getting in</p>
-      <h2 class="theme__title">Find your way in</h2>
-      <p class="theme__desc">What hiring actually looks like, the programs that work as entry points, and how to pay for the transition.</p>
+  <section class="theme-band theme-band--tint">
+    <div class="theme-row fade-in" style="--theme: #C2793D;">
+      <div class="theme__head">
+        <div class="theme__num">02</div>
+        <p class="theme__label">Getting in</p>
+        <h2 class="theme__title">Find your way in</h2>
+        <p class="theme__desc">What hiring actually looks like, the programs that work as entry points, and how to pay for the transition.</p>
+      </div>
+      <div class="theme__items">
+        <a class="tile" href="hard-to-get-hired.html">
+          <span class="tile__icon">{{ icons.icon('trend-down') }}</span>
+          <span class="tile__text">
+            <span class="tile__name">Getting Hired</span>
+            <span class="tile__blurb">The junior market is structurally tough right now. Here is why, and what actually gets you a foot in the door.</span>
+          </span>
+          <span class="tile__go">&rarr;</span>
+        </a>
+        <a class="tile" href="fellowships.html">
+          <span class="tile__icon">{{ icons.icon('cap') }}</span>
+          <span class="tile__text">
+            <span class="tile__name">Fellowships</span>
+            <span class="tile__blurb">MATS, ERA, LASR Labs and the rest of the landscape — how each program works, and what makes an application strong.</span>
+          </span>
+          <span class="tile__go">&rarr;</span>
+        </a>
+        <a class="tile" href="funding.html">
+          <span class="tile__icon">{{ icons.icon('coins') }}</span>
+          <span class="tile__text">
+            <span class="tile__name">Funding &amp; Grants</span>
+            <span class="tile__blurb">How to find grants, write proposals, and fund your own transition into alignment work.</span>
+          </span>
+          <span class="tile__go">&rarr;</span>
+        </a>
+        <a class="tile" href="jobs.html">
+          <span class="tile__icon">{{ icons.icon('briefcase') }}</span>
+          <span class="tile__text">
+            <span class="tile__name">Job Listings</span>
+            <span class="tile__blurb">Where roles actually get posted, starting with the 80,000 Hours board — and why many are never advertised at all.</span>
+          </span>
+          <span class="tile__go">&rarr;</span>
+        </a>
+      </div>
     </div>
-    <div class="theme__items">
-      <a class="tile" href="hard-to-get-hired.html">
-        <span class="tile__icon">{{ icons.icon('trend-down') }}</span>
-        <span class="tile__text">
-          <span class="tile__name">Getting Hired</span>
-          <span class="tile__blurb">why it's tough, and what works</span>
-        </span>
-        <span class="tile__go">&rarr;</span>
-      </a>
-      <a class="tile" href="fellowships.html">
-        <span class="tile__icon">{{ icons.icon('cap') }}</span>
-        <span class="tile__text">
-          <span class="tile__name">Fellowships</span>
-          <span class="tile__blurb">MATS, ERA, LASR and beyond</span>
-        </span>
-        <span class="tile__go">&rarr;</span>
-      </a>
-      <a class="tile" href="funding.html">
-        <span class="tile__icon">{{ icons.icon('coins') }}</span>
-        <span class="tile__text">
-          <span class="tile__name">Funding &amp; Grants</span>
-          <span class="tile__blurb">how to fund the transition</span>
-        </span>
-        <span class="tile__go">&rarr;</span>
-      </a>
-      <a class="tile" href="jobs.html">
-        <span class="tile__icon">{{ icons.icon('briefcase') }}</span>
-        <span class="tile__text">
-          <span class="tile__name">Job Listings</span>
-          <span class="tile__blurb">where roles actually get posted</span>
-        </span>
-        <span class="tile__go">&rarr;</span>
-      </a>
-    </div>
-  </div>
+  </section>
 
-  <div class="theme-row fade-in" style="--theme: #C4687A;">
-    <div class="theme__head">
-      <div class="theme__num">03</div>
-      <p class="theme__label">Community</p>
-      <h2 class="theme__title">Find your people</h2>
-      <p class="theme__desc">AI safety runs on people who know each other. Where they cluster, and where you can meet them.</p>
+  <section class="theme-band">
+    <div class="theme-row fade-in" style="--theme: #C4687A;">
+      <div class="theme__head">
+        <div class="theme__num">03</div>
+        <p class="theme__label">Community</p>
+        <h2 class="theme__title">Find your people</h2>
+        <p class="theme__desc">AI safety runs on people who know each other. Where they cluster, and where you can meet them.</p>
+      </div>
+      <div class="theme__items">
+        <a class="tile" href="geography.html">
+          <span class="tile__icon">{{ icons.icon('pin') }}</span>
+          <span class="tile__text">
+            <span class="tile__name">Geography</span>
+            <span class="tile__blurb">The coworking spaces, hubs, and cities where safety researchers cluster, from Berkeley to London to Singapore.</span>
+          </span>
+          <span class="tile__go">&rarr;</span>
+        </a>
+        <a class="tile" href="conferences.html">
+          <span class="tile__icon">{{ icons.icon('mic') }}</span>
+          <span class="tile__text">
+            <span class="tile__name">Conferences &amp; Events</span>
+            <span class="tile__blurb">The conferences, workshops, and unconferences where the field meets, and how to get the most out of your first one.</span>
+          </span>
+          <span class="tile__go">&rarr;</span>
+        </a>
+      </div>
     </div>
-    <div class="theme__items">
-      <a class="tile" href="geography.html">
-        <span class="tile__icon">{{ icons.icon('pin') }}</span>
-        <span class="tile__text">
-          <span class="tile__name">Geography</span>
-          <span class="tile__blurb">hubs, spaces, and cities</span>
-        </span>
-        <span class="tile__go">&rarr;</span>
-      </a>
-      <a class="tile" href="conferences.html">
-        <span class="tile__icon">{{ icons.icon('mic') }}</span>
-        <span class="tile__text">
-          <span class="tile__name">Conferences &amp; Events</span>
-          <span class="tile__blurb">where the field meets</span>
-        </span>
-        <span class="tile__go">&rarr;</span>
-      </a>
-    </div>
-  </div>
+  </section>
 
-</section>
+</div>
 {% endblock %}

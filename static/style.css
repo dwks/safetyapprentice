@@ -126,9 +126,11 @@ body::before {
 }
 .nav-link--group:hover { background: rgba(184, 92, 56, 0.06); color: var(--ink); }
 .nav-caret {
-  font-size: 13px; line-height: 1; opacity: 0.7;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 20px; height: 20px; flex-shrink: 0; opacity: 0.7;
   transition: transform 0.2s ease;
 }
+.nav-caret svg { width: 100%; height: 100%; display: block; }
 .nav-group.open > .nav-link--group { background: rgba(184, 92, 56, 0.08); color: var(--ink); }
 .nav-group.open .nav-caret { transform: rotate(180deg); }
 .nav-group--active > .nav-link--group { color: #B85C38; }
@@ -176,7 +178,7 @@ body::before {
   /* full-width rows in the panel: bigger text, and a caret you can actually aim at */
   .nav-link, .nav-link--group { font-size: 15px; padding: 11px 14px; }
   .nav-link--group { width: 100%; justify-content: space-between; }
-  .nav-caret { font-size: 17px; opacity: 0.8; }
+  .nav-caret { width: 28px; height: 28px; opacity: 0.85; }
   .nav-menu a { font-size: 14.5px; padding: 10px 12px; }
   .nav-menu {
     position: static; opacity: 1; visibility: visible; transform: none;
