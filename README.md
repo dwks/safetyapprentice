@@ -70,4 +70,17 @@ and `--accent-3`, so hero gradients and dividers pick them up automatically.
 ## Contributing
 
 Corrections and additions are welcome — especially anything that has gone stale.
-Open an issue or a pull request.
+Open an issue or a pull request. Contributions are accepted under the same
+license as the rest of the project.
+
+## License
+
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — share and adapt,
+including commercially, with credit. Full text in [LICENSE](LICENSE); scope,
+attribution wording, and third-party assets in [NOTICE.md](NOTICE.md).
+
+> The Safety Apprentice by David Williams-King —
+> https://safetyapprentice.com — CC BY 4.0
+
+The world map is ["World Map" by shokunin](https://openclipart.org/detail/19011/world-map-by-shokunin)
+via Openclipart, public domain.
