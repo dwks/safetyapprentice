@@ -52,7 +52,7 @@ PAGES = [
     {"slug": "index",              "title": None,                      "accent": TERRACOTTA, "content_width": 920},
     {"slug": "why-ai-safety",      "title": "Why AI Safety Matters",   "accent": TERRACOTTA, "content_width": 720, "group": "Learn"},
     {"slug": "timeline",           "title": "Key Events",              "accent": TERRACOTTA, "content_width": 780, "group": "Learn"},
-    {"slug": "concept-map",        "title": "A Field Map of AI Safety","accent": TERRACOTTA, "content_width": 720, "group": "Learn"},
+    {"slug": "concept-map",        "title": "A Field Map of AI Safety","accent": TERRACOTTA, "content_width": 720, "group": "Learn", "consult": False},
     {"slug": "hard-to-get-hired",  "title": "Why It's Hard to Get Hired", "accent": TERRACOTTA, "content_width": 720, "group": "Getting In"},
     {"slug": "jobs",               "title": "Job Listings",              "accent": PINE,       "content_width": 720, "group": "Getting In"},
     {"slug": "fellowships",        "title": "Fellowships",             "accent": AMBER,      "content_width": 960, "group": "Getting In"},
