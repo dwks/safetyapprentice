@@ -1,0 +1,12 @@
+ If it feels like it's hard to get a job in AI safety right now, that's because it is. There are a lot of AI safety fellowships with more junior talent, and a handful of full-time jobs mostly geared towards senior researchers. The fact that nearly everyone is now using AI (Claude Code) to accelerate their research also means there is less and less for junior researchers to do.
+
+This difficulty is structural, a growing pain from the field expanding so rapidly. According to a MATS study of 23 hiring managers, research leads, and funders [1], organizations are being hyper-selective and conservative in hiring choices: they want senior researchers who require minimal supervision, can set research agendas, and contribute independently from day one. Junior hires carry too much risk and potential time investment, and require senior supervision (for "research taste").
+
+That's why the best way to get a foot in the door is by collaborating with a well-known researcher in the field. A personal recommendation from a credible researcher provides far stronger evidence of a candidate's ability than degrees, interviews, or even publications. That's one reason AI safety has so many fellowships, because they provide this signal: you work under a qualified mentor. (You can apply for ERA [2] and LASR Labs [3] right now, and MATS applications are opening soon.)
+
+You don't have to work together in a formal structure however. It's also a good idea to set up collaborations directly with people in the field, e.g. with people that you meet at conferences. Many people in AI safety make their own roles and submit their own grants; the field rewards being entrepreneurial. If you are new to the field, consider going to EA Global events, and look into Coefficient Giving career transition funding [4]. 
+
+[1] https://forum.effectivealtruism.org/posts/jwwrC4n9H53doRjRH/ai-safety-talent-needs-in-2026-insights-for-field-building
+[2] https://erafellowship.org/
+[3] https://www.lasrlabs.org/
+[4] https://coefficientgiving.org/funds/global-catastrophic-risks-opportunities/career-development-and-transition-funding/
