@@ -67,6 +67,12 @@ Useful flags: `--out <dir>` to build somewhere else, `--port <n>` with `--serve`
 Page accents are set from `siteconf.py` and exposed as `--accent`, `--accent-2`,
 and `--accent-3`, so hero gradients and dividers pick them up automatically.
 
+## Analytics
+
+No analytics script, no cookies, no third-party requests. Visitor numbers come
+from nginx access logs aggregated with GoAccess on the server — see
+[docs/analytics.md](docs/analytics.md) for the setup.
+
 ## Contributing
 
 Corrections and additions are welcome — especially anything that has gone stale.
