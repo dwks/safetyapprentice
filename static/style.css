@@ -273,6 +273,15 @@ body::before {
   border-color: color-mix(in srgb, var(--accent) 15%, transparent);
 }
 
+/* cards that are themselves links */
+a.item { display: block; text-decoration: none; color: inherit; }
+.item__go {
+  display: inline-flex; align-items: center; gap: 5px; margin-top: 14px;
+  font-size: 12.5px; font-weight: 600; color: var(--accent);
+  opacity: 0.6; transition: all 0.3s ease;
+}
+a.item:hover .item__go { opacity: 1; transform: translateX(3px); }
+
 @media (max-width: 720px) {
   .items-grid { grid-template-columns: 1fr; }
 }
