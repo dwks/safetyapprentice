@@ -7,6 +7,12 @@
       position: fixed; top: 0; left: 0; right: 0; bottom: 0;
       overflow: hidden; pointer-events: none; z-index: 0;
     }
+  .map-bg__img {
+      position: absolute; inset: 0;
+      background-image: url('./shokunin_World_Map.svg');
+      background-size: cover; background-position: center top; background-repeat: no-repeat;
+      opacity: 0.18; filter: saturate(0.3) sepia(0.2);
+    }
   .map-bg__fade-bottom {
       position: absolute; bottom: 0; left: 0; right: 0; height: 400px;
       background: linear-gradient(to top, #F8F3EC 0%, #F8F3EC 10%, transparent 100%);
@@ -71,7 +77,7 @@
 
   /* --- world map with hub pins --- */
   .worldmap {
-    margin: 0 auto 52px; max-width: 780px;
+    margin: 0 auto 52px;
     background: rgba(240, 233, 223, 0.5);
     border: 1px solid var(--line); border-radius: 18px;
     padding: 18px 20px 22px;
@@ -81,12 +87,15 @@
     display: block; width: 100%; height: auto;
     opacity: 0.30; filter: saturate(0) brightness(0.92);
   }
+  /* The pin is a fixed-size box centred on its coordinate, and the label is
+     positioned out of flow beside it. If the label were part of the box, its
+     width would shift the dot off the point it marks. */
   .pin {
     position: absolute; transform: translate(-50%, -50%);
-    text-decoration: none; color: inherit; white-space: nowrap;
-    display: flex; align-items: center; gap: 7px; z-index: 2;
+    width: 22px; height: 22px;
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none; color: inherit; z-index: 2;
   }
-  .pin--left { flex-direction: row-reverse; }
   .pin__dot {
     position: relative; flex-shrink: 0;
     width: 11px; height: 11px; border-radius: 50%;
@@ -108,11 +117,15 @@
     100% { transform: scale(2.3); opacity: 0; }
   }
   .pin__label {
+    position: absolute; left: calc(100% + 5px); top: 50%;
+    transform: translateY(calc(-50% + var(--ly, 0px)));
+    white-space: nowrap;
     font-size: 12.5px; font-weight: 600; color: var(--ink);
     background: rgba(255, 252, 247, 0.92); border: 1px solid var(--line-strong);
     padding: 3px 9px; border-radius: 100px;
-    transition: all 0.2s ease;
+    transition: border-color 0.2s ease, color 0.2s ease;
   }
+  .pin--left .pin__label { left: auto; right: calc(100% + 5px); }
   .pin__label b {
     font-weight: 600; color: var(--accent); margin-left: 3px;
   }
@@ -149,6 +162,13 @@
 {% block content %}
 <section class="content">
 
+  <!-- Callout -->
+  <div class="fade-in callout" style="margin-bottom: 48px;">
+    <div class="callout__glow"></div>
+    <h3 class="callout__title">Why location matters</h3>
+    <p class="callout__desc">Being physically near other safety researchers dramatically accelerates your work. Hallway conversations, whiteboard sessions, and spontaneous collaborations are how many of the best ideas in alignment have started. If you can, consider visiting one of these hubs.</p>
+  </div>
+
   {#- World map. The artwork is a public-domain Robinson-projection silhouette
       (Wikimedia BlankMap-World by Canuckguy), rasterised and cropped. Robinson
       is not linear in lat/lon, so pin positions are percentages measured
@@ -157,9 +177,9 @@
   {%- set hubs = [
         {'id': 'bay-area',  'label': 'Bay Area',  'x':  5.6, 'y': 29.7, 'n': 2, 'side': 'right'},
         {'id': 'toronto',   'label': 'Toronto',   'x': 18.5, 'y': 27.0, 'n': 1, 'side': 'right'},
-        {'id': 'cambridge', 'label': 'Cambridge', 'x': 43.9, 'y': 19.4, 'n': 1, 'side': 'left', 'lx': -2.0, 'ly': -6.0},
-        {'id': 'london',    'label': 'London',    'x': 44.1, 'y': 20.0, 'n': 2, 'side': 'left', 'lx':  0.0, 'ly':  5.5},
-        {'id': 'singapore', 'label': 'Singapore', 'x': 79.2, 'y': 51.9, 'n': 1, 'side': 'left'}
+        {'id': 'cambridge', 'label': 'Cambridge', 'x': 43.9, 'y': 19.4, 'n': 1, 'side': 'left', 'ly': -13},
+        {'id': 'london',    'label': 'London',    'x': 44.1, 'y': 20.0, 'n': 2, 'side': 'left', 'ly':  13},
+        {'id': 'singapore', 'label': 'Singapore', 'x': 79.35, 'y': 52.3, 'n': 1, 'side': 'left'}
       ] -%}
 
   <div class="worldmap fade-in">
@@ -169,20 +189,15 @@
       <a class="pin pin--{{ h.side }}" href="#{{ h.id }}"
          style="left: {{ h.x }}%; top: {{ h.y }}%;">
         <span class="pin__dot"><span class="pin__pulse"></span></span>
-        <span class="pin__label"{% if h.lx is defined %} style="transform: translate({{ h.lx }}em, {{ h.ly }}em);"{% endif %}>{{ h.label }} <b>{{ h.n }}</b></span>
+        <span class="pin__label"{% if h.ly is defined %} style="--ly: {{ h.ly }}px;"{% endif %}>{{ h.label }} <b>{{ h.n }}</b></span>
       </a>
       {%- endfor %}
     </div>
-    <p class="worldmap__note">Five cities, eight spaces. Select a pin to jump to one.</p>
+    <p class="worldmap__note">Select a pin to jump to a city.</p>
   </div>
 
 
-  <!-- Callout -->
-  <div class="fade-in callout" style="margin-bottom: 48px;">
-    <div class="callout__glow"></div>
-    <h3 class="callout__title">Why location matters</h3>
-    <p class="callout__desc">Being physically near other safety researchers dramatically accelerates your work. Hallway conversations, whiteboard sessions, and spontaneous collaborations are how many of the best ideas in alignment have started. If you can, consider visiting one of these hubs.</p>
-  </div>
+
 
   <!-- San Francisco Bay Area -->
   <div class="group fade-in" id="bay-area">
