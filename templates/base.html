@@ -14,8 +14,13 @@
 <link rel="icon" href="favicon.png" sizes="32x32" type="image/png" />
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 <link rel="stylesheet" href="style.css" />
-{%- if site.plausible %}
-<script defer data-domain="{{ site.plausible }}" src="{{ site.plausible_src }}"></script>
+{%- if site.plausible_src %}
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="{{ site.plausible_src }}"></script>
+<script>{% raw %}
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+{% endraw %}</script>
 {%- endif %}
 <style>
   :root {

@@ -1,9 +1,16 @@
 # Analytics
 
-Visitor numbers come from nginx's own access logs, aggregated on the server
-with [GoAccess](https://goaccess.io). By default the site carries **no
-analytics script, no cookies, and no third-party requests** — optional
-[Plausible](#plausible) support exists but ships disabled.
+Visitor numbers come from two sources, deliberately:
+
+- **[Plausible](#plausible)** — a cookieless script on every page. Crawlers do
+  not run JavaScript, so this counts people. Visitors who block trackers are
+  missed, making it an *under*count.
+- **[GoAccess](https://goaccess.io)** over nginx's access logs — cannot be
+  blocked, but counts every bot that does not announce itself, making it an
+  *over*count.
+
+Real readership sits between the two. Neither number alone is trustworthy;
+together they bracket it.
 
 That choice is deliberate. This site's audience is unusually likely to run
 tracker blockers, so a client-side tool like Google Analytics would undercount
@@ -298,20 +305,24 @@ and having both numbers is more informative than either alone.
 It also removes the manual work: bot filtering becomes Plausible's problem, and
 the dashboard reports visitors and pages directly rather than requests.
 
-### Enabling it
+### Enabled
 
-Support is already wired in and disabled. In `siteconf.py`:
+Currently **on**, using Plausible's hosted service. One field in `siteconf.py`:
 
 ```python
-"plausible": "safetyapprentice.com",     # was None
+"plausible_src": "https://plausible.io/js/pa-Q5aKLIVH4QPBBvMT5qFm3.js",
 ```
 
-Rebuild, and a single deferred script tag appears in the head of every page.
-Set it back to `None` to remove it completely — no leftovers.
+That URL is the per-site one from the dashboard's installation snippet — it
+identifies the site, so there is no separate `data-domain` to keep in sync.
+`templates/base.html` emits Plausible's snippet verbatim when the field is set,
+and nothing at all when it is `None`. Removing analytics is that one edit.
 
-Sign up at plausible.io first (from ~€9/month), or
-[self-host](https://github.com/plausible/community-edition) it free, in which
-case also point `plausible_src` at your own instance.
+If the dashboard ever reissues the snippet, replace the URL and rebuild.
+
+Self-hosting with [Community Edition](https://github.com/plausible/community-edition)
+is possible but heavy — it runs ClickHouse, which wants a couple of GB of RAM to
+itself. Point `plausible_src` at your own instance if you ever go that way.
 
 ### Proxying it through this domain
 
@@ -329,9 +340,7 @@ Plausible documents the nginx configuration —
 [follow their proxy guide](https://plausible.io/docs/proxy/introduction) rather
 than copying a snippet from here, as the upstream hostnames have changed before.
 
-### If you enable it
+### Privacy
 
-The site would no longer be script-free, so the claim at the top of this file
-needs revising, and a short privacy line on the about page becomes worth adding.
-Plausible sets no cookies and stores no personal data, so it stays a couple of
-sentences and no consent banner is required.
+Plausible sets no cookies, stores no personal data, and does not track people
+across sites, so no consent banner is required. The about page says so plainly.

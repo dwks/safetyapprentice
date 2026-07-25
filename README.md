@@ -69,10 +69,10 @@ and `--accent-3`, so hero gradients and dividers pick them up automatically.
 
 ## Analytics
 
-No analytics script, no cookies, no third-party requests by default. Visitor
-numbers come from nginx access logs aggregated with GoAccess on the server.
-Optional Plausible support is wired in but disabled — one field in
-`siteconf.py` turns it on. See [docs/analytics.md](docs/analytics.md).
+Cookieless [Plausible](https://plausible.io) for visitor numbers, plus nginx
+access logs aggregated with GoAccess on the server. No cookies, no cross-site
+tracking, no consent banner. One field in `siteconf.py` turns Plausible off
+again. See [docs/analytics.md](docs/analytics.md).
 
 ## Contributing
 
