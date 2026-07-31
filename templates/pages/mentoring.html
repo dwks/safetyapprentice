@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block page_css %}
+  .prose { margin-bottom: 40px; }
+  .prose p {
+    font-size: 16.5px; color: var(--ink-body); line-height: 1.8; margin-bottom: 18px;
+  }
+  .prose p:last-child { margin-bottom: 0; }
+  .prose strong { color: var(--ink); font-weight: 600; }
+  .prose a {
+    color: var(--accent); text-decoration: underline; text-underline-offset: 3px;
+    transition: opacity 0.2s ease;
+  }
+  .prose a:hover { opacity: 0.75; }
+
+  .status {
+    display: inline-flex; align-items: center; gap: 9px;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 7%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent) 18%, transparent);
+    padding: 8px 16px; border-radius: 100px; margin-bottom: 28px;
+  }
+  .status::before {
+    content: ''; width: 7px; height: 7px; border-radius: 50%;
+    background: var(--accent); flex-shrink: 0;
+  }
+
+  /* where to go instead */
+  .elsewhere { margin-top: 8px; }
+  .elsewhere__label {
+    font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--ink-faint); margin: 0 0 14px;
+  }
+  .elsewhere__list { display: flex; flex-direction: column; gap: 0; }
+  .elsewhere__item {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 14px;
+    padding: 15px 0; border-bottom: 1px solid var(--line);
+    text-decoration: none; color: inherit; transition: padding 0.25s ease;
+  }
+  .elsewhere__item:first-child { border-top: 1px solid var(--line); }
+  .elsewhere__item:hover { padding-left: 8px; }
+  .elsewhere__item:hover .elsewhere__name { color: var(--accent); }
+  .elsewhere__item:hover .elsewhere__go { opacity: 1; transform: translateX(3px); }
+  .elsewhere__name {
+    font-family: 'Lora', serif; font-size: 17px; font-weight: 600;
+    color: var(--ink); transition: color 0.25s ease;
+  }
+  .elsewhere__blurb {
+    display: block; font-family: 'DM Sans', sans-serif; font-size: 13.5px;
+    font-weight: 400; color: var(--ink-soft); margin-top: 3px; line-height: 1.55;
+  }
+  .elsewhere__go {
+    flex-shrink: 0; font-size: 15px; color: var(--accent); opacity: 0.4;
+    transition: all 0.25s ease;
+  }
+{% endblock %}
+
+{% block hero %}
+<header class="hero">
+  <h1>Mentoring</h1>
+  <p class="tagline">
+    One-on-one career calls — paused for now.
+  </p>
+</header>
+{% endblock %}
+
+{% block content %}
+<section class="content">
+
+  <div class="prose fade-in">
+    <p class="status">Coming soon</p>
+    <p>
+      Paid one-on-one career calls — application reviews, research direction, and
+      help navigating the field — are <strong>not currently available</strong>. They will
+      open again, and this page is where that will be announced.
+    </p>
+    <p>
+      In the meantime, everything else on this site is free and stays that way. If you were
+      hoping for a call because you're stuck on something specific, the pages below cover
+      most of what a first conversation would have.
+    </p>
+  </div>
+
+  <div class="elsewhere fade-in">
+    <p class="elsewhere__label">In the meantime</p>
+    <div class="elsewhere__list">
+      <a class="elsewhere__item" href="hard-to-get-hired.html">
+        <span class="elsewhere__name">Getting hired in AI safety<span class="elsewhere__blurb">Why the junior market is tough right now, and what actually gets you a foot in the door.</span></span>
+        <span class="elsewhere__go">&rarr;</span>
+      </a>
+      <a class="elsewhere__item" href="fellowships.html">
+        <span class="elsewhere__name">Fellowships<span class="elsewhere__blurb">The most reliable entry route, and what makes an application strong.</span></span>
+        <span class="elsewhere__go">&rarr;</span>
+      </a>
+      <a class="elsewhere__item" href="funding.html">
+        <span class="elsewhere__name">Funding &amp; grants<span class="elsewhere__blurb">How to pay for a transition, including grants for self-directed work.</span></span>
+        <span class="elsewhere__go">&rarr;</span>
+      </a>
+      <a class="elsewhere__item" href="conferences.html">
+        <span class="elsewhere__name">Conferences &amp; events<span class="elsewhere__blurb">Where to meet people in person — usually worth more than any single call.</span></span>
+        <span class="elsewhere__go">&rarr;</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="prose fade-in" style="margin-top: 44px;">
+    <p>
+      If you'd like to be told when calls reopen, or you want to help mentor others,
+      <a href="about.html">get in touch</a> — that's genuinely welcome.
+    </p>
+  </div>
+
+</section>
+{% endblock %}

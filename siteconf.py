@@ -7,7 +7,9 @@ adding an entry to PAGES and (if it should be linked) to NAV.
 SITE = {
     "name": "The Safety Apprentice",
     "repo": "https://github.com/dwks/safetyapprentice",
-    "consulting": "https://dwkmentoring.com",
+    # Mentoring is paused; links go to the in-site "coming soon" page rather
+    # than dwkmentoring.com. Point this back at the external site to resume.
+    "consulting": "mentoring.html",
     "footer_note": "The Safety Apprentice is a community resource started by David Williams-King.",
 
     # Plausible analytics. None disables it entirely — no script is emitted.
@@ -33,14 +35,14 @@ SITE["nav"] = [
         {"label": "Geography",              "href": "geography.html"},
         {"label": "Conferences &amp; Events", "href": "conferences.html"},
     ]},
-    {"label": "Mentoring", "href": SITE["consulting"], "external": True},
+    {"label": "Mentoring", "href": SITE["consulting"]},
     {"label": "About", "href": "about.html"},
 ]
 
 SITE["footer_links"] = [
     {"label": "About this project",   "href": "about.html"},
     {"label": "Contribute on GitHub", "href": SITE["repo"],       "external": True},
-    {"label": "Paid career consulting", "href": SITE["consulting"], "external": True},
+    {"label": "Mentoring", "href": SITE["consulting"]},
 ]
 
 # Accent palettes, keyed for reuse across pages.
@@ -63,8 +65,9 @@ PAGES = [
     {"slug": "funding",            "title": "Funding & Grants",        "accent": OLIVE,      "content_width": 720, "group": "Getting In"},
     {"slug": "geography",          "title": "Geography of AI Safety",  "accent": ROSE,       "content_width": 960, "group": "Community"},
     {"slug": "conferences",        "title": "Conferences & Events",    "accent": BRONZE,     "content_width": 960, "group": "Community"},
-    # about already carries the full "A paid career call" panel, so it opts out
-    # of the site-wide consulting callout
+    # about already carries its own mentoring panel, so it opts out of the
+    # site-wide consulting callout
+    {"slug": "mentoring",           "title": "Mentoring",               "accent": TERRACOTTA, "content_width": 720, "consult": False},
     {"slug": "about",              "title": "About",                   "accent": TERRACOTTA, "content_width": 720, "consult": False},
 ]
 
