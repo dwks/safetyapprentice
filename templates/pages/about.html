@@ -83,6 +83,12 @@
       font-size: 16px; color: #6B6058; line-height: 1.7; margin-bottom: 24px;
     }
 
+  /* plain paragraphs in a section sit outside .prose, so they need the same
+     type treatment or they read tighter than the rest of the page */
+  .section > p:not(.section__intro) {
+      font-size: 16px; color: #4A413A; line-height: 1.8; margin: 0;
+    }
+
   /* Author card */
   .author {
       display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
