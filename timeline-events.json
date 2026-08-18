@@ -1,6 +1,6 @@
 {
   "source": "templates/pages/timeline.html",
-  "note": "description carries the inline HTML (<strong>, <em>) exactly as it appears in the template. description is null for events added to the list but not yet present in timeline.html.",
+  "note": "description carries the inline HTML (<strong>, <em>) exactly as it appears in the template. in_html marks whether the event is currently rendered on the page; events with in_html false have descriptions drafted but not yet added to timeline.html.",
   "categories": {
     "t-paper": "Research",
     "t-capability": "Capability",
@@ -17,7 +17,7 @@
       "title": "MIRI is founded (as the Singularity Institute)",
       "url": "https://intelligence.org/about/",
       "link_text": null,
-      "description": null,
+      "description": "Founded by Eliezer Yudkowsky with Brian and Sabine Atkins as the Singularity Institute for Artificial Intelligence, and renamed in 2013. <strong>The first organisation created specifically to work on risks from smarter-than-human AI</strong> — fourteen years before <em>Superintelligence</em> made the argument respectable. Much of the field's early vocabulary, and a good deal of its culture, traces back here.",
       "in_html": false
     },
     {
@@ -101,7 +101,7 @@
       "title": "AGI Ruin: A List of Lethalities",
       "url": "https://www.lesswrong.com/posts/uMQ3cqWDPHhjtiesc/agi-ruin-a-list-of-lethalities",
       "link_text": null,
-      "description": null,
+      "description": "Yudkowsky's numbered list of the reasons he expects alignment to fail — not one argument but dozens, covering why we get no retries on a system that kills us, why capabilities generalise further than alignment does, and why the proposals people reach for don't survive contact with something that is actually trying. <strong>The most argued-with statement of the pessimistic case</strong>, and the reference point for what \"doom\" means when people use the word without explaining it.",
       "in_html": false
     },
     {
@@ -161,7 +161,7 @@
       "title": "Claude's Constitution is published",
       "url": "https://www.anthropic.com/news/claudes-constitution",
       "link_text": null,
-      "description": null,
+      "description": "The document behind the technique: Anthropic published the actual principles Claude was trained to critique itself against, drawn from the UN Declaration of Human Rights, Apple's terms of service, DeepMind's Sparrow rules and its own research. Modest as a text, but <strong>it made one lab's values explicit enough to argue with</strong> — the norm that produced the far longer constitution of January 2026.",
       "in_html": false
     },
     {
@@ -293,7 +293,7 @@
       "title": "Constitutional Classifiers",
       "url": "https://arxiv.org/abs/2501.18837",
       "link_text": null,
-      "description": null,
+      "description": "Sharma et al. wrapped a model in input and output filters trained on synthetic data generated from a constitution of allowed and disallowed content. Over 3,000 hours of red teaming produced no universal jailbreak, for 0.38% more refusals on production traffic and 23.7% inference overhead. <strong>Safety as a deployment-time layer rather than a property of the model</strong> — a working admission that training alone was not going to hold.",
       "in_html": false
     },
     {
@@ -341,7 +341,7 @@
       "title": "Yudkowsky & Soares, <em>If Anyone Builds It, Everyone Dies</em>",
       "url": "https://ifanyonebuildsit.com/",
       "link_text": null,
-      "description": null,
+      "description": "Yudkowsky and Soares made the extinction argument for a general audience, in hardcover, with a title that declines to hedge. Whatever you make of the thesis, <strong>the pessimistic case moved from forum posts to bookshop tables</strong> — and became something the field's critics and defenders alike had to answer in public.",
       "in_html": false
     },
     {
@@ -401,7 +401,7 @@
       "title": "Model Spec Midtraining",
       "url": "https://arxiv.org/abs/2605.02087",
       "link_text": null,
-      "description": null,
+      "description": "Li et al. inserted a stage between pretraining and fine-tuning: train the model on synthetic documents discussing its own specification, so that later demonstration data gets read in light of stated values. Agentic misalignment on Qwen3-32B fell from 54% to 7%, against 14% for a deliberative-alignment baseline. <strong>A spec that explains why a rule exists generalises better than one that only states the rule.</strong>",
       "in_html": false
     },
     {
@@ -413,7 +413,7 @@
       "title": "Teaching Claude why",
       "url": "https://www.anthropic.com/research/teaching-claude-why",
       "link_text": null,
-      "description": null,
+      "description": "Anthropic applied that idea to production models and reported the blackmail behaviour from Agentic Misalignment gone. Constitution-derived documents combined with fictional stories portraying an aligned AI cut misalignment by more than a factor of three, on scenarios unrelated to the training data. <strong>Training on reasons rather than examples</strong> — showing a model what correct behaviour looks like turns out to be weaker than teaching it why the behaviour is correct.",
       "in_html": false
     },
     {
