@@ -141,6 +141,17 @@
       "description": "Professional-exam-level performance across many domains, shipped with a system card documenting dangerous-capability evaluations, including ARC's tests for autonomous replication. <strong>Pre-deployment safety evaluation became an expected part of a frontier launch.</strong>"
     },
     {
+      "id": "pause-letter",
+      "year": 2023,
+      "date": "22 March 2023",
+      "badge": "Open letter",
+      "category": "t-governance",
+      "title": "The six-month pause letter",
+      "url": "https://futureoflife.org/open-letter/pause-giant-ai-experiments/",
+      "link_text": "Read the letter →",
+      "description": "The Future of Life Institute called on labs to pause for at least six months the training of any system more powerful than GPT-4, with a government moratorium if they refused. It drew over 30,000 signatures and no pause. <strong>AI risk became a public political demand rather than a research topic.</strong>"
+    },
+    {
       "id": "claudes-constitution",
       "year": 2023,
       "date": "9 May 2023",
@@ -174,17 +185,6 @@
       "description": "The first published commitment tying deployment to capability thresholds: define danger levels in advance, commit to safeguards before crossing them. OpenAI's Preparedness Framework and DeepMind's Frontier Safety Framework followed. <strong>The template for voluntary frontier-lab governance.</strong>"
     },
     {
-      "id": "towards-monosemanticity",
-      "year": 2023,
-      "date": "October 2023",
-      "badge": "Paper",
-      "category": "t-paper",
-      "title": "Towards Monosemanticity",
-      "url": "https://transformer-circuits.pub/2023/monosemantic-features",
-      "link_text": "Read the paper →",
-      "description": "Sparse autoencoders pulled interpretable features out of a small model's superposed activations, cracking a problem that had blocked mechanistic interpretability for years. <strong>The result that made interpretability look scalable.</strong>"
-    },
-    {
       "id": "bletchley-park",
       "year": 2023,
       "date": "November 2023",
@@ -194,17 +194,6 @@
       "url": null,
       "link_text": null,
       "description": "28 countries plus the EU — including both the US and China — signed a declaration acknowledging frontier AI risk. The UK and US AI Safety Institutes followed, <strong>giving governments in-house capacity to evaluate models</strong> rather than relying on labs' own reporting."
-    },
-    {
-      "id": "scaling-monosemanticity",
-      "year": 2024,
-      "date": "May 2024",
-      "badge": "Paper",
-      "category": "t-paper",
-      "title": "Scaling Monosemanticity",
-      "url": "https://transformer-circuits.pub/2024/scaling-monosemanticity/",
-      "link_text": "Read the paper →",
-      "description": "Anthropic extracted millions of interpretable features from Claude 3 Sonnet — including ones for deception and sycophancy — and showed that clamping a feature changes behaviour. <strong>Interpretability moved from toy models to production systems.</strong>"
     },
     {
       "id": "eu-ai-act",
@@ -271,6 +260,17 @@
       "url": "https://arxiv.org/abs/2501.18837",
       "link_text": null,
       "description": "Sharma et al. wrapped a model in input and output filters trained on synthetic data from a constitution of allowed and disallowed content. Over 3,000 hours of red teaming produced no universal jailbreak, at 0.38% more refusals and 23.7% inference overhead. <strong>Safety as a deployment-time layer rather than a property of the model.</strong>"
+    },
+    {
+      "id": "ai-2027",
+      "year": 2025,
+      "date": "3 April 2025",
+      "badge": "Scenario",
+      "category": "t-paper",
+      "title": "AI 2027",
+      "url": "https://ai-2027.com/",
+      "link_text": "Read the scenario →",
+      "description": "Kokotajlo, Alexander, Larsen, Lifland and Dean wrote a month-by-month scenario running from 2025 to an intelligence explosion in late 2027, with the forecasting work shown. <strong>Made timelines something people argued about with dates and numbers.</strong>"
     },
     {
       "id": "agentic-misalignment",
@@ -392,6 +392,17 @@
       "url": "https://www.anthropic.com/news/fable-mythos-access",
       "link_text": "Read Anthropic's statement →",
       "description": "Acting under export-control and national-security authorities, the US government directed Anthropic to cut off access worldwide — and it did, within a day. <strong>A government can and will pull a deployed frontier model.</strong> Commerce lifted the controls on 30 June, after the security community argued the restriction hurt defenders more than attackers."
+    },
+    {
+      "id": "ai-2040",
+      "year": 2026,
+      "date": "9 July 2026",
+      "badge": "Scenario",
+      "category": "t-paper",
+      "title": "AI 2040: Plan A",
+      "url": "https://ai-2040.com/",
+      "link_text": "Read the plan →",
+      "description": "The same group's follow-up, framed as a recommendation rather than a prediction: US-China agreement by 2029 on full transparency in AI development, backed by verification and \"mutually assured compute destruction\", delaying superintelligence from 2030 to 2040. <strong>The pessimistic forecasters' attempt to describe a way through.</strong>"
     },
     {
       "id": "huggingface-breach",
