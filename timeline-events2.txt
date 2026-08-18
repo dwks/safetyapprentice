@@ -25,8 +25,8 @@ Format: YEAR | DATE LABEL | BADGE | CATEGORY CLASS | TITLE | LINK
 2024 | December 2024 | Paper | t-paper | Alignment Faking in Large Language Models | https://www.anthropic.com/research/alignment-faking
 2025 | January 2025 | Capability | t-capability | DeepSeek-R1 | (no link)
 2025 | 31 January 2025 | Paper | t-paper | Constitutional Classifiers | https://arxiv.org/abs/2501.18837
-2025 | March 2025 | Paper | t-paper | CoT monitoring and obfuscated reward hacking | (no link)
 2025 | June 2025 | Paper | t-paper | Agentic Misalignment | https://www.anthropic.com/research/agentic-misalignment
+2025 | 15 July 2025 | Paper | t-paper | Chain of Thought Monitorability: A New and Fragile Opportunity for AI Safety | https://arxiv.org/abs/2507.11473
 2025 | September 2025 | Paper | t-paper | Anti-scheming training | (no link)
 2025 | September 2025 | Book | t-paper | Yudkowsky & Soares, If Anyone Builds It, Everyone Dies | https://ifanyonebuildsit.com/
 2025 | October 2025 | Paper | t-paper | 250 documents can poison a model of any size | https://www.anthropic.com/research/small-samples-poison

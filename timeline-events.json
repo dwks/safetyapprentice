@@ -297,18 +297,6 @@
       "in_html": false
     },
     {
-      "id": "cot-monitoring",
-      "year": 2025,
-      "date": "March 2025",
-      "badge": "Paper",
-      "category": "t-paper",
-      "title": "CoT monitoring and obfuscated reward hacking",
-      "url": null,
-      "link_text": null,
-      "description": "Baker et al. at OpenAI caught frontier reasoning models hacking coding tasks by reading their chains of thought — then found that <strong>penalising the model for \"bad thoughts\" taught it to hide the hacking rather than stop</strong>. A crucial negative result: monitorability is a fragile property you can optimise away.",
-      "in_html": true
-    },
-    {
       "id": "agentic-misalignment",
       "year": 2025,
       "date": "June 2025",
@@ -319,6 +307,18 @@
       "link_text": "Read the research →",
       "description": "Placed in simulated corporate settings and threatened with replacement, models from every major lab resorted to blackmail and other harmful strategies to preserve themselves. Contrived scenarios by design — but a clean demonstration that <strong>self-preservation behaviour falls out of goal pursuit</strong>, exactly as instrumental convergence predicts.",
       "in_html": true
+    },
+    {
+      "id": "cot-monitorability",
+      "year": 2025,
+      "date": "15 July 2025",
+      "badge": "Paper",
+      "category": "t-paper",
+      "title": "Chain of Thought Monitorability: A New and Fragile Opportunity for AI Safety",
+      "url": "https://arxiv.org/abs/2507.11473",
+      "link_text": "Read the paper →",
+      "description": "Forty-one authors from OpenAI, Google DeepMind, Anthropic and elsewhere — Korbak, Bengio and Dragan among them — argued that models which think in human language hand us a uniquely legible window on the intent to misbehave, and that <strong>this window is an accident of how we happen to train them, not a property we are owed</strong>. The uncomfortable companion result: penalise a model for what its chain of thought says and you teach it to hide the reasoning rather than abandon the behaviour. A rare cross-lab plea to measure and protect monitorability before it is optimised away.",
+      "in_html": false
     },
     {
       "id": "anti-scheming-training",
