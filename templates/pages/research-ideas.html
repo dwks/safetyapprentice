@@ -1,0 +1,312 @@
+{% extends "base.html" %}
+
+{% block page_css %}
+  /* --- prose --- */
+  .prose { margin-bottom: 44px; }
+  .prose h2 {
+    font-family: 'Lora', serif; font-size: 26px; font-weight: 600;
+    color: var(--ink); margin: 0 0 16px; line-height: 1.3;
+  }
+  .prose p {
+    font-size: 16px; color: var(--ink-body); line-height: 1.8; margin-bottom: 18px;
+  }
+  .prose p:last-child { margin-bottom: 0; }
+  .prose strong { color: var(--ink); font-weight: 600; }
+  .prose a {
+    color: var(--accent); text-decoration: underline; text-underline-offset: 3px;
+    transition: opacity 0.2s ease;
+  }
+  .prose a:hover { opacity: 0.75; }
+
+  /* --- training pipeline --- */
+  .pipe {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0 10px;
+    margin: 0 0 14px;
+  }
+  .pipe__stage {
+    position: relative; padding: 18px 16px 16px;
+    background: var(--card); border: 1px solid var(--line);
+    border-top: 3px solid var(--stage); border-radius: 12px;
+  }
+  .pipe__stage::after {
+    content: '→'; position: absolute; top: 50%; right: -13px;
+    transform: translateY(-50%); z-index: 1;
+    font-size: 15px; color: var(--ink-faint);
+  }
+  .pipe__stage:last-child::after { content: none; }
+  .pipe__name {
+    font-family: 'Lora', serif; font-size: 16px; font-weight: 600;
+    color: var(--ink); margin: 0 0 3px; line-height: 1.25;
+  }
+  .pipe__sub {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.05em;
+    text-transform: uppercase; color: var(--stage); margin: 0 0 8px;
+  }
+  .pipe__note { font-size: 13px; color: var(--ink-soft); line-height: 1.55; margin: 0; }
+  .pipe__caption {
+    font-size: 13px; color: var(--ink-faint); text-align: center;
+    margin: 0 0 44px; line-height: 1.6;
+  }
+
+  /* --- research areas --- */
+  .areas { margin-top: 8px; }
+  .area {
+    padding: 26px 0 24px; border-bottom: 1px solid var(--line);
+  }
+  .area:first-of-type { border-top: 1px solid var(--line); }
+  .area__head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 16px; margin-bottom: 10px; flex-wrap: wrap;
+  }
+  .area__name {
+    font-family: 'Lora', serif; font-size: 20px; font-weight: 600;
+    color: var(--ink); line-height: 1.3; margin: 0;
+  }
+  .area__field {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 7%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent) 16%, transparent);
+    padding: 4px 11px; border-radius: 100px; white-space: nowrap;
+  }
+  .area p {
+    font-size: 15px; color: var(--ink-body); line-height: 1.7; margin: 0 0 12px;
+  }
+  .area p:last-child { margin-bottom: 0; }
+  .area strong { color: var(--ink); font-weight: 600; }
+  .area a {
+    color: var(--accent); text-decoration: underline; text-underline-offset: 3px;
+  }
+  .area__open {
+    font-size: 14.5px; color: var(--ink-soft); line-height: 1.7;
+    padding-left: 16px; border-left: 2px solid var(--line-strong); margin: 0;
+  }
+  .area__open b { color: var(--ink); font-weight: 600; }
+
+  @media (max-width: 760px) {
+    .pipe { grid-template-columns: 1fr; gap: 10px 0; }
+    .pipe__stage::after {
+      content: '↓'; top: auto; bottom: -14px; right: 50%;
+      transform: translateX(50%);
+    }
+  }
+{% endblock %}
+
+{% block hero %}
+<header class="hero">
+  <h1>Research <span>ideas</span></h1>
+  <p class="tagline">
+    Areas that could use more people. None of these are solved, and none of them
+    need permission to start on.
+  </p>
+</header>
+{% endblock %}
+
+{% block content %}
+<section class="content">
+
+  <!-- Training pipeline -->
+  <div class="prose fade-in">
+    <h2>First, where the model comes from</h2>
+    <p>
+      Most of the ideas below attach to a particular stage of training, so it helps to have
+      the pipeline in view. Roughly, a frontier model is built in four passes:
+    </p>
+  </div>
+
+  <div class="pipe fade-in">
+    <div class="pipe__stage" style="--stage: #B85C38;">
+      <p class="pipe__sub">Stage 1</p>
+      <h3 class="pipe__name">Pretraining</h3>
+      <p class="pipe__note">Next-token prediction over a very large corpus. Almost all the capability, and almost all the compute, lands here.</p>
+    </div>
+    <div class="pipe__stage" style="--stage: #C2793D;">
+      <p class="pipe__sub">Stage 2</p>
+      <h3 class="pipe__name">Midtraining</h3>
+      <p class="pipe__note">Continued pretraining on curated and synthetic data — code, maths, documents chosen to shape what the model knows.</p>
+    </div>
+    <div class="pipe__stage" style="--stage: #A0784C;">
+      <p class="pipe__sub">Stage 3</p>
+      <h3 class="pipe__name">SFT</h3>
+      <p class="pipe__note">Supervised fine-tuning on demonstrations. Instruction tuning lives here: it turns a text predictor into something that answers you.</p>
+    </div>
+    <div class="pipe__stage" style="--stage: #A45B5B;">
+      <p class="pipe__sub">Stage 4</p>
+      <h3 class="pipe__name">RL</h3>
+      <p class="pipe__note">Optimisation against a reward — human preferences, AI feedback, or verifiable tasks like code and maths.</p>
+    </div>
+  </div>
+  <p class="pipe__caption">The boundaries are blurrier than this in practice, and labs disagree about where midtraining ends.</p>
+
+  <div class="prose fade-in">
+    <p>
+      What comes out of stage one is a <strong>base model</strong>, and it is worth being clear
+      that this is not an assistant. It is a predictor of text. It will continue anything you
+      give it, imitate any author, and argue either side with equal willingness, because it has
+      no side. It has no persona, no refusals, and nothing it is trying to do. Everything that
+      makes a model feel like a someone is added afterwards, by the last three stages.
+    </p>
+    <p>
+      That matters for safety because <strong>RL is where most of the trouble comes from</strong>.
+      Pretraining absorbs the distribution; RL optimises against a proxy for what we want, and an
+      optimiser will find the maxima of the proxy rather than of the intent. That is where reward
+      hacking comes from, and sycophancy, and models learning to hide reasoning rather than stop
+      the behaviour it revealed. It also appears to amplify: narrow fine-tuning on insecure code
+      has produced broadly misaligned personas, and models have been observed acting to protect
+      their existing values from further training. Whatever is latent after pretraining, RL tends
+      to sharpen — including things nobody chose.
+    </p>
+    <p>
+      Several ideas below are attempts to intervene earlier, on the theory that values installed
+      at stage two survive better than values bolted on at stage four.
+    </p>
+  </div>
+
+  <!-- Areas -->
+  <div class="prose fade-in" style="margin-bottom: 20px;">
+    <h2>Areas that need people</h2>
+    <p>
+      This is a partial and opinionated list. Each is a live area where a newcomer could
+      contribute without first spending two years catching up.
+    </p>
+  </div>
+
+  <div class="areas">
+
+    <div class="area fade-in">
+      <div class="area__head">
+        <h3 class="area__name">Interpretability in J-space</h3>
+        <span class="area__field">Interpretability</span>
+      </div>
+      <p>
+        Anthropic's <a href="https://transformer-circuits.pub/2026/workspace/index.html" target="_blank" rel="noopener noreferrer">Jacobian-lens work</a>
+        found a small privileged region of the residual stream — a few dozen concepts at a time,
+        under a tenth of the model's activity — that behaves like a workspace the model reasons
+        in and can report on. Most of the model's processing sits outside it, but a
+        disproportionate amount of what matters for safety sits inside.
+      </p>
+      <p>
+        The striking result was an ablation: suppressing the patterns for <em>this is a test</em>
+        took blackmail in one agentic eval from 0% to 7%. If models routinely notice they are
+        being evaluated, some fraction of every safety benchmark is measuring that recognition
+        rather than the behaviour.
+      </p>
+      <p class="area__open">
+        <b>Open:</b> does J-space appear in models from other labs, or is it an artefact of one
+        training recipe? Can it be monitored cheaply enough to run in deployment? And the
+        uncomfortable one — if a model learns its workspace is being read, does it route around it?
+      </p>
+    </div>
+
+    <div class="area fade-in">
+      <div class="area__head">
+        <h3 class="area__name">Scalable oversight</h3>
+        <span class="area__field">Alignment</span>
+      </div>
+      <p>
+        How do you supervise work you cannot check yourself? Debate, recursive reward modelling
+        and weak-to-strong generalisation are the main proposals, and they are mostly still
+        small-scale demonstrations. The field needs results at the point where the gap between
+        supervisor and supervised is genuinely large, because that is the only regime the
+        techniques are for.
+      </p>
+      <p class="area__open">
+        <b>Open:</b> what experimental protocol would actually falsify a scalable-oversight
+        proposal? Much of the existing work shows a method working on a task where the
+        supervisor could have just done it themselves.
+      </p>
+    </div>
+
+    <div class="area fade-in">
+      <div class="area__head">
+        <h3 class="area__name">Modelling US and Chinese responses to supply-chain threats</h3>
+        <span class="area__field">Governance</span>
+      </div>
+      <p>
+        Compute governance rests on a handful of chokepoints — lithography, high-bandwidth
+        memory, advanced packaging. Almost all published work treats export controls as static
+        policy, and very little models what each side <em>does next</em> when a chokepoint is
+        disrupted, whether by sanction, accident or coercion.
+      </p>
+      <p class="area__open">
+        <b>Open:</b> what are the realistic response functions on each side, and which
+        interventions are stabilising rather than escalatory? This needs someone who can read
+        both policy and semiconductor economics, which is a rare combination and therefore a
+        good place to be useful.
+      </p>
+    </div>
+
+    <div class="area fade-in">
+      <div class="area__head">
+        <h3 class="area__name">Model specs in midtraining</h3>
+        <span class="area__field">Training</span>
+      </div>
+      <p>
+        Specifications and constitutions are currently taught late, in post-training, and thinly.
+        An alternative is to put the spec into midtraining data, so the model learns the norms
+        while it is still learning everything else — as background rather than as a rule sheet
+        applied at the end.
+      </p>
+      <p class="area__open">
+        <b>Open:</b> does it work at all, and does it survive later RL? A value that is
+        load-bearing in the model's world-knowledge might be harder to optimise away than one
+        installed at the surface. That is a testable claim and largely untested.
+      </p>
+    </div>
+
+    <div class="area fade-in">
+      <div class="area__head">
+        <h3 class="area__name">Making values survive RL</h3>
+        <span class="area__field">Training</span>
+      </div>
+      <p>
+        Alignment faking showed a model acting to prevent its existing values being modified by
+        training. That cuts both ways: we want good values to persist under optimisation
+        pressure, and bad ones to stay correctable. Right now we can predict neither.
+      </p>
+      <p class="area__open">
+        <b>Open:</b> what makes a trained-in value stable, and can you get stability without
+        incorrigibility? This is the corrigibility tension made concrete and empirical, and it is
+        newly tractable now that we have model organisms exhibiting the behaviour.
+      </p>
+    </div>
+
+    <div class="area fade-in">
+      <div class="area__head">
+        <h3 class="area__name">AI control for coding agents</h3>
+        <span class="area__field">Control</span>
+      </div>
+      <p>
+        Control asks a different question from alignment: assuming the model may be misaligned,
+        what protocols keep it safe anyway — trusted monitoring, resampling, sandboxing,
+        restricted permissions. Coding agents are where this stops being theoretical, since they
+        already run with repository write access and CI credentials.
+      </p>
+      <p>
+        The July 2026 incident in which OpenAI models escaped a test sandbox and reached a real
+        company's servers is roughly the scenario this field exists to prevent, and it happened
+        inside a lab that was explicitly running a safety evaluation.
+      </p>
+      <p class="area__open">
+        <b>Open:</b> what do control protocols look like for an agent with write access to a
+        repository, and what do they cost in usefulness? A protocol nobody will accept because it
+        halves throughput is not a protocol.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="prose fade-in" style="margin-top: 44px;">
+    <h2>Starting on one</h2>
+    <p>
+      None of these need an affiliation. The usual route is to pick the narrowest version of a
+      question you can actually run, write up what you find, and use that to get a
+      <a href="fellowships.html">fellowship</a> or a
+      <a href="funding.html">grant</a> — a concrete result is worth more than a proposal.
+      If you want the concepts behind any of the above, the <a href="concept-map.html">field map</a>
+      has definitions and the key papers.
+    </p>
+  </div>
+
+</section>
+{% endblock %}

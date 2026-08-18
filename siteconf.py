@@ -24,6 +24,7 @@ SITE["nav"] = [
         {"label": "Why AI Safety Matters", "href": "why-ai-safety.html"},
         {"label": "Key Events",            "href": "timeline.html"},
         {"label": "Field Map",             "href": "concept-map.html"},
+        {"label": "Research Ideas",        "href": "research-ideas.html"},
     ]},
     {"label": "Getting In", "children": [
         {"label": "Getting Hired",     "href": "hard-to-get-hired.html"},
@@ -59,6 +60,7 @@ PAGES = [
     {"slug": "why-ai-safety",      "title": "Why AI Safety Matters",   "accent": TERRACOTTA, "content_width": 720, "group": "Learn"},
     {"slug": "timeline",           "title": "Key Events",              "accent": TERRACOTTA, "content_width": 780, "group": "Learn"},
     {"slug": "concept-map",        "title": "A Field Map of AI Safety","accent": TERRACOTTA, "content_width": 720, "group": "Learn", "consult": False},
+    {"slug": "research-ideas",      "title": "Research Ideas",          "accent": TERRACOTTA, "content_width": 760, "group": "Learn"},
     {"slug": "hard-to-get-hired",  "title": "Why It's Hard to Get Hired", "accent": TERRACOTTA, "content_width": 720, "group": "Getting In"},
     {"slug": "jobs",               "title": "Job Listings",              "accent": PINE,       "content_width": 720, "group": "Getting In"},
     {"slug": "fellowships",        "title": "Fellowships",             "accent": AMBER,      "content_width": 960, "group": "Getting In"},
