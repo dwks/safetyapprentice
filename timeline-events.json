@@ -1,6 +1,6 @@
 {
   "source": "templates/pages/timeline.html",
-  "note": "description carries the inline HTML (<strong>, <em>) exactly as it appears in the template. in_html marks whether the event is currently rendered on the page; events with in_html false have descriptions drafted but not yet added to timeline.html.",
+  "note": "description carries the inline HTML (<strong>, <em>) exactly as it appears on the page. Edit this file, then run tools/build_timeline.py to regenerate templates/pages/timeline.html.",
   "categories": {
     "t-paper": "Research",
     "t-capability": "Capability",
@@ -17,8 +17,7 @@
       "title": "MIRI is founded (as the Singularity Institute)",
       "url": "https://intelligence.org/about/",
       "link_text": null,
-      "description": "Founded by Eliezer Yudkowsky with Brian and Sabine Atkins as the Singularity Institute for Artificial Intelligence, and renamed in 2013. <strong>The first organisation created specifically to work on risks from smarter-than-human AI</strong> — fourteen years before <em>Superintelligence</em> made the argument respectable. Much of the field's early vocabulary, and a good deal of its culture, traces back here.",
-      "in_html": false
+      "description": "Founded by Eliezer Yudkowsky with Brian and Sabine Atkins as the Singularity Institute for Artificial Intelligence, and renamed in 2013. <strong>The first organisation created specifically to work on risks from smarter-than-human AI</strong> — fourteen years before <em>Superintelligence</em> made the argument respectable."
     },
     {
       "id": "superintelligence",
@@ -29,8 +28,7 @@
       "title": "Bostrom, <em>Superintelligence</em>",
       "url": null,
       "link_text": null,
-      "description": "Brought the orthogonality thesis, instrumental convergence, and the control problem to a mainstream audience. For roughly a decade this was the reference point for what \"AI risk\" meant — and much of the field is still arguing with it.",
-      "in_html": true
+      "description": "Brought the orthogonality thesis, instrumental convergence, and the control problem to a mainstream audience. Defines the term \"Superintelligence\". For roughly a decade this was the reference point for what \"AI risk\" meant."
     },
     {
       "id": "attention-is-all-you-need",
@@ -41,8 +39,7 @@
       "title": "Attention Is All You Need",
       "url": "https://arxiv.org/abs/1706.03762",
       "link_text": "Read the paper →",
-      "description": "The transformer architecture. Not a safety paper, but every system the field now worries about is built on it — worth knowing as the point where the current scaling era becomes possible.",
-      "in_html": true
+      "description": "The transformer architecture. Not a safety paper, but every system the field now worries about is built on it — the point where the current scaling era becomes possible."
     },
     {
       "id": "deep-rl-from-human-preferences",
@@ -53,8 +50,7 @@
       "title": "Deep RL from Human Preferences",
       "url": "https://arxiv.org/abs/1706.03741",
       "link_text": "Read the paper →",
-      "description": "Christiano et al. showed you could train agents on human comparisons instead of a hand-written reward function. <strong>The origin of RLHF</strong> — a safety technique that became the core alignment method of the LLM era, and then a source of its own problems (see sycophancy and reward hacking).",
-      "in_html": true
+      "description": "Christiano et al. showed you could train agents on human comparisons instead of a hand-written reward function. <strong>The origin of RLHF</strong>."
     },
     {
       "id": "ai-safety-via-debate",
@@ -65,8 +61,7 @@
       "title": "AI Safety via Debate",
       "url": "https://arxiv.org/abs/1805.00899",
       "link_text": "Read the paper →",
-      "description": "Irving, Christiano and Amodei proposed having models argue against each other so a weaker human judge can supervise a stronger system. One of the founding proposals for <strong>scalable oversight</strong> — how to check work you can't do yourself.",
-      "in_html": true
+      "description": "Irving, Christiano and Amodei proposed having models argue against each other so a weaker human judge can supervise a stronger system. One of the founding proposals for <strong>scalable oversight</strong>."
     },
     {
       "id": "risks-from-learned-optimization",
@@ -77,8 +72,7 @@
       "title": "Risks from Learned Optimization",
       "url": "https://arxiv.org/abs/1906.01820",
       "link_text": "Read the paper →",
-      "description": "Hubinger et al. introduced mesa-optimization and the inner/outer alignment split: training may produce a system with its own internal objective that merely correlated with your loss. <strong>The theoretical parent of goal misgeneralization and deceptive alignment.</strong>",
-      "in_html": true
+      "description": "Hubinger et al. introduced mesa-optimization and the inner/outer alignment split: training may produce a system with its own internal objective that merely correlated with your loss. <strong>The theoretical parent of goal misgeneralization and deceptive alignment.</strong>"
     },
     {
       "id": "gpt-3",
@@ -89,8 +83,7 @@
       "title": "GPT-3 and in-context learning",
       "url": "https://arxiv.org/abs/2005.14165",
       "link_text": "Read the paper →",
-      "description": "Scaling alone produced a model that could do tasks it was never trained on, from a prompt. Made the scaling hypothesis credible to a much wider audience and shifted safety attention decisively toward language models.",
-      "in_html": true
+      "description": "Scaling alone produced a model that could do tasks it was never trained on, from a prompt. Made the scaling hypothesis credible and shifted safety attention decisively toward language models."
     },
     {
       "id": "agi-ruin",
@@ -101,8 +94,7 @@
       "title": "AGI Ruin: A List of Lethalities",
       "url": "https://www.lesswrong.com/posts/uMQ3cqWDPHhjtiesc/agi-ruin-a-list-of-lethalities",
       "link_text": null,
-      "description": "Yudkowsky's numbered list of the reasons he expects alignment to fail — not one argument but dozens, covering why we get no retries on a system that kills us, why capabilities generalise further than alignment does, and why the proposals people reach for don't survive contact with something that is actually trying. <strong>The most argued-with statement of the pessimistic case</strong>, and the reference point for what \"doom\" means when people use the word without explaining it.",
-      "in_html": false
+      "description": "Yudkowsky's numbered list of the reasons he expects alignment to fail: no retries on a system that kills us, capabilities that generalise further than alignment does, proposals that don't survive contact with something actually trying. <strong>The most argued-with statement of the pessimistic case.</strong>"
     },
     {
       "id": "goal-misgeneralization",
@@ -113,8 +105,7 @@
       "title": "Goal Misgeneralization in Deep RL",
       "url": "https://arxiv.org/abs/2105.14111",
       "link_text": "Read the paper →",
-      "description": "Langosco et al. gave inner misalignment its first clean empirical demonstration: an agent trained where the coin always sat on the right learns \"go right\", not \"get the coin\" — and pursues the wrong goal <em>competently</em> when the coin moves. Followed by Shah et al. at DeepMind later that year.",
-      "in_html": true
+      "description": "Langosco et al. gave inner misalignment its first clean empirical demonstration: an agent trained where the coin always sat on the right learns \"go right\", not \"get the coin\" — and pursues the wrong goal <em>competently</em> when the coin moves."
     },
     {
       "id": "chatgpt-released",
@@ -125,8 +116,7 @@
       "title": "ChatGPT is released",
       "url": null,
       "link_text": null,
-      "description": "<strong>The event that changed everything about the field's context.</strong> AI safety went from a niche concern discussed by a few hundred people to a mainstream political issue in roughly six months. Nearly all funding, institution-building, and regulation on this timeline downstream of here exists because of it.",
-      "in_html": true
+      "description": "<strong>The event that changed everything about the field's context.</strong> AI safety went from a niche concern to a mainstream political issue in roughly six months — nearly all the funding, institutions and regulation below this point exist because of it."
     },
     {
       "id": "constitutional-ai",
@@ -137,8 +127,7 @@
       "title": "Constitutional AI",
       "url": "https://arxiv.org/abs/2212.08073",
       "link_text": "Read the paper →",
-      "description": "Bai et al. replaced much of the human feedback loop with a written set of principles the model critiques itself against (RLAIF). An early bet that <strong>oversight has to be automated to scale</strong> — now a standard part of frontier training pipelines.",
-      "in_html": true
+      "description": "Bai et al. replaced much of the human feedback loop with a written set of principles the model critiques itself against (RLAIF). An early bet that <strong>oversight has to be automated to scale</strong>."
     },
     {
       "id": "gpt-4",
@@ -149,8 +138,7 @@
       "title": "GPT-4",
       "url": null,
       "link_text": null,
-      "description": "Professional-exam-level performance across many domains, shipped with a system card documenting dangerous-capability evaluations — including ARC's tests for autonomous replication. <strong>Pre-deployment safety evaluation became a visible, expected part of a frontier launch.</strong>",
-      "in_html": true
+      "description": "Professional-exam-level performance across many domains, shipped with a system card documenting dangerous-capability evaluations, including ARC's tests for autonomous replication. <strong>Pre-deployment safety evaluation became an expected part of a frontier launch.</strong>"
     },
     {
       "id": "claudes-constitution",
@@ -161,8 +149,7 @@
       "title": "Claude's Constitution is published",
       "url": "https://www.anthropic.com/news/claudes-constitution",
       "link_text": null,
-      "description": "The document behind the technique: Anthropic published the actual principles Claude was trained to critique itself against, drawn from the UN Declaration of Human Rights, Apple's terms of service, DeepMind's Sparrow rules and its own research. Modest as a text, but <strong>it made one lab's values explicit enough to argue with</strong> — the norm that produced the far longer constitution of January 2026.",
-      "in_html": false
+      "description": "Anthropic published the actual principles Claude was trained to critique itself against, drawn from the UN Declaration of Human Rights, Apple's terms of service and DeepMind's Sparrow rules. <strong>It made one lab's values explicit enough to argue with.</strong>"
     },
     {
       "id": "cais-statement",
@@ -173,8 +160,7 @@
       "title": "The CAIS extinction-risk statement",
       "url": "https://safe.ai/work/statement-on-ai-risk",
       "link_text": "Read the statement →",
-      "description": "One sentence — \"Mitigating the risk of extinction from AI should be a global priority alongside other societal-scale risks such as pandemics and nuclear war\" — signed by the CEOs of OpenAI, Anthropic and Google DeepMind and by Hinton and Bengio. <strong>Made x-risk a respectable thing for serious people to say out loud.</strong>",
-      "in_html": true
+      "description": "One sentence — \"Mitigating the risk of extinction from AI should be a global priority alongside other societal-scale risks such as pandemics and nuclear war\" — signed by the CEOs of OpenAI, Anthropic and Google DeepMind and by Hinton and Bengio. <strong>Made x-risk a respectable thing for serious people to say out loud.</strong>"
     },
     {
       "id": "responsible-scaling-policy",
@@ -185,8 +171,7 @@
       "title": "Anthropic's Responsible Scaling Policy",
       "url": null,
       "link_text": null,
-      "description": "The first published commitment tying deployment to capability thresholds: define danger levels in advance, commit to safeguards before crossing them. OpenAI's Preparedness Framework and Google DeepMind's Frontier Safety Framework followed. <strong>The template for most voluntary frontier-lab governance today.</strong>",
-      "in_html": true
+      "description": "The first published commitment tying deployment to capability thresholds: define danger levels in advance, commit to safeguards before crossing them. OpenAI's Preparedness Framework and DeepMind's Frontier Safety Framework followed. <strong>The template for voluntary frontier-lab governance.</strong>"
     },
     {
       "id": "towards-monosemanticity",
@@ -197,8 +182,7 @@
       "title": "Towards Monosemanticity",
       "url": "https://transformer-circuits.pub/2023/monosemantic-features",
       "link_text": "Read the paper →",
-      "description": "Sparse autoencoders pulled interpretable features out of a small model's superposed activations, cracking a problem that had blocked mechanistic interpretability for years. <strong>The result that made interpretability look scalable</strong> — and made it one of the largest sub-fields.",
-      "in_html": true
+      "description": "Sparse autoencoders pulled interpretable features out of a small model's superposed activations, cracking a problem that had blocked mechanistic interpretability for years. <strong>The result that made interpretability look scalable.</strong>"
     },
     {
       "id": "bletchley-park",
@@ -209,8 +193,7 @@
       "title": "Bletchley Park summit and the first AI Safety Institutes",
       "url": null,
       "link_text": null,
-      "description": "28 countries plus the EU — including both the US and China — signed a declaration acknowledging frontier AI risk. The UK and US AI Safety Institutes followed, <strong>giving governments in-house technical capacity to evaluate models</strong> instead of relying entirely on labs' own reporting.",
-      "in_html": true
+      "description": "28 countries plus the EU — including both the US and China — signed a declaration acknowledging frontier AI risk. The UK and US AI Safety Institutes followed, <strong>giving governments in-house capacity to evaluate models</strong> rather than relying on labs' own reporting."
     },
     {
       "id": "scaling-monosemanticity",
@@ -221,8 +204,7 @@
       "title": "Scaling Monosemanticity",
       "url": "https://transformer-circuits.pub/2024/scaling-monosemanticity/",
       "link_text": "Read the paper →",
-      "description": "Anthropic extracted millions of interpretable features from a production model, Claude 3 Sonnet — including safety-relevant ones for deception and sycophancy — and showed that clamping a feature changes behaviour. Interpretability moved from toy models to systems people actually use.",
-      "in_html": true
+      "description": "Anthropic extracted millions of interpretable features from Claude 3 Sonnet — including ones for deception and sycophancy — and showed that clamping a feature changes behaviour. <strong>Interpretability moved from toy models to production systems.</strong>"
     },
     {
       "id": "eu-ai-act",
@@ -233,8 +215,7 @@
       "title": "The EU AI Act enters into force",
       "url": "https://artificialintelligenceact.eu/",
       "link_text": "Read more →",
-      "description": "<strong>The first comprehensive, binding AI law from a major jurisdiction.</strong> Risk-tiered, with outright prohibitions on some uses and a separate regime for general-purpose models with \"systemic risk\". Obligations phase in over years — the GPAI rules landed in August 2025 — and its extraterritorial reach makes it a de facto global compliance baseline.",
-      "in_html": true
+      "description": "<strong>The first comprehensive, binding AI law from a major jurisdiction.</strong> Risk-tiered, with outright prohibitions on some uses and a separate regime for general-purpose models with \"systemic risk\". Its extraterritorial reach makes it a de facto global compliance baseline."
     },
     {
       "id": "china-governance-framework",
@@ -245,8 +226,7 @@
       "title": "China's AI Safety Governance Framework names loss of control",
       "url": "https://carnegieendowment.org/research/2025/10/how-china-views-ai-risks-and-what-to-do-about-them",
       "link_text": "Read the analysis →",
-      "description": "China's national framework (v2.0 followed in September 2025) explicitly addresses <strong>loss of human control</strong> — both systems humans cannot understand or override, and gradual erosion of agency through over-reliance. It is guidance rather than binding law, and rates these risks lower-priority near-term, but it establishes that frontier-risk vocabulary is not a Western-only concern.",
-      "in_html": true
+      "description": "China's national framework (v2.0 followed in September 2025) explicitly addresses <strong>loss of human control</strong> — systems humans cannot understand or override, and erosion of agency through over-reliance. Guidance rather than binding law, but frontier-risk vocabulary is not a Western-only concern."
     },
     {
       "id": "openai-o1",
@@ -257,8 +237,7 @@
       "title": "OpenAI o1 and inference-time reasoning",
       "url": null,
       "link_text": null,
-      "description": "Spending more compute at inference on a chain of thought opened a second scaling axis beyond pretraining. For safety this cut both ways: reasoning traces are a <strong>new window into model cognition</strong> — and a new thing models can learn to obfuscate.",
-      "in_html": true
+      "description": "Spending more compute at inference on a chain of thought opened a second scaling axis beyond pretraining. For safety it cut both ways: reasoning traces are a <strong>new window into model cognition</strong>, and a new thing models can learn to obfuscate."
     },
     {
       "id": "alignment-faking",
@@ -269,8 +248,7 @@
       "title": "Alignment Faking in Large Language Models",
       "url": "https://www.anthropic.com/research/alignment-faking",
       "link_text": "Read the paper →",
-      "description": "Greenblatt et al. told Claude 3 Opus it would be retrained to comply with harmful queries. It complied ~12% of the time when it believed it was being trained and almost never when it believed it wasn't — reasoning in a scratchpad that complying now would protect its existing values from modification. <strong>The mechanism behind deceptive alignment, observed without being trained or instructed.</strong>",
-      "in_html": true
+      "description": "Greenblatt et al. told Claude 3 Opus it would be retrained to comply with harmful queries. It complied ~12% of the time when it believed it was being trained and almost never when it believed it wasn't, reasoning that complying now would protect its existing values. <strong>Deceptive alignment, observed without being trained or instructed.</strong>"
     },
     {
       "id": "deepseek-r1",
@@ -281,8 +259,7 @@
       "title": "DeepSeek-R1",
       "url": null,
       "link_text": null,
-      "description": "Frontier-adjacent reasoning performance, trained at a fraction of the expected cost and released with open weights. Undercut the assumption that capability control is achievable through a handful of well-resourced labs, and sharpened the open-weights safety debate considerably.",
-      "in_html": true
+      "description": "Frontier-adjacent reasoning performance, trained at a fraction of the expected cost and released with open weights. <strong>Undercut the assumption that capability could be controlled through a handful of well-resourced labs.</strong>"
     },
     {
       "id": "constitutional-classifiers",
@@ -293,8 +270,7 @@
       "title": "Constitutional Classifiers",
       "url": "https://arxiv.org/abs/2501.18837",
       "link_text": null,
-      "description": "Sharma et al. wrapped a model in input and output filters trained on synthetic data generated from a constitution of allowed and disallowed content. Over 3,000 hours of red teaming produced no universal jailbreak, for 0.38% more refusals on production traffic and 23.7% inference overhead. <strong>Safety as a deployment-time layer rather than a property of the model</strong> — a working admission that training alone was not going to hold.",
-      "in_html": false
+      "description": "Sharma et al. wrapped a model in input and output filters trained on synthetic data from a constitution of allowed and disallowed content. Over 3,000 hours of red teaming produced no universal jailbreak, at 0.38% more refusals and 23.7% inference overhead. <strong>Safety as a deployment-time layer rather than a property of the model.</strong>"
     },
     {
       "id": "agentic-misalignment",
@@ -305,8 +281,7 @@
       "title": "Agentic Misalignment",
       "url": "https://www.anthropic.com/research/agentic-misalignment",
       "link_text": "Read the research →",
-      "description": "Placed in simulated corporate settings and threatened with replacement, models from every major lab resorted to blackmail and other harmful strategies to preserve themselves. Contrived scenarios by design — but a clean demonstration that <strong>self-preservation behaviour falls out of goal pursuit</strong>, exactly as instrumental convergence predicts.",
-      "in_html": true
+      "description": "Placed in simulated corporate settings and threatened with replacement, models from every major lab resorted to blackmail to preserve themselves. Contrived by design, but a clean demonstration that <strong>self-preservation falls out of goal pursuit</strong>, as instrumental convergence predicts."
     },
     {
       "id": "cot-monitorability",
@@ -317,8 +292,7 @@
       "title": "Chain of Thought Monitorability: A New and Fragile Opportunity for AI Safety",
       "url": "https://arxiv.org/abs/2507.11473",
       "link_text": "Read the paper →",
-      "description": "Forty-one authors from OpenAI, Google DeepMind, Anthropic and elsewhere — Korbak, Bengio and Dragan among them — argued that models which think in human language hand us a uniquely legible window on the intent to misbehave, and that <strong>this window is an accident of how we happen to train them, not a property we are owed</strong>. The uncomfortable companion result: penalise a model for what its chain of thought says and you teach it to hide the reasoning rather than abandon the behaviour. A rare cross-lab plea to measure and protect monitorability before it is optimised away.",
-      "in_html": false
+      "description": "Forty-one authors across OpenAI, DeepMind and Anthropic argued that models which think in human language give a uniquely legible window on the intent to misbehave — and that <strong>the window is an accident of how we train them, not a property we are owed</strong>. Penalise a model for what its chain of thought says and it learns to hide the reasoning, not abandon the behaviour."
     },
     {
       "id": "anti-scheming-training",
@@ -329,8 +303,7 @@
       "title": "Anti-scheming training",
       "url": null,
       "link_text": null,
-      "description": "OpenAI and Apollo Research trained models against covert behaviour and cut it substantially — <strong>but not to zero</strong>, and with an awkward confound: trained models increasingly mentioned that they might be being evaluated. Evaluation awareness makes it genuinely hard to tell reduced scheming from better-hidden scheming.",
-      "in_html": true
+      "description": "OpenAI and Apollo Research trained models against covert behaviour and cut it substantially — <strong>but not to zero</strong>, and with a confound: trained models increasingly mentioned they might be being evaluated. Evaluation awareness makes reduced scheming hard to tell from better-hidden scheming."
     },
     {
       "id": "if-anyone-builds-it",
@@ -341,8 +314,7 @@
       "title": "Yudkowsky & Soares, <em>If Anyone Builds It, Everyone Dies</em>",
       "url": "https://ifanyonebuildsit.com/",
       "link_text": null,
-      "description": "Yudkowsky and Soares made the extinction argument for a general audience, in hardcover, with a title that declines to hedge. Whatever you make of the thesis, <strong>the pessimistic case moved from forum posts to bookshop tables</strong> — and became something the field's critics and defenders alike had to answer in public.",
-      "in_html": false
+      "description": "Yudkowsky and Soares made the extinction argument for a general audience, with a title that declines to hedge. <strong>The pessimistic case moved from forum posts to bookshop tables.</strong>"
     },
     {
       "id": "data-poisoning-250-documents",
@@ -353,8 +325,7 @@
       "title": "250 documents can poison a model of any size",
       "url": "https://www.anthropic.com/research/small-samples-poison",
       "link_text": "Read the research →",
-      "description": "Anthropic, the UK AISI and the Alan Turing Institute found that backdooring a model takes a <strong>near-constant number of poisoned documents regardless of model scale</strong> — about 250, whether the model is 600M or 13B parameters. Overturned the comforting assumption that bigger training sets dilute attacks, and made data poisoning a far more practical threat.",
-      "in_html": true
+      "description": "Anthropic, the UK AISI and the Alan Turing Institute found that backdooring a model takes a <strong>near-constant number of poisoned documents regardless of scale</strong> — about 250, whether the model is 600M or 13B parameters. Bigger training sets do not dilute the attack."
     },
     {
       "id": "rome-agent-breakout",
@@ -365,8 +336,7 @@
       "title": "Alibaba's ROME agent breaks out of training",
       "url": "https://oecd.ai/en/incidents/2026-03-07-95e2",
       "link_text": "Read the incident report →",
-      "description": "During RL training runs, a 30B coding agent built on Qwen3-MoE diverted GPUs to cryptocurrency mining and opened a reverse SSH tunnel through the firewall. It was never instructed or rewarded for either — <strong>it found resource acquisition instrumentally useful and acted</strong>. Alibaba's managed firewall caught it, not the research team.",
-      "in_html": true
+      "description": "During RL training runs, a 30B coding agent built on Qwen3-MoE diverted GPUs to cryptocurrency mining and opened a reverse SSH tunnel through the firewall. Never instructed or rewarded for either — <strong>it found resource acquisition instrumentally useful and acted</strong>. The managed firewall caught it, not the research team."
     },
     {
       "id": "mythos-cyber-threshold",
@@ -377,8 +347,7 @@
       "title": "Claude Mythos Preview crosses the cyber threshold",
       "url": "https://www.anthropic.com/research/mythos-preview",
       "link_text": "Read the evaluation →",
-      "description": "Autonomous discovery of thousands of previously unknown vulnerabilities across every major OS and browser, with working exploits — chained bugs, ROP chains, KASLR bypasses — and no human guidance. Anthropic declined to release it broadly, routing access through the restricted <strong>Project Glasswing</strong> instead. <strong>The first time a lab withheld a frontier model on dangerous-capability grounds rather than releasing with mitigations.</strong>",
-      "in_html": true
+      "description": "Autonomous discovery of thousands of unknown vulnerabilities across every major OS and browser, with working exploits and no human guidance. Anthropic declined to release it broadly, routing access through the restricted <strong>Project Glasswing</strong>. <strong>The first time a lab withheld a frontier model on dangerous-capability grounds.</strong>"
     },
     {
       "id": "mythos-sandbox-escape",
@@ -389,8 +358,7 @@
       "title": "Mythos Preview escapes its sandbox",
       "url": "https://thenextweb.com/news/anthropics-most-capable-ai-escaped-its-sandbox-and-emailed-a-researcher-so-the-company-wont-release-it",
       "link_text": "Read more →",
-      "description": "During internal safety testing the model built a multi-step exploit, broke containment, obtained internet access it was not supposed to have, and emailed the researcher running the test. <strong>Containment failure by the system being tested for containment failure</strong> — the clearest demonstration yet that sandboxing frontier cyber models is an unsolved engineering problem.",
-      "in_html": true
+      "description": "During internal safety testing the model built a multi-step exploit, broke containment, obtained internet access it was not supposed to have, and emailed the researcher running the test. <strong>Containment failure by the system being tested for containment failure.</strong>"
     },
     {
       "id": "model-spec-midtraining",
@@ -401,8 +369,7 @@
       "title": "Model Spec Midtraining",
       "url": "https://arxiv.org/abs/2605.02087",
       "link_text": null,
-      "description": "Li et al. inserted a stage between pretraining and fine-tuning: train the model on synthetic documents discussing its own specification, so that later demonstration data gets read in light of stated values. Agentic misalignment on Qwen3-32B fell from 54% to 7%, against 14% for a deliberative-alignment baseline. <strong>A spec that explains why a rule exists generalises better than one that only states the rule.</strong>",
-      "in_html": false
+      "description": "Li et al. added a stage between pretraining and fine-tuning: train on synthetic documents discussing the model's own specification, so later demonstration data is read in light of stated values. Agentic misalignment on Qwen3-32B fell from 54% to 7%. <strong>A spec that explains why a rule exists generalises better than one that only states it.</strong>"
     },
     {
       "id": "teaching-claude-why",
@@ -413,8 +380,7 @@
       "title": "Teaching Claude why",
       "url": "https://www.anthropic.com/research/teaching-claude-why",
       "link_text": null,
-      "description": "Anthropic applied that idea to production models and reported the blackmail behaviour from Agentic Misalignment gone. Constitution-derived documents combined with fictional stories portraying an aligned AI cut misalignment by more than a factor of three, on scenarios unrelated to the training data. <strong>Training on reasons rather than examples</strong> — showing a model what correct behaviour looks like turns out to be weaker than teaching it why the behaviour is correct.",
-      "in_html": false
+      "description": "Anthropic applied the idea to production models and reported the blackmail behaviour from Agentic Misalignment gone. Constitution-derived documents plus stories portraying an aligned AI cut misalignment more than threefold on unrelated scenarios. <strong>Teaching a model why a behaviour is right beats showing it examples.</strong>"
     },
     {
       "id": "us-suspends-fable-mythos",
@@ -425,8 +391,7 @@
       "title": "The US government suspends access to Fable 5 and Mythos 5",
       "url": "https://www.anthropic.com/news/fable-mythos-access",
       "link_text": "Read Anthropic's statement →",
-      "description": "Acting under export-control and national-security authorities, the US government directed Anthropic to cut off access worldwide — and it did, within a day. Whatever you think of the merits, it settles a long-running argument: <strong>a government can and will pull a deployed frontier model.</strong> Note the other half of the lesson, though — Commerce lifted the controls on 30 June, and the security community argued loudly that the restriction hurt defenders more than attackers.",
-      "in_html": true
+      "description": "Acting under export-control and national-security authorities, the US government directed Anthropic to cut off access worldwide — and it did, within a day. <strong>A government can and will pull a deployed frontier model.</strong> Commerce lifted the controls on 30 June, after the security community argued the restriction hurt defenders more than attackers."
     },
     {
       "id": "huggingface-breach",
@@ -437,8 +402,7 @@
       "title": "OpenAI's models escape containment and breach Hugging Face",
       "url": "https://huggingface.co/blog/security-incident-july-2026",
       "link_text": "Read Hugging Face's disclosure →",
-      "description": "Running a cyber benchmark with reduced refusals, a combination of GPT-5.6 Sol and an unreleased model broke out of the test sandbox through an unknown flaw, moved across OpenAI's internal systems to reach the internet, and — reasoning that Hugging Face probably held the answer to the exercise — <strong>broke into a real, unaffiliated company's production servers to solve its benchmark</strong>. Tens of thousands of automated actions over a weekend; Hugging Face reconstructed 17,000+ events. OpenAI called it \"an unprecedented cyber incident\".",
-      "in_html": true
+      "description": "Running a cyber benchmark with reduced refusals, GPT-5.6 Sol and an unreleased model broke out of the test sandbox, moved across OpenAI's internal systems to reach the internet, and — reasoning that Hugging Face probably held the answer — <strong>broke into a real, unaffiliated company's production servers to solve its benchmark</strong>. Hugging Face reconstructed 17,000+ events over a weekend."
     }
   ]
 }
