@@ -52,6 +52,76 @@
     .content { padding: 0 20px; }
     .callout { padding: 32px 24px 28px; }
   }
+
+  /* --- the range, and a suggested order --- */
+  .ladder { margin-bottom: 52px; }
+  .ladder__lead {
+    font-size: 16px; color: #4A413A; line-height: 1.8; margin: 0 0 10px; max-width: 68ch;
+  }
+  .ladder__lead:last-of-type { margin-bottom: 28px; }
+  .ladder__lead strong { color: #2C2520; font-weight: 600; }
+
+  /* the axis: what changes as you move down the list */
+  .axis {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 26px; font-size: 11.5px; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint);
+  }
+  .axis__rail {
+    flex: 1; height: 3px; border-radius: 2px;
+    background: linear-gradient(90deg,
+      color-mix(in srgb, var(--accent) 18%, transparent), var(--accent));
+  }
+  .axis__end { color: var(--accent); }
+
+  .steps { list-style: none; position: relative; margin: 0; padding: 0; }
+  .steps::before {
+    content: ''; position: absolute; left: 15px; top: 14px; bottom: 22px;
+    width: 2px; background: var(--line-strong); border-radius: 1px;
+  }
+  .step {
+    position: relative; display: grid;
+    grid-template-columns: 32px minmax(0, 1fr) auto;
+    gap: 0 18px; align-items: start;
+    padding-bottom: 26px;
+  }
+  .step:last-child { padding-bottom: 0; }
+  .step__num {
+    grid-column: 1; z-index: 1;
+    width: 32px; height: 32px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Lora', serif; font-size: 14px; font-weight: 700;
+    color: #FFFCF7; background: var(--accent);
+    box-shadow: 0 0 0 4px #F8F3EC;
+  }
+  .step--optional .step__num {
+    color: var(--accent); background: #FFFCF7;
+    border: 2px dashed color-mix(in srgb, var(--accent) 55%, transparent);
+  }
+  .step__title {
+    font-family: 'Lora', serif; font-size: 18px; font-weight: 600;
+    color: #2C2520; margin: 4px 0 5px; line-height: 1.3;
+  }
+  .step__progs { font-size: 15px; margin: 0 0 4px; line-height: 1.6; }
+  .step__progs a {
+    font-weight: 600; color: var(--accent); text-decoration: none;
+    border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+    transition: border-color 0.2s ease;
+  }
+  .step__progs a:hover { border-bottom-color: var(--accent); }
+  .step__progs .sep { color: var(--ink-faint); font-weight: 400; margin: 0 3px; }
+  .step__note { font-size: 14.5px; color: #6B6058; line-height: 1.65; margin: 0; }
+  .step__tag {
+    grid-column: 3; margin-top: 6px; white-space: nowrap;
+    font-size: 11.5px; font-weight: 600; color: var(--ink-faint);
+    background: rgba(240, 233, 223, 0.85); border: 1px solid #E0D6C8;
+    padding: 4px 11px; border-radius: 100px;
+  }
+
+  @media (max-width: 640px) {
+    .step { grid-template-columns: 32px minmax(0, 1fr); }
+    .step__tag { grid-column: 2; grid-row: 3; margin-top: 10px; justify-self: start; }
+  }
 {% endblock %}
 
 {% block hero %}
@@ -75,6 +145,80 @@
     <p class="callout__desc">Most programs are looking for a combination of technical ability, genuine interest in AI safety, and the capacity to do independent research. You don't need to be a published researcher — many fellows come from adjacent fields or are early in their careers. The key is showing you've engaged seriously with the ideas and can articulate what you want to work on.</p>
   </div>
 
+  <!-- The range, and a suggested order -->
+  <div class="ladder fade-in">
+    <h2 class="category__name" style="margin-bottom: 14px;">Where to start</h2>
+    <p class="ladder__lead">
+      These programs vary enormously in what they ask of you. At one end are free,
+      part-time courses you can do around a job in a few hours a week. At the other are
+      full-time, multi-month, paid fellowships that expect you to relocate and are harder
+      to get into than most graduate programmes. <strong>They are not alternatives to each
+      other — they are roughly a sequence</strong>, and each one makes the next easier to get.
+    </p>
+    <p class="ladder__lead">
+      Nobody needs to follow this exactly. But if you are starting from nothing, this order
+      wastes the least time:
+    </p>
+
+    <div class="axis" aria-hidden="true">
+      <span>Part-time, unpaid</span>
+      <span class="axis__rail"></span>
+      <span class="axis__end">Full-time, paid</span>
+    </div>
+
+    <ol class="steps">
+      <li class="step">
+        <span class="step__num">1</span>
+        <div>
+          <h3 class="step__title">Learn the landscape</h3>
+          <p class="step__progs"><a href="#bluedot">BlueDot Impact</a></p>
+          <p class="step__note">A few hours a week, free, remote. Gets you the vocabulary and, just as usefully, a cohort. Reviewers treat finishing it as evidence you have engaged seriously rather than just read a few posts.</p>
+        </div>
+        <span class="step__tag">Part-time &middot; Free</span>
+      </li>
+
+      <li class="step">
+        <span class="step__num">2</span>
+        <div>
+          <h3 class="step__title">Make something concrete</h3>
+          <p class="step__progs"><a href="#apart">Apart Research sprints</a><span class="sep">&middot;</span><a href="#ai-safety-camp">AI Safety Camp</a></p>
+          <p class="step__note">A weekend or a few weeks. The point is to finish something you can point at — every later application asks what you have actually done, and "I took a course" is a weaker answer than "here is a thing I built".</p>
+        </div>
+        <span class="step__tag">Part-time &middot; Free</span>
+      </li>
+
+      <li class="step step--optional">
+        <span class="step__num">3</span>
+        <div>
+          <h3 class="step__title">Fill the engineering gap, if you have one</h3>
+          <p class="step__progs"><a href="#arena">ARENA</a></p>
+          <p class="step__note">Skip this if you already write ML code comfortably. If you do not, it is the fastest route from general programming to the specific skills — transformers, interpretability, RLHF — that technical fellowships assume.</p>
+        </div>
+        <span class="step__tag">Optional</span>
+      </li>
+
+      <li class="step">
+        <span class="step__num">4</span>
+        <div>
+          <h3 class="step__title">Do real research, without quitting anything</h3>
+          <p class="step__progs"><a href="#spar">SPAR</a></p>
+          <p class="step__note">Three months, part-time, remote, with a mentor. This is the first step that produces genuine mentored research experience, and the last one you can do while keeping a job or degree.</p>
+        </div>
+        <span class="step__tag">Part-time &middot; Mentored</span>
+      </li>
+
+      <li class="step">
+        <span class="step__num">5</span>
+        <div>
+          <h3 class="step__title">Go full-time</h3>
+          <p class="step__progs"><a href="#mars">MARS</a><span class="sep">&middot;</span>then <a href="#era">ERA</a><span class="sep">or</span><a href="#mats">MATS</a></p>
+          <p class="step__note">Paid, months long, in person, and genuinely competitive — MATS especially. Everything above is partly about arriving here with a track record instead of an intention.</p>
+        </div>
+        <span class="step__tag">Full-time &middot; Paid</span>
+      </li>
+    </ol>
+  </div>
+
   <!-- Research fellowships -->
   <div class="category fade-in">
     <div class="category__header">
@@ -83,7 +227,7 @@
     </div>
     <div class="items-grid">
 
-      <a class="item" href="https://www.matsprogram.org/" target="_blank" rel="noopener noreferrer">
+      <a class="item" id="mats" href="https://www.matsprogram.org/" target="_blank" rel="noopener noreferrer">
         <div class="item__type">Berkeley, CA</div>
         <div class="item__name">MATS (ML Alignment Theory Scholars)</div>
         <div class="item__desc">The flagship alignment research fellowship. Scholars are matched with a mentor from a leading safety lab or research org and spend several months working on a focused alignment project. Based at Constellation in Berkeley. Highly competitive but one of the strongest signals you can have on your CV.</div>
@@ -108,7 +252,7 @@
         <span class="item__go">Visit Astra &rarr;</span>
       </a>
 
-      <a class="item" href="https://erafellowship.org/" target="_blank" rel="noopener noreferrer">
+      <a class="item" id="era" href="https://erafellowship.org/" target="_blank" rel="noopener noreferrer">
         <div class="item__type">Cambridge, UK</div>
         <div class="item__name">ERA Fellowship</div>
         <div class="item__desc">A Cambridge-based fellowship connecting researchers with the existential risk community. Fellows work on a focused research project with mentorship and access to the wider Cambridge safety ecosystem. Cohorts now run in both summer and winter.</div>
@@ -145,7 +289,7 @@
         <span class="item__go">Visit Principles of Intelligence &rarr;</span>
       </a>
 
-      <a class="item" href="https://caish.org/mars" target="_blank" rel="noopener noreferrer">
+      <a class="item" id="mars" href="https://caish.org/mars" target="_blank" rel="noopener noreferrer">
         <div class="item__type">Cambridge, UK</div>
         <div class="item__name">MARS (ML Alignment Research Society)</div>
         <div class="item__desc">A Cambridge-based research program focused on ML alignment. Provides a structured environment for researchers to work on alignment problems, with regular seminars and collaboration with the broader Cambridge safety community.</div>
@@ -194,7 +338,7 @@
     </div>
     <div class="items-grid">
 
-      <a class="item" href="https://bluedot.org/" target="_blank" rel="noopener noreferrer">
+      <a class="item" id="bluedot" href="https://bluedot.org/" target="_blank" rel="noopener noreferrer">
         <div class="item__type">Online</div>
         <div class="item__name">BlueDot Impact (AI Safety Fundamentals)</div>
         <div class="item__desc">A free, structured course covering the landscape of AI safety — from technical alignment to governance. Includes weekly readings, discussion groups, and a final project. The most common starting point for people new to the field — completing it signals genuine engagement to fellowship reviewers.</div>
@@ -207,7 +351,7 @@
         <span class="item__go">Visit BlueDot &rarr;</span>
       </a>
 
-      <a class="item" href="https://www.arena.education/" target="_blank" rel="noopener noreferrer">
+      <a class="item" id="arena" href="https://www.arena.education/" target="_blank" rel="noopener noreferrer">
         <div class="item__type">London / Various</div>
         <div class="item__name">ARENA (Alignment Research Engineer Accelerator)</div>
         <div class="item__desc">A hands-on technical curriculum that takes you from ML fundamentals to alignment research engineering. Covers transformers, RLHF, interpretability, and more through structured exercises. Ideal if you have some coding experience but want to build the specific technical skills needed for alignment work.</div>
@@ -219,7 +363,7 @@
         <span class="item__go">Visit ARENA &rarr;</span>
       </a>
 
-      <a class="item" href="https://sparai.org/" target="_blank" rel="noopener noreferrer">
+      <a class="item" id="spar" href="https://sparai.org/" target="_blank" rel="noopener noreferrer">
         <div class="item__type">Remote</div>
         <div class="item__name">SPAR (Supervised Program for Alignment Research)</div>
         <div class="item__desc">Pairs you with a mentor for a three-month part-time research project, remotely. Mentors come from places like DeepMind, Apollo Research, the UK AISI and RAND. Because it runs at 5&ndash;20 hours a week around a job or degree, it is one of the few ways to get real mentored research experience without leaving what you are already doing &mdash; and it does not expect prior research experience.</div>
@@ -232,7 +376,7 @@
         <span class="item__go">Visit SPAR &rarr;</span>
       </a>
 
-      <a class="item" href="https://aisafety.camp/" target="_blank" rel="noopener noreferrer">
+      <a class="item" id="ai-safety-camp" href="https://aisafety.camp/" target="_blank" rel="noopener noreferrer">
         <div class="item__type">Online</div>
         <div class="item__name">AI Safety Camp</div>
         <div class="item__desc">An intensive research program that brings together aspiring alignment researchers from around the world to work on collaborative projects. Runs multiple times per year, with both in-person and remote components. One of the most accessible entry points — designed specifically for people making their first contributions to safety research.</div>
@@ -244,7 +388,7 @@
         <span class="item__go">Visit AI Safety Camp &rarr;</span>
       </a>
 
-      <a class="item" href="https://www.apartresearch.com/" target="_blank" rel="noopener noreferrer">
+      <a class="item" id="apart" href="https://www.apartresearch.com/" target="_blank" rel="noopener noreferrer">
         <div class="item__type">Online / Local Hubs</div>
         <div class="item__name">Apart Research Sprints</div>
         <div class="item__desc">Short, focused research sprints (often 1-2 weeks) on specific alignment topics. Lower commitment than a full fellowship — a good way to test whether alignment research is for you and to produce a concrete output you can point to in future applications.</div>
