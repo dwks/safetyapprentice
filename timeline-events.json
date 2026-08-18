@@ -405,6 +405,17 @@
       "description": "Acting under export-control and national-security authorities, the US government directed Anthropic to cut off access worldwide — and it did, within a day. <strong>A government can and will pull a deployed frontier model.</strong> Commerce lifted the controls on 30 June, after the security community argued the restriction hurt defenders more than attackers."
     },
     {
+      "id": "j-space",
+      "year": 2026,
+      "date": "6 July 2026",
+      "badge": "Paper",
+      "category": "t-paper",
+      "title": "J-space: a global workspace in language models",
+      "url": "https://transformer-circuits.pub/2026/workspace/index.html",
+      "link_text": "Read the paper →",
+      "description": "Gurnee et al. used a Jacobian lens to find a small privileged subspace - 10 to 25 concepts at a time, 6-10% of activation variance - that behaves like a global workspace: reportable, causally manipulable, and used for internal reasoning. Models flag evaluations as fictional inside it, and <strong>ablating that recognition surfaces tendencies they otherwise conceal</strong>."
+    },
+    {
       "id": "ai-2040",
       "year": 2026,
       "date": "9 July 2026",
