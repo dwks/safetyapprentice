@@ -262,6 +262,17 @@
       "description": "Sharma et al. wrapped a model in input and output filters trained on synthetic data from a constitution of allowed and disallowed content. Over 3,000 hours of red teaming produced no universal jailbreak, at 0.38% more refusals and 23.7% inference overhead. <strong>Safety as a deployment-time layer rather than a property of the model.</strong>"
     },
     {
+      "id": "circuit-tracing",
+      "year": 2025,
+      "date": "27 March 2025",
+      "badge": "Paper",
+      "category": "t-paper",
+      "title": "Circuit tracing and attribution graphs",
+      "url": "https://www.anthropic.com/research/tracing-thoughts-language-model",
+      "link_text": "Read the research →",
+      "description": "Anthropic traced how Claude 3.5 Haiku actually computes: planning rhymes ahead of the line, sharing concepts across languages, and fabricating reasoning to reach a hinted answer. <strong>The method captures only a fraction of the computation</strong> — Anthropic reports useful insight on about a quarter of prompts tried, at hours of human effort each."
+    },
+    {
       "id": "ai-2027",
       "year": 2025,
       "date": "3 April 2025",
