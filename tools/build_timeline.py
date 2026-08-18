@@ -23,7 +23,9 @@ PAGE = ROOT / "templates" / "pages" / "timeline.html"
 
 # The generated region is everything inside <div class="timeline" id="timeline">.
 OPEN = '  <div class="timeline" id="timeline">\n'
-CLOSE = '  </div>\n'
+# Leading newline matters: a bare '  </div>' also matches inside a card's
+# '      </div>', which would bind the close anchor to the first card.
+CLOSE = '\n  </div>\n'
 
 MONTHS = ["January", "February", "March", "April", "May", "June",
           "July", "August", "September", "October", "November", "December"]
@@ -31,10 +33,12 @@ MONTHS = ["January", "February", "March", "April", "May", "June",
 BANNER = "    <!-- ============ {year} ============ -->\n"
 
 
-def sort_key(event: dict) -> tuple:
-    """(year, month, day) — day is 0 when the date is only a month.
+def date_key(event: dict) -> tuple:
+    """(year, month, day) — day is 0 when the date names only a month.
 
-    Ties keep the order they appear in the JSON, since sorted() is stable.
+    Only used to sanity-check ordering. A month-only date carries no day, so
+    it cannot be placed against a dated event in the same month ("May 2023"
+    is the 30th; "9 May 2023" is the 9th) — the JSON's order is the authority.
     """
     m = re.fullmatch(r"(?:(\d{1,2})\s+)?([A-Za-z]+)\s+(\d{4})", event["date"].strip())
     if not m:
@@ -113,9 +117,17 @@ def main() -> None:
     events = data["events"]
     validate(events)
 
-    ordered = sorted(events, key=sort_key)
-    if [e["id"] for e in ordered] != [e["id"] for e in events]:
-        print("note: JSON is not in date order; output is sorted", file=sys.stderr)
+    # Emit in JSON order: it is hand-curated, and month-only dates cannot be
+    # ordered against dated ones automatically. Years must still ascend, or the
+    # year headings would repeat.
+    ordered = events
+    years = [e["year"] for e in ordered]
+    if years != sorted(years):
+        sys.exit("events are not grouped in ascending year order — fix the JSON")
+    for prev, cur in zip(ordered, ordered[1:]):
+        if prev["year"] == cur["year"] and date_key(prev)[1] > date_key(cur)[1]:
+            print(f"note: {cur['id']} ({cur['date']}) precedes {prev['id']} "
+                  f"({prev['date']}) by month", file=sys.stderr)
 
     page = PAGE.read_text(encoding="utf-8")
     head, sep, rest = page.partition(OPEN)
@@ -125,7 +137,7 @@ def main() -> None:
     if not sep:
         sys.exit(f"could not find the end of the timeline container in {PAGE}")
 
-    updated = head + OPEN + "\n" + render(ordered) + CLOSE + tail
+    updated = head + OPEN + "\n" + render(ordered).rstrip("\n") + "\n" + CLOSE + tail
 
     if args.check:
         if updated != page:
