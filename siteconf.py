@@ -23,9 +23,9 @@ SITE["nav"] = [
     {"label": "Learn", "children": [
         {"label": "Why AI Safety Matters", "href": "why-ai-safety.html"},
         {"label": "Choosing Research Problems", "href": "choosing-research-problems.html"},
+        {"label": "Research Ideas",        "href": "research-ideas.html"},
         {"label": "Key Events",            "href": "timeline.html"},
         {"label": "Concept Map",           "href": "concept-map.html"},
-        {"label": "Research Ideas",        "href": "research-ideas.html"},
     ]},
     {"label": "Getting In", "children": [
         {"label": "Getting Hired",     "href": "hard-to-get-hired.html"},
