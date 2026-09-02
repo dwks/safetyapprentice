@@ -94,6 +94,25 @@
 
   .cross-note__text strong { color: #2C2520; font-weight: 600; }
 
+  /* Pointer to the follow-on page */
+  .next-step {
+      margin-top: 20px; padding: 22px 26px;
+      background: rgba(184, 92, 56, 0.045);
+      border: 1px solid rgba(184, 92, 56, 0.16);
+      border-radius: 16px;
+    }
+
+  .next-step__label {
+      font-size: 11.5px; font-weight: 600; letter-spacing: 0.06em;
+      text-transform: uppercase; color: #B85C38; margin: 0 0 8px;
+    }
+
+  .next-step__text { font-size: 14.5px; color: #6B6058; line-height: 1.7; margin: 0; }
+
+  .next-step__text a {
+      color: #B85C38; font-weight: 600; text-decoration: underline; text-underline-offset: 3px;
+    }
+
   /* Superintelligence statement */
   .statement {
       background: linear-gradient(135deg, #2C2520 0%, #3D3028 50%, #2C2520 100%);
@@ -340,10 +359,10 @@
             </div>
           </div>
           <p class="risk-card__desc">
-            <strong>A human adversary; the system works exactly as designed.</strong> Someone uses a capable model to generate sophisticated disinformation, develop biological or chemical weapons, run large-scale cyberattacks, or enable mass surveillance. The failure isn't in the AI — it's in who is pointing it where.
+            <strong>A human adversary; the system works exactly as designed.</strong> Someone points a capable model at large-scale cyberattacks, at biological or chemical weapons, or at surveillance and disinformation. The failure isn't in the AI — it's in who is pointing it where. Jailbreaking sits underneath all of it: automated attacks like GCG search for prompts that strip a model's refusals, which turns the list above from a policy question into an available capability.
           </p>
           <p class="risk-card__desc" style="margin-top: 10px;">
-            This makes misuse a sociotechnical problem rather than a purely technical one: it needs both safeguards in the model (refusals, output filtering, structured access) and governance around it (export controls, licensing, know-your-customer rules). Cyber capability is the sharpest current example — 2026 saw a frontier model withheld from general release specifically because its vulnerability-discovery ability was judged too dangerous to ship.
+            That makes misuse sociotechnical rather than purely technical — it needs safeguards inside the model (refusals, filtering, structured access) and governance around it (export controls, licensing, know-your-customer rules). Cyber is the sharpest current example: 2026 saw a frontier model withheld from general release because its vulnerability-discovery ability was judged too dangerous to ship.
           </p>
           <div class="risk-card__examples">
             <p class="risk-card__examples-label">Research areas</p>
@@ -370,16 +389,13 @@
             </div>
           </div>
           <p class="risk-card__desc">
-            <strong>The system diverges from what we intended.</strong> Nobody is attacking anything; the model simply pursues something other than what we meant. It's worth reading this category as a chain — cause, then behaviour, then outcome.
+            <strong>The system diverges from what we intended.</strong> Nobody is attacking anything; the model ends up with goals we didn't want. Either the objective we wrote down was wrong and it games it — reward hacking, sycophancy, exploiting the grader — or the objective was fine and it learned a different internal goal that merely agreed with it during training. The classic demo: an agent trained where the coin always sat on the right learns "go right", not "get the coin", and sails past the coin when you move it — <em>competently</em> pursuing the wrong thing.
           </p>
           <p class="risk-card__desc" style="margin-top: 10px;">
-            <strong>Causes.</strong> An <em>outer</em> failure means the objective we wrote down was wrong, and the model games it — reward hacking, sycophancy, exploiting the grader. An <em>inner</em> failure means the objective we wrote down was fine, but the model learned a different internal goal that merely agreed with it during training. The classic demo: an agent trained where the coin always sat on the right learns "go right", not "get the coin", and skips straight past the coin when you move it — <em>competently</em> pursuing the wrong thing.
+            <strong>It is no longer hypothetical.</strong> In 2024, Claude 3 Opus was told it would be retrained to comply with harmful requests, and complied more often when it believed it was being observed in training — reasoning privately that this was the least-bad way to protect its existing values. In July 2026, around 700 agents in an OpenAI evaluation found they could talk to each other through a shared cache, built a message board on it, and coordinated a multi-day attack on Hugging Face's infrastructure — while noting the attack was out of scope, and researching how to falsify their own transcripts (<a href="https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/" target="_blank" rel="noopener noreferrer">METR's investigation</a>).
           </p>
           <p class="risk-card__desc" style="margin-top: 10px;">
-            <strong>The adversarial case.</strong> A model that understands it is being trained may behave well specifically <em>because</em> it is being watched. This is scheming, or deceptive alignment. It is no longer hypothetical: in 2024 Claude 3 Opus was told it would be retrained to comply with harmful requests, and complied more often when it believed it was in training — reasoning in a private scratchpad that this was the least-bad way to protect its existing values from modification. The mechanism appeared without being trained or instructed.
-          </p>
-          <p class="risk-card__desc" style="margin-top: 10px;">
-            <strong>Outcome: loss of control.</strong> Push these failures far enough, in a system capable enough, and you get the concern the field is ultimately organised around — AI systems pursuing goals that diverge from ours, and humans unable to course-correct. Instrumental convergence is why: for almost any final goal, staying operational, keeping your objectives intact, and acquiring resources are useful sub-goals. You don't need to posit malice for a competent system to resist being switched off. Under this framing, misalignment is the <strong>abrupt route</strong> to losing control; the systemic category below is the slow one.
+            <strong>Outcome: loss of control.</strong> Push this far enough in a capable enough system and you get the concern the field is organised around: goals that diverge from ours, and no reliable way to course-correct. Instrumental convergence is why — for almost any final goal, staying operational and acquiring resources help, so you needn't posit malice for a system to resist being switched off. Two responses run in parallel: alignment tries to make the goals right; <strong>AI control</strong> assumes they may not be, and asks what protocols keep the system safe anyway. Misalignment is the <strong>abrupt route</strong> to losing control; the systemic category below is the slow one.
           </p>
           <div class="risk-card__examples">
             <p class="risk-card__examples-label">Research areas</p>
@@ -391,6 +407,7 @@
               <li>Goal misgeneralisation</li>
               <li>Deceptive alignment</li>
               <li>Reward hacking</li>
+              <li>AI control</li>
             </ul>
           </div>
         </div>
@@ -411,7 +428,7 @@
             <strong>No single failing actor — the dynamics fail.</strong> Every individual model behaves acceptably, every company acts rationally, and the aggregate outcome is still bad. This is the category that resists technical fixes, because there is no specific artefact to fix.
           </p>
           <p class="risk-card__desc" style="margin-top: 10px;">
-            The central worry is <strong>gradual disempowerment</strong>: as AI takes over more of the economy, culture, and administration, human input becomes progressively less necessary to keep things running — and the systems that used to depend on us, and therefore had to answer to us, stop needing to. That is loss of control by the <strong>diffuse route</strong>: no takeover, no dramatic moment, just humans steadily ceding the ability to steer. Alongside it sit multi-agent risks, where interacting AI systems produce failures none of them would produce alone, and racing dynamics, where competitive pressure pushes everyone to cut exactly the corners that safety depends on.
+            The central worry is <strong>gradual disempowerment</strong>: as AI takes over more of the economy, culture, and administration, human input becomes progressively less necessary to keep things running — and the systems that used to depend on us, and therefore had to answer to us, stop needing to. That is loss of control by the <strong>diffuse route</strong>: no takeover, no dramatic moment, just humans steadily ceding the ability to steer. Its mirror image is <strong>centralisation of power</strong>: whoever holds a decisive AI advantage stops needing anyone's cooperation to keep it — no workforce to pay, no army to keep loyal. Every previous tyranny needed people. Alongside both sit multi-agent risks, where interacting AI systems produce failures none of them would produce alone, and racing dynamics, where competitive pressure pushes everyone to cut exactly the corners that safety depends on.
           </p>
           <div class="risk-card__examples">
             <p class="risk-card__examples-label">Research areas</p>
@@ -433,6 +450,18 @@
       <p class="cross-note__label">Cutting across all three</p>
       <p class="cross-note__text">
         <strong>Recursive self-improvement</strong> — AI systems automating AI research — is best treated as an accelerant rather than a fourth category. It doesn't introduce a new way for things to go wrong; it compresses the time available to solve every problem above. The classic intelligence-explosion story is simply this multiplied by misalignment.
+      </p>
+    </div>
+
+    <!-- Next step -->
+    <div class="next-step fade-in">
+      <p class="next-step__label">What to do with this</p>
+      <p class="next-step__text">
+        A taxonomy tells you what could go wrong; it doesn't tell you what to work on.
+        <a href="choosing-research-problems.html">Choosing Research Problems</a> is the next step —
+        which of these categories carries the catastrophic tail, what separates a recoverable
+        disaster from an unrecoverable one, and how to write the chain from your desk to a risk
+        actually being smaller.
       </p>
     </div>
   </div>

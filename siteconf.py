@@ -22,6 +22,7 @@ SITE["nav"] = [
     {"label": "Home", "href": "/"},
     {"label": "Learn", "children": [
         {"label": "Why AI Safety Matters", "href": "why-ai-safety.html"},
+        {"label": "Choosing Research Problems", "href": "choosing-research-problems.html"},
         {"label": "Key Events",            "href": "timeline.html"},
         {"label": "Concept Map",           "href": "concept-map.html"},
         {"label": "Research Ideas",        "href": "research-ideas.html"},
@@ -58,6 +59,7 @@ PINE       = ["#4A7C6F", "#6FA294", "#3B82A0"]
 PAGES = [
     {"slug": "index",              "title": None,                      "accent": TERRACOTTA, "content_width": 920},
     {"slug": "why-ai-safety",      "title": "Why AI Safety Matters",   "accent": TERRACOTTA, "content_width": 720, "group": "Learn"},
+    {"slug": "choosing-research-problems", "title": "Choosing Research Problems", "accent": TERRACOTTA, "content_width": 760, "group": "Learn"},
     {"slug": "timeline",           "title": "Key Events",              "accent": TERRACOTTA, "content_width": 780, "group": "Learn"},
     {"slug": "concept-map",        "title": "A Concept Map of AI Safety","accent": TERRACOTTA, "content_width": 720, "group": "Learn", "consult": False},
     {"slug": "research-ideas",      "title": "Research Ideas",          "accent": TERRACOTTA, "content_width": 760, "group": "Learn"},
