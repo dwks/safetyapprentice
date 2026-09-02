@@ -162,6 +162,16 @@
     transition: all 0.25s ease; box-shadow: 0 2px 8px rgba(245, 237, 227, 0.15);
   }
   .callout__link:hover { transform: scale(1.03); box-shadow: 0 4px 16px rgba(245, 237, 227, 0.3); }
+  .callout__links { display: flex; flex-wrap: wrap; gap: 12px; }
+  /* the exercise is the companion to the video, so it sits beside it as the
+     quieter of the two buttons */
+  .callout__link--ghost {
+    color: #F5EDE3; background: rgba(255, 252, 247, 0.06);
+    border: 1px solid rgba(255, 252, 247, 0.22); box-shadow: none;
+  }
+  .callout__link--ghost:hover {
+    background: rgba(255, 252, 247, 0.12); box-shadow: none;
+  }
 
   @media (max-width: 720px) {
     .content { padding: 0 20px; }
@@ -417,9 +427,12 @@
     </p>
     <p class="callout__body">
       <strong>Do it with your actual project.</strong> The workshop is most useful when you
-      actually do the exercise.
+      actually do the exercise, which comes as a worksheet alongside the video.
     </p>
-    <a class="callout__link" href="https://www.youtube.com/watch?v=PwnkYncoUsA" target="_blank" rel="noopener noreferrer">Watch the workshop &rarr;</a>
+    <div class="callout__links">
+      <a class="callout__link" href="https://www.youtube.com/watch?v=PwnkYncoUsA" target="_blank" rel="noopener noreferrer">Watch the workshop &rarr;</a>
+      <a class="callout__link callout__link--ghost" href="https://docs.google.com/document/u/1/d/15n1XpUaZ-85jAQgPmApzuTwItKOCs-duYvlRzuRvhOA/mobilebasic" target="_blank" rel="noopener noreferrer">Open the exercise &rarr;</a>
+    </div>
   </div>
 
   <!-- 5. Worked examples -->
